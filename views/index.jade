@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  main
+    section#tenders
+      for tender in tenders
+        p=tender.name
+    section#bids-offered
+      p offered bid 1
+    section#bids-received
+      p offered bid 2
