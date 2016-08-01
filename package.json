@@ -18,7 +18,7 @@
     "serve-favicon": "~2.3.0"
   },
   "description": "Galvanize Q2 group project",
-  "main": "app.js",
+  "main": "bin/www",
   "devDependencies": {},
   "repository": {
     "type": "git",
