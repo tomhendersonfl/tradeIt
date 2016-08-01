@@ -7,9 +7,7 @@ function Tenders(){
 };
 
 router.get('/', function(req, res, next) {
-  Tenders().select().then(function(tenders){
-    res.render('index', { tenders:tenders, title: 'Trade It' });
-  })
+  res.render('index', { title: 'Trade It' });
 });
 
 module.exports = router;
