@@ -1,9 +1,8 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('tenders', function(table)
   {
   table.increments();
-  table.string('name' );
+  table.string('name');
   table.string('state');
   table.text('description');
   table.string('tender_type');

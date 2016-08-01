@@ -1,12 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var knex=require('../db/knex');
-//var pg = require(‘pg’);
+var knex = require('../db/knex');
 
+function Tenders(){
+  return knex('tenders');
+};
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  Tenders().select().then(function(tenders){
+    res.render('index', { tenders:tenders, title: 'Trade It' });
+  })
 });
 
 module.exports = router;
