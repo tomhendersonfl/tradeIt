@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  main
+    section#tenders
+      h3 Items for Trade
+      for tender in tenders
+        p=tender.name
+      a(href='tenders/index') View All Tenders
+    section#bids-offered
+      h3 My Bids Made
+      p offered bid 1
+      p offered bid 2
+      a(href='bids-offered/index') View all Bids Made
+    section#bids-received
+      h3 My Bids Received
+      p received bid 1
+      p received bid 2
+      a(href='bids-received/index') View all Bids Received
