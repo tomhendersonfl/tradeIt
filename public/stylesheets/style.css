@@ -52,3 +52,11 @@ footer.page-footer{
   padding: 0px;
   padding-bottom: 0px;
 }
+
+td, th {
+  border: 2px solid black;
+}
+
+.tender_show{
+  border: 2px solid black;
+}

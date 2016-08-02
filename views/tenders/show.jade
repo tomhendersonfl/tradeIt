@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h1  Showing Tender  Here
+  if tenders
+    div.tender_show
+      h2 Tender Name: #{tenders.name}
+      p Description: #{tenders.description}
+      p Type: #{tenders.tender_type}
+      p User id: #{tenders.user_id}
+    div.tender_show
+      h2 User Name: #{tenders.first_name}, #{tenders.last_name}
+      p Email Address: #{tenders.email_address}
+      p Facebook Username: #{tenders.facebook_username}
+    
+  a(href='/tenders/#{tenders.id}/offer') Make an offer
