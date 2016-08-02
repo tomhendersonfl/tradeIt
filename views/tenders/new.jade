@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h1 Create a new Tender here:
+  form(action='/tenders', method='post')
+    input(type='textarea', name='name', value='', placeholder='Name')
+    input(type='textarea', name='description', value='', placeholder='Description')
+    select(name='type')
+      option(value='default', selected='', disabled='') Type
+      option(value='service') Service
+      option(value='goods') Goods
+    input(type='number', name='user_id', value='2', placeholder='User Id')
+    input#submit_button(type='submit', name='', value='Create New Tender')
