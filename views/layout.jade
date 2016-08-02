@@ -14,7 +14,8 @@ html
 
     ul#dropdown2.dropdown-content
       li 
-        a(href="/users/:id") My Profile
+        a(href="/users/2") My Profile
+        //need to figure out how to access user_id into about href
       li
         a(href="#") My bids
           li.divider
@@ -27,7 +28,7 @@ html
           li.navText
             a(href="/dashboard") Home
           li.navText
-            a(href="badges.html") Add Item
+            a(href="/tenders/new") Add Tender
           li.navText
             a.dropdown-button(href="#", data-activates="dropdown2") Profile
               i.material-icons.right
