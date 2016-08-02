@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
-  res.send('hello');
+  res.send('respond with a resource');
 });
 
 module.exports = router;
