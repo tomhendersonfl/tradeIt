@@ -30,9 +30,6 @@ module.exports = {
       if (user.rows[0].state === 'unverified') {
         errors.push(`Only a verified user may ${tenderEvent} a tender`)
       }
-      if (tender.name.trim().length === 0) {
-        errors.push("Name cannot be blank")
-      }
       if (tender.description.trim().length === 0) {
         errors.push("Description cannot be blank")
       }
