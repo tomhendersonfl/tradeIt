@@ -10,6 +10,11 @@ router.get('/', function(req, res, next) {
   Tenders().select().then(function(tenders){
     res.render('index', { tenders:tenders, title: 'Trade It' });
   })
+})
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
 });
 
 module.exports = router;
