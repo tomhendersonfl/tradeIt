@@ -7,13 +7,13 @@ function Tenders(){
 };
 
 router.get('/', function(req, res, next) {
+
+  res.render('index', { title: 'Trade It' });
+
   Tenders().select().then(function(tenders){
     res.render('index', { tenders:tenders, title: 'Trade It' });
   })
 })
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
 module.exports = router;
