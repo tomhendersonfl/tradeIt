@@ -17,13 +17,13 @@ module.exports = {
   },
   validate: function(user) {
     var errors = []
-    if user.first_name.trim().length === 0 {
+    if (user.first_name.trim().length === 0) {
       errors.push("First Name cannot be blank")
     }
-    if user.last_name.trim().length === 0 {
+    if (user.last_name.trim().length === 0) {
       errors.push("Last Name cannot be blank")
     }
-    if user.email_address.trim().length === 0 {
+    if (user.email_address.trim().length === 0) {
       errors.push("Email address cannot be blank")
     }
     var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
