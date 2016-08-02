@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  main
+    section#profile
+      h3 My Profile
+      div.profile
+        h4 First Name: #{users.first_name}
+        h4 Last Name: #{users.last_name}
+        h4 Email: #{users.email_address}
+        h4 Facebook Username: #{users.facebook_username}
+    section#my_bids
+      section#bids-sent
+        h3 My Bids Sent
+          //- for bid in bids-sent
+          //-   div.profile-bids-sent
+        h3 My Bids Received
+          //- for bid in bids-received
+          //-   div.profile-bids-received
+    section#my_tenders
+      h3 My Tenders
+      for tender in tenders
+          div.profile-tender
+          h4= tender.name
+          p= tender.description
+          p= tender.tender_type
