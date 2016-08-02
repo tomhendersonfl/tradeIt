@@ -5,6 +5,19 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+#tenders {
+  float: left;
+}
+
+#bids {
+  float: right;
+}
+
+#bids-received {
+  margin-top: 50px;
 }
 
 section {

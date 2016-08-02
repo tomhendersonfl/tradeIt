@@ -11,13 +11,14 @@ block content
           p=tender.tender_type
           p=tender.username
       a(href='/tenders') View All Tenders
-    section#bids-offered
-      h3 My Bids Made
-        div.dashbord-bids-offered
-          h4 bid offered
-      a(href='/bids-offered') View all Bids Made
-    section#bids-received
-      h3 My Bids Received
-        div.dashboard-bids-received
+    section#bids
+      section#bids-sent
+        h3 My Bids Made
+          div.dashbord-bids-sent
+            h4 bid sent
+        a(href='/bids-sent') View all Bids Made
+      section#bids-received
+        h3 My Bids Received
+          div.dashboard-bids-received
           h4 bid received
-      a(href='/bids-received') View all Bids Received
+        a(href='/bids-received') View all Bids Received
