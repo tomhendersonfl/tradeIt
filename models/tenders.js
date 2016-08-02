@@ -19,53 +19,61 @@ module.exports = {
     return knex.raw(`delete from tenders where id = ${id}`)
   },
   validate: function(tender) {
-    knex.raw(`select * from users where id = ${tender.user_id}`)
+    var errors = []
+    if (tender.name.trim().length === 0) {
+      errors.push("Name cannot be blank")
+    }
+    if (tender.description.trim().length === 0) {
+      errors.push("Description cannot be blank")
+    }
+    this.verifyUser(tender, errors, 'update')
+    return errors
+  },
+  verifyUser: function(tender, errors, tenderEvent) {
+    knex.raw(`select * from users where id = ${user_id}`)
     .then(function(user) {
-      var errors = []
-      if tender.name.trim().length === 0 {
-        errors.push("Name cannot be blank")
+      if (tender.user_id !== user.id || !user.is_administrator) {
+        errors.push(`Only tender owner may ${tenderEvent} a tender`)
       }
-      if tender.description.trim().length === 0 {
-        errors.push("Description cannot be blank")
+      if (user.state === 'unverified') {
+        errors.push(`Only a verified user may ${tenderEvent} a tender`)
       }
       return errors
     })
   },
   publish: function(tender) {
-    knex.raw(`select * from users where id = ${tender.user_id}`)
-    .then(function(user) {
       var errors = []
       if (tender.state !== 'draft') {
         errors.push("Only tenders in draft state may be published")
       }
-      if (tender.user_id !== user.id || !user.is_administrator) {
-        errors.push("Only tender owner may publish a tender")
-      }
-      if (user.state === 'unverified') {
-        errors.push("Only a verified user may publish a tender")
-      }
-      if errors.length !== 0 {
+      this.verifyUser(tender, errors, 'publish')
+      if (errors.length !== 0) {
         return errors
       }
       knex.raw(`update tenders set published_at = CURRENT_TIMESTAMP, state = 'published' where id = ${tender.id}`)
       return errors
     })
   },
-  validateBid: function(tender) {
+  bid: function(tender, bid) {
     var errors = []
     if (tender.state !== 'published') {
       errors.push("Bids can only be made on published tenders")
     }
+    if (errors.length !== 0) {
+      return errors
+    }
+    knex.raw(`update tenders set accepted_at = CURRENT_TIMESTAMP, state = 'active' where id = ${tender.id}`)
     return errors
   },
-  validateAccept: function(tender, bid) {
+  accept: function(tender, bid) {
     var errors = []
     if (tender.state !== 'active') {
       errors.push("Bids can only be accepted on active tenders")
     }
+    knex.raw(`update tenders set accepted_at = CURRENT_TIMESTAMP, state = 'closed' where id = ${tender.id}`)
     return errors
   },
-  validateReject: function(tender, bid) {
+  reject: function(tender, bid) {
     var errors = []
     if (tender.state !== 'active') {
       errors.push("Bids can only be rejected on active tenders")
