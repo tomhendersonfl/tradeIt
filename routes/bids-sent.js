@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+<<<<<<< HEAD
 var Tenders = require('../models/tenders')
 
 router.get('/', function(req, res, next) {
@@ -26,6 +27,11 @@ router.get('/:id/meetup', function(req, res, next) {
     title: "Lets Meet Up!"
   })
 });
+=======
 
+router.get('/', function(req, res, next) {
+  res.render('bids_sent/index', { title: 'Trade It' });
+})
+>>>>>>> 4c9264ba060956776cacc9f79360cfdd9ee23176
 
 module.exports = router;

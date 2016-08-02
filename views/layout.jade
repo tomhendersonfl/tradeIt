@@ -15,30 +15,39 @@ html
   body
 
     ul#dropdown2.dropdown-content
+      li 
+        a(href="/users/2") My Profile
+        //need to figure out how to access user_id into about href
       li
         a(href="#") My bids
-      li
-        a(href="#") Edit Profile
           li.divider
             li
-              a(href="#") Logout
+              a(href="/auth/logout") Logout
     nav
       div.nav-wrapper
-        a.brand-logo(href="#") Trade it!
+        a.brand-logo(href="/dashboard") Trade it!
         ul.right.hide-on-med-and-down
           li.navText
-            a(href="/index") Home
+            a(href="/dashboard") Home
           li.navText
-            a(href="badges.html") Add Item
+            a(href="/tenders/new") Add Tender
           li.navText
             a.dropdown-button(href="#", data-activates="dropdown2") Profile
               i.material-icons.right
                 | arrow_drop_down
+<<<<<<< HEAD
 
 
     block content
     main
     
+=======
+
+    block content
+
+    main
+
+>>>>>>> 4c9264ba060956776cacc9f79360cfdd9ee23176
     footer.page-footer
       div.container
         div.row
@@ -49,11 +58,11 @@ html
           div.col.l6.s12
             ul
               li.info
-                a.grey-text.text-lighten-3(href="#!") About us
+                a.grey-text.text-lighten-3(href="/About_us") About us
               li.info
-                a.grey-text.text-lighten-3(href="#!") Contact us
+                a.grey-text.text-lighten-3(href="/contact") Contact us
               li.info
-                a.grey-text.text-lighten-3(href="#!") FAQ
+                a.grey-text.text-lighten-3(href="/FAQ") FAQ
            div.footer-copyright.col.s12
             div.container.s12.copywrite © 2016 Tradeit
 
