@@ -32,13 +32,6 @@ module.exports = {
   verifyUser: function(tender, errors, tenderEvent) {
     knex.raw(`select * from users where id = ${user_id}`)
     .then(function(user) {
-      var errors = []
-      if (tender.name.trim().length === 0) {
-        errors.push("Name cannot be blank")
-      }
-      if (tender.description.trim().length === 0) {
-        errors.push("Description cannot be blank")
-      }
       if (tender.user_id !== user.id || !user.is_administrator) {
         errors.push(`Only tender owner may ${tenderEvent} a tender`)
       }
@@ -49,23 +42,16 @@ module.exports = {
     })
   },
   publish: function(tender) {
-      var errors = []
-      if (tender.state !== 'draft') {
-        errors.push("Only tenders in draft state may be published")
-      }
-      if (tender.user_id !== user.id || !user.is_administrator) {
-        errors.push("Only tender owner may publish a tender")
-      }
-      if (user.state === 'unverified') {
-        errors.push("Only a verified user may publish a tender")
-      }
-      this.verifyUser(tender, errors, 'publish')
-      if (errors.length !== 0) {
-        return errors
-      }
-      knex.raw(`update tenders set published_at = CURRENT_TIMESTAMP, state = 'published' where id = ${tender.id}`)
+    var errors = []
+    if (tender.state !== 'draft') {
+      errors.push("Only tenders in draft state may be published")
+    }
+    this.verifyUser(tender, errors, 'publish')
+    if (errors.length !== 0) {
       return errors
-    })
+    }
+    knex.raw(`update tenders set published_at = CURRENT_TIMESTAMP, state = 'published' where id = ${tender.id}`)
+    return errors
   },
   bid: function(tender, bid) {
     var errors = []
