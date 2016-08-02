@@ -4,20 +4,20 @@ block content
 
   if tenders
   
-  div.row
-    div.col.s12.m10
-      div.card.blue-grey.darken-1
-         div.card-content.white-text
-           span.card-titleCard 
-           h3= tenders.name
-           p I am a very simple card. I am good at containing small bits of information.
-            | I am convenient because I require little markup to use effectively.
-           p Descrption:
-            p= tenders.description
-           p Type:
-            p= tenders.tender_type
-         div.card-action
-           a(href="/bids-sent/"+tenders.user_id) Make an offer
+    div.row
+      div.col.s12.m10
+        div.card.blue-grey.darken-1
+           div.card-content.white-text
+             span.card-titleCard 
+             h3= tenders.name
+             p I am a very simple card. I am good at containing small bits of information.
+              | I am convenient because I require little markup to use effectively.
+             p Descrption:
+              p= tenders.description
+             p Type:
+              p= tenders.tender_type
+           div.card-action
+             a(href="/bids-sent/"+tenders.id) Make an offer
 
 
     

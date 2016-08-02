@@ -5,8 +5,8 @@ var Tenders = require('../models/tenders')
 
 router.get('/', function(req, res, next) {
   Tenders.all().then(function(tenders){
-    console.log(tenders.rows[0]);
-    res.render('bidder/index', { tenders:tenders.rows[0],
+    console.log(tenders.rows);
+    res.render('bidder/index', { tenders:tenders.rows,
       message:'When user clicks accept offer on biddee show page, user is directed to meetup form'
     });
   })
@@ -26,5 +26,6 @@ router.get('/:id/meetup', function(req, res, next) {
     title: "Lets Meet Up!"
   })
 });
+
 
 module.exports = router;
