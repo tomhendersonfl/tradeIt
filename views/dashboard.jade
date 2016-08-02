@@ -5,15 +5,20 @@ block content
     section#tenders
       h3 Items for Trade
       for tender in tenders
-        p=tender.name
-      a(href='tenders/index') View All Tenders
-    section#bids-offered
-      h3 My Bids Made
-      p offered bid 1
-      p offered bid 2
-      a(href='bids-offered/index') View all Bids Made
-    section#bids-received
-      h3 My Bids Received
-      p received bid 1
-      p received bid 2
-      a(href='bids-received/index') View all Bids Received
+        div.dashboard-tender
+          h4=tender.name
+          p=tender.description
+          p=tender.tender_type
+          p=tender.username
+      a(href='/tenders') View All Tenders
+    section#bids
+      section#bids-sent
+        h3 My Bids Sent
+          //- for bid in bids-sent
+          //-   div.dashboard-bids-sent
+        a(href='/bids-sent') View all Bids Sent
+      section#bids-received
+        h3 My Bids Received
+          //- for bid in bids-received
+          //-   div.dashboard-bids-received
+        a(href='/bids-received') View all Bids Received

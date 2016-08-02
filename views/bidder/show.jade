@@ -2,6 +2,24 @@ extends ../layout
 
 block content
 
-  p=title
+div.container
+  h1=title
+  
+  div.switch
+    label Notification
+     Off
+     input(type="checkbox")
+     span.lever
+     On
+    
+  div.row
+   form.col.s12
+     div.row
+       div.input-field.col.s12
+         i.material-icons.prefix mode_edit
+         textarea#icon_prefix2.materialize-textarea
+         label(for="icon_prefix2") Message
+
+
 
     

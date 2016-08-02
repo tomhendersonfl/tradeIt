@@ -32,6 +32,12 @@ module.exports = {
   verifyUser: function(tender, errors, tenderEvent) {
     knex.raw(`select * from users where id = ${user_id}`)
     .then(function(user) {
+      var errors = []
+      if (tender.name.trim().length === 0) {
+        errors.push("Name cannot be blank")
+      }
+      if (tender.description.trim().length === 0) {
+        errors.push("Description cannot be blank")
       if (tender.user_id !== user.id || !user.is_administrator) {
         errors.push(`Only tender owner may ${tenderEvent} a tender`)
       }
@@ -39,19 +45,26 @@ module.exports = {
         errors.push(`Only a verified user may ${tenderEvent} a tender`)
       }
       return errors
+    }
     })
   },
   publish: function(tender) {
-      var errors = []
-      if (tender.state !== 'draft') {
-        errors.push("Only tenders in draft state may be published")
-      }
-      this.verifyUser(tender, errors, 'publish')
-      if (errors.length !== 0) {
-        return errors
-      }
-      knex.raw(`update tenders set published_at = CURRENT_TIMESTAMP, state = 'published' where id = ${tender.id}`)
+    var errors = []
+    if (tender.state !== 'draft') {
+      errors.push("Only tenders in draft state may be published")
+    }
+    if (tender.user_id !== user.id || !user.is_administrator) {
+      errors.push("Only tender owner may publish a tender")
+    }
+    if (user.state === 'unverified') {
+      errors.push("Only a verified user may publish a tender")
+    }
+    this.verifyUser(tender, errors, 'publish')
+    if (errors.length !== 0) {
       return errors
+    }
+    knex.raw(`update tenders set published_at = CURRENT_TIMESTAMP, state = 'published' where id = ${tender.id}`)
+    return errors
   },
   bid: function(tender, bid) {
     var errors = []
@@ -80,6 +93,19 @@ module.exports = {
     var errors = []
     if (tender.state !== 'active') {
       errors.push("Bids can only be rejected on active tenders")
+    }
+  },
+  validateCreate: function(tender) {
+    var errors = []
+    if (tender.name.trim().length === 0) {
+      errors.push("Name cannot be blank")
+    }
+    if (tender.email_address.trim().length = 0) {
+      errors.push("Email address cannot be blank")
+    }
+    var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+    if (!re.test(tender.email_address)) {
+      errors.push("Email address is not valid")
     }
     this.verifyUser(tender, errors, 'reject')
     if (errors.length !== 0) {

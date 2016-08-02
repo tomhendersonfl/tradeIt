@@ -2,8 +2,9 @@ extends ../layout
 
 block content
 
-  p=title
+  div
+    p=message
   
-  button
-    a(href='bids-sent/:id', class="btn", data-action="bea") Accept
-    
+    a.btn.waves-effect.waves-light(href='/bids-sent/:id', type="submit", name="action") Submit
+      i.material-icons.right send
+       

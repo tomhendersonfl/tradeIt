@@ -1,4 +1,21 @@
 extends ../layout
 
 block content
-  h1 Welcome to Trade It Splash Page!
+  h1 Showing all tenders within a 50 mile radius:
+    if tenders
+    table
+      thead
+        tr
+        th Name
+        th Description
+        th Type
+        th User
+      tbody
+        for tender in tenders
+         tr
+          td: a(href='/tenders/'+tender.id)= tender.name
+          td= tender.description
+          td= tender.tender_type
+          td= tender.user_id
+        div
+        a(href='/tender/new') Add a Tender
