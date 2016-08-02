@@ -14,20 +14,18 @@ html
 
     ul#dropdown2.dropdown-content
       li 
-        a(href="/users/:id") My Profile
+        a(href="/users/#{user.user_id}") My Profile
       li
         a(href="#") My bids
-      li
-        a(href="#") Edit Profile
           li.divider
             li
               a(href="#") Logout
     nav
       div.nav-wrapper
-        a.brand-logo(href="/index") Trade it!
+        a.brand-logo(href="/dashboard") Trade it!
         ul.right.hide-on-med-and-down
           li.navText
-            a(href="/index") Home
+            a(href="/dashboard") Home
           li.navText
             a(href="badges.html") Add Item
           li.navText
