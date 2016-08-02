@@ -13,7 +13,7 @@ module.exports = {
     return knex.raw(`select t.*, u.* from tenders t inner join users u on t.user_id = u.id where t.id = ${id}`)
   },
   updateOne: function(tender) {
-    return knex.raw(`update tenders set name = '${tender.name}', description = '${tender.description}', tender_type = '${tender.tender_type}', updated_at = CURRENT_TIMESTAMP`)
+    return knex.raw(`update tenders set name = '${tender.name}', description = '${tender.description}', tender_type = '${tender.tender_type}', state = 'draft', updated_at = CURRENT_TIMESTAMP`)
   },
   destroy: function(id) {
     return knex.raw(`delete from tenders where id = ${id}`)
@@ -74,13 +74,17 @@ module.exports = {
     if (errors.length !== 0) {
       return errors
     }
-    knex.raw(`update tenders set accepted_at = CURRENT_TIMESTAMP, state = 'active' where id = ${tender.id}`)
+    knex.raw(`update tenders set state = 'active' where id = ${tender.id}`)
     return errors
   },
   accept: function(tender, bid) {
     var errors = []
     if (tender.state !== 'active') {
       errors.push("Bids can only be accepted on active tenders")
+    }
+    this.verifyUser(tender, errors, 'accept')
+    if (errors.length !== 0) {
+      return errors
     }
     knex.raw(`update tenders set accepted_at = CURRENT_TIMESTAMP, state = 'closed' where id = ${tender.id}`)
     return errors
@@ -103,6 +107,11 @@ module.exports = {
     if (!re.test(tender.email_address)) {
       errors.push("Email address is not valid")
     }
+    this.verifyUser(tender, errors, 'reject')
+    if (errors.length !== 0) {
+      return errors
+    }
+    knex.raw(`update tenders set updated_at = CURRENT_TIMESTAMP, state = 'published' where id = ${tender.id}`)
     return errors
   }
 }
