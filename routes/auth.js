@@ -15,7 +15,6 @@ router.get('/', function(req, res, next) {
   })
 })
 
-/* GET users listing. */
 
 
 module.exports = router;
