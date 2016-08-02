@@ -8,9 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dashboard', function(req, res, next){
-  Tenders.all().then(function(tenders){
-    res.render('dashboard', {tenders:tenders.rows});
-  });
+  if(req.cookies.logged_in){
+    Tenders.all().then(function(tenders){
+      res.render('dashboard', {tenders:tenders.rows});
+    });
+  } else {
+    res.redirect('/')
+  }
 })
 
 module.exports = router;
