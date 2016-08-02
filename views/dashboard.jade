@@ -13,12 +13,12 @@ block content
       a(href='/tenders') View All Tenders
     section#bids
       section#bids-sent
-        h3 My Bids Made
-          div.dashbord-bids-sent
-            h4 bid sent
-        a(href='/bids-sent') View all Bids Made
+        h3 My Bids Sent
+          //- for bid in bids-sent
+          //-   div.dashboard-bids-sent
+        a(href='/bids-sent') View all Bids Sent
       section#bids-received
         h3 My Bids Received
-          div.dashboard-bids-received
-          h4 bid received
+          //- for bid in bids-received
+          //-   div.dashboard-bids-received
         a(href='/bids-received') View all Bids Received

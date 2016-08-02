@@ -23,3 +23,11 @@ a {
 section {
   background-color: pink;
 }
+
+td, th {
+  border: 2px solid black;
+}
+
+.tender_show{
+  border: 2px solid black;
+}
