@@ -1,12 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=La+Belle+Aurore');
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #f6f6f6;
 }
 
-a {
-  color: #00B7FF;
+main {
+  flex: 1 0 auto;
 }
 
-section {
-  background-color: pink;
+.brand-logo{
+  font-family: La Belle Aurore;
+}
+
+
+nav ul a {
+  font-size: 25px;
+  padding-top: 10px;
+}
+
+.col.l4.offset-l2.s12 {
+  display: inline-block;
+
+}
+
+li.info{
+display: inline-block;
+margin-right: 65px;
+font-size: 20px
+}
+
+h5 {
+  margin-bottom: 0;
+}
+
+div.container.copywrite{
+  text-align: center;
+  font-size: 15px;
+}
+div.row{
+  margin-bottom: 0;
+  height: 2%;
+}
+
+.container{
+  width: 100vw;
+}
+
+footer.page-footer{
+  padding: 0px;
+  padding-bottom: 0px;
 }
