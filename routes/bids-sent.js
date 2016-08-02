@@ -8,7 +8,8 @@ function Tenders(){
 
 router.get('/', function(req, res, next) {
   Tenders().select().then(function(tenders){
-    res.render('bidder/index', { tenders:tenders,
+    console.log(tenders[0]);
+    res.render('bidder/index', { tenders:tenders[0],
       message:'When user clicks accept offer on biddee show page, user is directed to meetup form'
 
     });
@@ -17,6 +18,12 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   res.render('bidder/show', {
+    message:'When user clicks accept offer on biddee show page, user is directed to meetup form'
+  })
+});
+
+router.get('/:id/meetup', function(req, res, next) {
+  res.render('bidder/form', {
     title: "Lets Meet Up!"
   })
 });

@@ -2,9 +2,34 @@ extends ../layout
 
 block content
 
-  div
-    p=message
+  if tenders  
   
-    a.btn.waves-effect.waves-light(href='/bids-sent/:id', type="submit", name="action") Accept
-      i.material-icons.right send
+    div.row
+      div.col.s12.m10
+        div.card.blue-grey.darken-1
+             div.card-content.white-text
+               span.card-titleCard Jess Lee
+               p I am a very simple card. I am good at containing small bits of information.
+                | I am convenient because I require little markup to use effectively.
+               p Descrption:
+                p= tenders.description
+               p Type:
+                p= tenders.tender_type
+             div.card-action
+               a(href="/bids-sent/:id") Check it out
+    div.row
+      div.col.s12.m10
+        div.card.blue-grey.darken-1
+             div.card-content.white-text
+               span.card-titleCard Jimothy Watkins
+               p I am a very simple card. I am good at containing small bits of information.
+                | I am convenient because I require little markup to use effectively.
+                p Descrption:
+                 p= tenders.description
+                p Type:
+                 p= tenders.tender_type
+             div.card-action
+              a(href="#") Check it out
+
+
        
