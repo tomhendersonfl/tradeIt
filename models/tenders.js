@@ -10,7 +10,7 @@ module.exports = {
     return knex.raw(`select * from tenders where user_id = ${user} order by created_at desc`)
   },
   find: function(id) {
-    return knex.raw(`select * from tenders where id = ${id}`)
+    return knex.raw(`select t.*, u.* from tenders t inner join users u on t.user_id = u.id where t.id = ${id}`)
   },
   updateOne: function(tender) {
     return knex.raw(`update tenders set name = '${tender.name}', description = '${tender.description}', tender_type = '${tender.tender_type}', state = 'draft', updated_at = CURRENT_TIMESTAMP`)
