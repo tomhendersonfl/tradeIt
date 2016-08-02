@@ -22,10 +22,10 @@ module.exports = {
     knex.raw(`select * from users where id = ${tender.user_id}`)
     .then(function(user) {
       var errors = []
-      if tender.name.trim().length === 0 {
+      if (tender.name.trim().length === 0) {
         errors.push("Name cannot be blank")
       }
-      if tender.description.trim().length === 0 {
+      if (tender.description.trim().length === 0) {
         errors.push("Description cannot be blank")
       }
       return errors
@@ -44,7 +44,7 @@ module.exports = {
       if (user.state === 'unverified') {
         errors.push("Only a verified user may publish a tender")
       }
-      if errors.length !== 0 {
+      if (errors.length !== 0) {
         return errors
       }
       knex.raw(`update tenders set published_at = CURRENT_TIMESTAMP, state = 'published' where id = ${tender.id}`)
