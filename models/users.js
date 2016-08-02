@@ -9,6 +9,12 @@ module.exports = {
   find: function(id) {
     return knex.raw(`select * from users where id = ${id}`)
   },
+  findByEmail: function(email) {
+    return knex.raw(`select * from users where email_address = '${email}'`)
+  },
+  findByFacebook: function(facebook) {
+    return knex.raw(`select * from users where facebook_username = '${email}'`)
+  },
   updateOne: function(user) {
     return knex.raw(`update users set first_name = '${user.first_name}', last_name = '${user.last_name}' email_address = '${user.email_address}', facebook_username = '${user.facebook_username}', updated_at = CURRENT_TIMESTAMP`)
   },
@@ -17,18 +23,19 @@ module.exports = {
   },
   validate: function(user) {
     var errors = []
-    if user.first_name.trim().length === 0 {
+    if (user.first_name.trim().length === 0) {
       errors.push("First Name cannot be blank")
     }
-    if user.last_name.trim().length === 0 {
+    if (user.last_name.trim().length === 0) {
       errors.push("Last Name cannot be blank")
     }
-    if user.email_address.trim().length === 0 {
+    if (user.email_address.trim().length === 0) {
       errors.push("Email address cannot be blank")
-    }
-    var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-    if (!re.test(user.email_address)) {
-      errors.push("Email address is not valid")
+    } else {
+      var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+      if (!re.test(user.email_address)) {
+        errors.push("Email address is not valid")
+      }
     }
     return errors
   }
