@@ -13,21 +13,22 @@ html
   body
 
     ul#dropdown2.dropdown-content
+      li 
+        a(href="/users/2") My Profile
+        //need to figure out how to access user_id into about href
       li
         a(href="#") My bids
-      li
-        a(href="#") Edit Profile
           li.divider
             li
               a(href="/auth/logout") Logout
     nav
       div.nav-wrapper
-        a.brand-logo(href="#") Trade it!
+        a.brand-logo(href="/dashboard") Trade it!
         ul.right.hide-on-med-and-down
           li.navText
-            a(href="/index") Home
+            a(href="/dashboard") Home
           li.navText
-            a(href="badges.html") Add Item
+            a(href="/tenders/new") Add Tender
           li.navText
             a.dropdown-button(href="#", data-activates="dropdown2") Profile
               i.material-icons.right
