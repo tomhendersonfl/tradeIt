@@ -4,7 +4,13 @@ block content
   h1  Showing Tender  Here
   if tenders
     div.tender_show
-      h1 Name: #{tenders.name}
+      h2 Tender Name: #{tenders.name}
       p Description: #{tenders.description}
       p Type: #{tenders.tender_type}
       p User id: #{tenders.user_id}
+    div.tender_show
+      h2 User Name: #{tenders.name}, #{tenders.name}
+      p Email Address: #{tenders.name}
+      p Facebook Username: #{tenders.name}
+    
+  a(href='/tenders/#{tenders.id}/offer') Make an offer

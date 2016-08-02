@@ -9,13 +9,13 @@ function Tenders(){
 
 router.get('/', function(req, res, next) {
   Tenders().select().then(function(tenders){
-    res.render('tenders/index', { tenders:tenders, title: 'Trade It' });
+    res.render('tenders/index', {tenders:tenders});
   })
 });
 
 router.get('/:id', function(req, res, next) {
   Logic.find(req.params.id).then(function(tenders){
-    res.render('tenders/show', { tenders:tenders.rows[0], title: 'Trade It' });
+    res.render('tenders/show', {tenders:tenders.rows[0]});
   })
 });
 
