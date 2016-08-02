@@ -2,16 +2,16 @@ extends layout
 
 block content
   h1 Welcome to Trade It Splash Page!
-  
-  if !user
-    a(href='/auth/facebook') log in with facebook
-  if user
-    a(href='/auth/logout') log out
-    p welcome #{user.displayName}
 
-  form(action='/' method='POST')
-    input(type='text' name='username' placeholder='facebook username')
-    input(type='submit' name='submit' value='Log In')
+
+
+  form(action='/auth/facebook' method='GET')
+    if !user
+      input(type='submit' name='submit' value='log in with facebook')
+    if user
+      p welcome #{user.displayName}
+
+
 
   script(src='https://code.jquery.com/jquery-2.1.1.min.js')
   script(src='http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js')
