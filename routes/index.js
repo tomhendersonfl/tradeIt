@@ -17,4 +17,8 @@ router.get('/dashboard', function(req, res, next){
   }
 })
 
+router.get('/about_us', function(req, res, next) {
+  res.render('about_us', { title: 'Trade It' });
+});
+
 module.exports = router;
