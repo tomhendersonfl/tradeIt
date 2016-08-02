@@ -13,12 +13,16 @@ router.get('/dashboard', function(req, res, next){
       res.render('dashboard', {tenders:tenders.rows});
     });
   } else {
-    res.redirect('/')
+    res.redirect('/');
   }
 })
 
 router.get('/contact', function(req, res, next){
   res.render('contact');
 })
+
+router.get('/about_us', function(req, res, next) {
+  res.render('about_us', { title: 'Trade It' });
+});
 
 module.exports = router;
