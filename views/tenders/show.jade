@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1  Showing Tender  Here
+  if tenders
+    div.tender_show
+      h1 Name: #{tenders.name}
+      p Description: #{tenders.description}
+      p Type: #{tenders.tender_type}
+      p User id: #{tenders.user_id}
