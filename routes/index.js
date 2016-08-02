@@ -17,6 +17,10 @@ router.get('/dashboard', function(req, res, next){
   }
 })
 
+router.get('/FAQ', function(req, res, next) {
+  res.render('FAQ', { title: 'Trade It' });
+})
+
 router.get('/contact', function(req, res, next){
   res.render('contact');
 })
