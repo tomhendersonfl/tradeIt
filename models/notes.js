@@ -9,6 +9,9 @@ module.exports = {
   find: function(id) {
     return knex.raw(`select n.* from notes n where n.id = ${id}`)
   },
+  findByTender: function(tender_id) {
+    return knex.raw(`select n.* from notes n where n.tender_id = ${tender_id} order by n.created_at desc`)
+  },
   updateOne: function(note) {
     return knex.raw(`update notes set note_text = '${note.note_text}', updated_at = CURRENT_TIMESTAMP where id = ${note.id}`)
   },
