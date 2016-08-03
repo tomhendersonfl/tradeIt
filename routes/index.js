@@ -4,6 +4,7 @@ var knex = require('../db/knex');
 var Tenders = require('../models/tenders');
 var Bids = require('../models/bids');
 var Users = require('../models/users');
+var FbInfo = require('../models/fbInfo');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Trade It' });
@@ -34,20 +35,22 @@ router.get('/dashboard', function(req, res, next){
     if(tenders.rows.length > 20){
       tenders.rows.splice(20)
     }
-    if(req.cookies.userid){
-      Users.findByFacebookId(req.cookies.userid).then(function(user){
-        Bids.all().then(function(bids){
-          var sentBids = findSentBids(bids.rows);
-          var recBids = findReceivedBids(bids.rows);
-          res.render('dashboard', {tenders:tenders.rows,
-            sentBids:sentBids,
-            recBids:recBids
-          });
-        })
-      })
-    } else {
+    console.log(FbInfo.facebook_id);
+    // if(FbInfo.facebook_id){
+    //   Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
+    //     console.log(user);
+    //     res.render('dashboard', {tenders:tenders.rows});
+    //     Bids.all().then(function(bids){
+    //       var sentBids = findSentBids(bids.rows);
+    //       var recBids = findReceivedBids(bids.rows);
+    //       res.render('dashboard', {tenders:tenders.rows,
+    //         sentBids:sentBids,
+    //         recBids:recBids
+    //       });
+    //     })
+    //   })
+    // } else {
       res.render('dashboard', {tenders:tenders.rows});
-    }
   })
 })
 

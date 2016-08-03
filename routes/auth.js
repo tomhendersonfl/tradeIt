@@ -12,6 +12,7 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', { failur
 });
 
 router.get('/auth/logout', function(req, res, next){
+  FbInfo.facebook_id = 'undefined';
   req.session.destroy(function(err){
       res.redirect('/')
     })
