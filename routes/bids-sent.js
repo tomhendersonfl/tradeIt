@@ -21,7 +21,7 @@ router.get('/:id', function(req, res, next) {
   })
 });
 
-router.get('/new', function(req, res, next) {
+router.get('/:id/new', function(req, res, next) {
   res.render('bidder/new');
 });
 

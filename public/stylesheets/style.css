@@ -75,13 +75,12 @@ li{
 
 
 nav ul a:hover{
-  background-color: #ffd1dc;
-  height: 6.8vh;
+  background-color: #545454;
+  height: 6.5vh;
 }
 
 .dropdown-content li>a, .dropdown-content li>span{
-  color: #545454;
-
+  color: #dbdbdb;
 }
 
 li.info{

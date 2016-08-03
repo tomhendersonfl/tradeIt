@@ -6,6 +6,10 @@ block content
     form.col.s12
       div.row
         div.input-field.col.s6
+          input#user_id(type="hidden", value="", class="validate")
+        div.input-field.col.s6
+          input#tender_id(type="hidden", value=`${req.params.id}`, class="validate")
+        div.input-field.col.s6
           i.material-icons.prefix account_circle
           input#icon_prefix(type="text", class="validate")
           label(for="icon_prefix") Let's Exchange 
