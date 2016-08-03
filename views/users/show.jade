@@ -1,12 +1,13 @@
 extends ../layout
 
 block content
+  body.foo
   main
     section#profile
-      h3 #{users.username}'s Profile
+      h3.username #{users.username}'s Profile
       div.profile
         h4 Picture: 
-        img(src='#{users.profile_pic}', alt='Profile Picture')
+        img.profile_picture(src='#{users.profile_pic}', alt='Profile Picture')
         h4 About Me: #{users.about_me}
     section#my_tenders
       h3 My Tenders

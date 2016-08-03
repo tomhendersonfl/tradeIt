@@ -36,14 +36,19 @@ var Questions = require('../models/questions')
 //   return
 // })
 
-var find_object = {name: 'Pool Table', state: 'published', user_id: 1}
-Tenders.findByAny(find_object).then(function(tenders) {
-  console.log("***** testing findByAny *****");
-  for (var i = 0; i < tenders.rows.length; i++) {
-    console.log(tenders.rows[i])
-  }
-  return
-})
+// var find_object = {name: 'Pool Table', state: 'published', user_id: 1}
+// Tenders.findByAny(find_object).then(function(tenders) {
+//   console.log("***** testing findByAny *****");
+//   for (var i = 0; i < tenders.rows.length; i++) {
+//     console.log(tenders.rows[i])
+//   }
+//   return
+// })
+
+// display table schema
+knex('users').columnInfo().then(function(info) {
+  console.log(info);
+});
 
 // Tenders.findByUser(1).then(function(tenders) {
 //   console.log("***** testing findByUser method *****");

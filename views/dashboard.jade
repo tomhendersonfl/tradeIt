@@ -1,8 +1,9 @@
 extends layout
 
 block content
+  body.dash
   main
-    section#tenders
+    section#tenders-dash
       h3 Items for Trade
       for tender in tenders
         div.dashboard-tender
@@ -10,15 +11,15 @@ block content
           p=tender.description
           p=tender.tender_type
           p=tender.username
-      a(href='/tenders') View All Tenders
+      a.dash-link(href='/tenders') View All Tenders
     section#bids
       section#bids-sent
         h3 My Bids Sent
           //- for bid in bids-sent
           //-   div.dashboard-bids-sent
-        a(href='/bids-sent') View all Bids Sent
+        a.dash-link(href='/bids-sent') View all Bids Sent
       section#bids-received
         h3 My Bids Received
           //- for bid in bids-received
           //-   div.dashboard-bids-received
-        a(href='/bids-received') View all Bids Received
+        a.dash-link(href='/bids-received') View all Bids Received
