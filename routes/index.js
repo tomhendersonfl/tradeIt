@@ -9,8 +9,7 @@ function Users (){
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Trade It' });
-});
-
+})
 
 router.get('/dashboard', function(req, res, next){
   Tenders.all().then(function(tenders){
