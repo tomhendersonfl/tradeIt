@@ -26,8 +26,15 @@
 }
 .dash{
   background-image: url("http://www.spyderonlines.com/images/wallpapers/wallpaper-yellow/wallpaper-yellow-18.jpg");
+  opacity: .8;
+  height: 100%;
 }
 .dash-link{
   color: black;
   text-decoration: underline;
+}
+.dashboard-tender{
+  border: 2px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
 }
