@@ -27,11 +27,20 @@ var Questions = require('../models/questions')
 //   return
 // })
 
-Tenders.findByKeywords(['pool','math'])
-.then(function(tenders) {
-  console.log("***** testing findByKeyword` method *****");
-  for (i=0; i<tenders.rows.length; i++) {
-    console.log(tenders.rows[i].name);
+// Tenders.findByKeywords(['pool','math'])
+// .then(function(tenders) {
+//   console.log("***** testing findByKeyword` method *****");
+//   for (i=0; i<tenders.rows.length; i++) {
+//     console.log(tenders.rows[i].name);
+//   }
+//   return
+// })
+
+var find_object = {name: 'Pool Table', state: 'published', user_id: 1}
+Tenders.findByAny(find_object).then(function(tenders) {
+  console.log("***** testing findByAny *****");
+  for (var i = 0; i < tenders.rows.length; i++) {
+    console.log(tenders.rows[i])
   }
   return
 })
