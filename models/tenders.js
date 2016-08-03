@@ -3,7 +3,7 @@ module.exports = {
   create: function(tender) {
     knex.raw(`insert into tenders values (DEFAULT, '${tender.name}', 'draft', '${tender.description}', '${tender.tender_type}', ${tender.user_id}, NULL, NULL, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
     .then(function() {
-      knex.raw(`select * from tenders where user_id = ${tender.user_id} and name = '${tender.name}'`)
+      knex.raw(`select * from tenders where user_id = ${tender.user_id} and name = '${tender.name}' order by created_at desc limit 1`)
       .then(function(tender) {
         console.log(tender.rows[0]);
         return tender.rows[0]

@@ -13,7 +13,7 @@ module.exports = {
     return knex.raw(`select * from users where email_address = '${email}'`)
   },
   findByFacebookId: function(facebook) {
-    return knex.raw(`select * from users where facebook_id = ${facebook}`)
+    return knex.raw(`select * from users where facebook_id = '${facebook}'`)
   },
   updateOne: function(user) {
     return knex.raw(`update users set first_name = '${user.first_name}', last_name = '${user.last_name}' email_address = '${user.email_address}', updated_at = CURRENT_TIMESTAMP, username = '${user.username}', about_me = '${user.about_me}', profile_pic = '${user.username}', facebook_id = '${user.facebook_id}'`)
