@@ -49,7 +49,7 @@ passport.use(new FBStrategy({
   function(token, tokenSecret, profile, done) {
     // To keep the example simple, the user's fb profile is returned to
     // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
+    // to associate the fb account with a user record in your database,
     // and return that user instead (so perform a knex query here later.)
     done(null, profile)
   }
