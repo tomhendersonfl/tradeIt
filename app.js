@@ -37,7 +37,7 @@ app.use(session({
   saveUninitialized: true
  }))
 
- app.use(passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FBStrategy({

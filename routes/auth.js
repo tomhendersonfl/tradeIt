@@ -21,6 +21,7 @@ router.get('/auth/logout', function(req, res, next){
     })
 })
 router.get('/auth/login', function(req, res, next){
+  
   res.redirect('/')
 })
 module.exports = router;
