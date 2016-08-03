@@ -7,22 +7,20 @@ div.container{
 }
 .centerLogo{
   width: 830px;
-  height: 320px;
+  height: 330px;
   margin-top: 8%;
-  margin-left: 25%;
+  margin-left: 29%;
   background-color: white;
   position: relative;
   opacity: .9;
-  box-shadow: 10px 10px 5px #2a2a2a;
   border-radius: 10px;
-
 }
 
 form{
   margin-top: 0;
 }
 
-img{
+#tradeit{
   height: 300px;
   width: 800px;
   position: absolute;

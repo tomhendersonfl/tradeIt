@@ -3,19 +3,23 @@ extends ../layout
 block content
   h1 Showing all tenders within a 50 mile radius:
     if tenders
-    table
-      thead
-        tr
-        th Name
-        th Description
-        th Type
-        th User
-      tbody
-        for tender in tenders
-         tr
-          td: a(href='/tenders/'+tender.id)= tender.name
-          td= tender.description
-          td= tender.tender_type
-          td= tender.user_id
+      table
+        thead
+          tr
+            th(data-field="name") Name
+            th(data-field="description") Description
+            th(data-field="type") Type
+            th(data-field="price") User
+        tbody
+          for tender in tenders
+            tr
+              td: a(href='/tenders/'+tender.id)= tender.name
+              td= tender.description
+              td= tender.tender_type
+              td= tender.user_id
+            
         div
-        a(href='/tenders/new') Add a Tender
+          a.btn-floating.btn-large.waves-effect.waves-light.grey(href='/tenders/new')
+            i.material-icons add
+
+                  
