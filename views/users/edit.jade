@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1 Create your user profile here:
+  h1 Edit your user profile here:
   form(action='/users/:id/edit', method='post')
     p Email Address:
     input(type='email', name='email_address', value='#{user.email_address}', maxlength="35", placeholder='JohnDoe@example.com')
