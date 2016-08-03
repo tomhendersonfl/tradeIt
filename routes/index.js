@@ -9,7 +9,7 @@ var FbInfo = require('../models/fbInfo');
 router.get('/', function(req, res, next) {
   if(!req.cookies.userid){
     res.cookie('userid', 100);
-  })
+  }
   res.render('index', { title: 'Trade It' });
 })
 
