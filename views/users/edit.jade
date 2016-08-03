@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  h1 Edit your user profile here:
+  form(action='/users/:id/edit', method='post')
+    p Email Address:
+    input(type='email', name='email_address', value='#{user.email_address}', maxlength="35", placeholder='JohnDoe@example.com')
+    p Create username:
+    input(type='textarea', name='username', value='#{user.username}', maxlength="35", placeholder='Username', required)
+    p First Name:
+    input(type='textarea', name='first_name', value='#{user.first_name}', maxlength="35", placeholder='First Name')
+    p Last Name:
+    input(type='textarea', name='last_name', value='#{user.last_name}', maxlength="35", placeholder='Last Name')
+    p About me:
+    input(type='textarea', name='about_me', value='#{user.about_me}', maxlength="500", placeholder='About me')
+    p Change profile picture:
+    input(type='file', name='profile_pic', accept='image/*')
+    p User Id:
+    input(type='number', name='facebook_id', value='#{user.id}', disabled)
+    input#submit_button(type='submit', name='', value='Submit Profile')

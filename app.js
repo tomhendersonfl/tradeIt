@@ -13,11 +13,12 @@ var FBStrategy = require('passport-facebook').Strategy;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var bidsSent = require('./routes/bids-sent');
-var bidsReceived = require('./routes/bids-received');
+var bids = require('./routes/bids');
 var tenders = require('./routes/tenders');
-
+var Users = require('./models/users')
 var app = express();
+var FbInfo = require('./models/fbInfo')
+var userState = require('./models/userstate');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +39,7 @@ app.use(session({
   saveUninitialized: true
  }))
 
- app.use(passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FBStrategy({
@@ -47,9 +48,18 @@ passport.use(new FBStrategy({
     callbackURL: process.env.HOST + "/auth/facebook/callback"
   },
   function(token, tokenSecret, profile, done) {
+    FbInfo.facebook_id = profile.id;
+    Users.findByFacebookId(profile.id).then(function(user){
+      if(user.rows.length == 0){
+        // app.use(function(err, req, res, next) {
+          userState.status = "not_found";
+          // res.send('not in database')
+        // })
+      }
+    })
     // To keep the example simple, the user's fb profile is returned to
     // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
+    // to associate the fb account with a user record in your database,
     // and return that user instead (so perform a knex query here later.)
     done(null, profile)
   }
@@ -72,10 +82,12 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/', authRoutes);
+
+////// if   userState.state == "not_found";
+
 app.use('/users', users);
 app.use('/tenders', tenders);
-app.use('/bids-sent', bidsSent);
-app.use('/bids-received', bidsReceived);
+app.use('/bids', bids);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
