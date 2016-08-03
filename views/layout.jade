@@ -9,13 +9,15 @@ html
     link(type="text/css", rel="stylesheet", href="css/materialize.min.css", media="screen,projection")
     link(rel="stylesheet", href="/stylesheets/style.css")
     link(href='/css/age-verification.css', rel='stylesheet')
-
+    link(rel='stylesheet', href='/stylesheets/bidder/style_index.css')
+    link(rel='stylesheet', href='/stylesheets/bidder/style_show.css')
+    link(rel='stylesheet', href='/stylesheets/style_splash.css')
+    
   body
 
     ul#dropdown2.dropdown-content
       li 
         a(href="/users/2") My Profile
-        //need to figure out how to access user_id into about href
       li
         a(href="#") My bids
           li.divider
@@ -34,8 +36,8 @@ html
               i.material-icons.right
                 | arrow_drop_down
 
-    block content
 
+    block content
     main
 
     footer.page-footer

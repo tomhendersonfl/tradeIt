@@ -3,7 +3,7 @@ module.exports = {
   create: function(tender) {
     knex.raw(`insert into tenders values (DEFAULT, '${tender.name}', 'draft', '${tender.description}', '${tender.tender_type}', ${tender.user_id}, NULL, NULL, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
     .then(function() {
-      knex.raw(`select * from tenders where user_id = ${tender.user_id} and name = '${tender.name}'`)
+      knex.raw(`select * from tenders where user_id = ${tender.user_id} and name = '${tender.name}' order by created_at desc limit 1`)
       .then(function(tender) {
         console.log(tender.rows[0]);
         return tender.rows[0]
@@ -31,6 +31,27 @@ module.exports = {
       i === 0 ? query += `'${keywords[i]}'` : query += `,'${keywords[i]}'`
     }
     query += `) order by t.created_at desc`
+    return knex.raw(query)
+  },
+  findByAny: function(find_object) {
+    var query = `select t.* from tenders t where `
+    var first_key = true
+    for (var key in find_object) {
+      if (first_key) {
+        if (typeof find_object[key] === 'string') {
+          query += `${key} = '${find_object[key]}' `
+        } else {
+          query += `${key} = ${find_object[key]} `
+        }
+        first_key = false
+      } else {
+        if (typeof find_object[key] === 'string') {
+          query += `and ${key} = '${find_object[key]}' `
+        } else {
+          query += `and ${key} = ${find_object[key]} `
+        }
+      }
+    }
     return knex.raw(query)
   },
   updateOne: function(tender) {

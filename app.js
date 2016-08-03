@@ -13,8 +13,7 @@ var FBStrategy = require('passport-facebook').Strategy;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var bidsSent = require('./routes/bids-sent');
-var bidsReceived = require('./routes/bids-received');
+var bids = require('./routes/bids');
 var tenders = require('./routes/tenders');
 var Users = require('./models/users')
 var app = express();
@@ -40,7 +39,7 @@ app.use(session({
   saveUninitialized: true
  }))
 
- app.use(passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FBStrategy({
@@ -89,8 +88,7 @@ app.use('/', authRoutes);
 
 app.use('/users', users);
 app.use('/tenders', tenders);
-app.use('/bids-sent', bidsSent);
-app.use('/bids-received', bidsReceived);
+app.use('/bids', bids);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -9,6 +9,9 @@ module.exports = {
   find: function(id) {
     return knex.raw(`select k.* from keywords k where k.id = ${id}`)
   },
+  findByTender: function(tender_id) {
+    return knex.raw(`select k.* from keywords k where k.tender_id = ${tender_id} order by k.keyword`)
+  },
   updateOne: function(keyword) {
     return knex.raw(`update keywords set keyword = '${keyword.keyword}', updated_at = CURRENT_TIMESTAMP where id = ${keyword.id}`)
   },

@@ -1,0 +1,38 @@
+body.splash{
+  background-image: url("../img/slack-imgs.com.jpeg");
+  background-size: cover;
+}
+div.container{
+  margin-top: 0px;
+}
+.centerLogo{
+  width: 830px;
+  height: 320px;
+  margin-top: 8%;
+  margin-left: 25%;
+  background-color: white;
+  position: relative;
+  opacity: .9;
+  box-shadow: 10px 10px 5px #2a2a2a;
+  border-radius: 10px;
+
+}
+
+form{
+  margin-top: 0;
+}
+
+img{
+  height: 300px;
+  width: 800px;
+  position: absolute;
+}
+
+
+.btn{
+  background-color: #3B5998;
+  width: 200px;
+  height: 60px;
+  margin-left: 98%;
+  margin-top: 3%
+}
