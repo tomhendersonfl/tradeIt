@@ -14,35 +14,6 @@ a {
   text-decoration: none;
 }
 
-#tenders {
-  float: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid grey;
-  border-radius: 2%;
-  margin-left: 50px;
-}
-
-#bids {
-  float: right;
-  margin-right: 50px;
-}
-
-#bids-sent {
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid grey;
-  border-radius: 2%;
-}
-
-#bids-received {
-  margin-top: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid grey;
-  border-radius: 2%;
-}
-
 main {
   flex: 1 0 auto;
 }
