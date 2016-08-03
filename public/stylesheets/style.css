@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=La+Belle+Aurore');
+@import url('https://fonts.googleapis.com/css?family=Megrim');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 body {
   display: flex;
   min-height: 100vh;
@@ -44,17 +47,40 @@ main {
   flex: 1 0 auto;
 }
 
-.brand-logo{
+nav .brand-logo{
   font-family: La Belle Aurore;
+  color: #2a2a2a;
+}
+
+nav{
+  background-color: #59955C;
 }
 
 nav ul a {
   font-size: 25px;
   padding-top: 10px;
+  color: #ededed;
+
 }
 
 .col.l4.offset-l2.s12 {
   display: inline-block;
+
+}
+
+li{
+  font-family: Quicksand;
+  color: #fafafa;
+}
+
+
+nav ul a:hover{
+  background-color: #ffd1dc;
+  height: 6.8vh;
+}
+
+.dropdown-content li>a, .dropdown-content li>span{
+  color: #545454;
 
 }
 
@@ -65,6 +91,7 @@ font-size: 20px
 }
 
 h5 {
+  font-family: Quicksand;
   margin-bottom: 0;
 }
 
@@ -84,6 +111,7 @@ div.row{
 footer.page-footer{
   padding: 0px;
   padding-bottom: 0px;
+  background-color: #59955C;
 }
 
 td, th {

@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
-<<<<<<< HEAD
-var Tenders = require('../models/tenders')
+var Tenders = require('../models/tenders');
 
 router.get('/', function(req, res, next) {
   Tenders.all().then(function(tenders){
@@ -22,16 +21,16 @@ router.get('/:id', function(req, res, next) {
   })
 });
 
+router.get('/new', function(req, res, next) {
+  res.render('bidder/new');
+});
+
 router.get('/:id/meetup', function(req, res, next) {
-  res.render('bidder/form', {
+  res.render('bidder/meetup_form', {
     title: "Lets Meet Up!"
   })
 });
-=======
 
-router.get('/', function(req, res, next) {
-  res.render('bids_sent/index', { title: 'Trade It' });
-})
->>>>>>> 4c9264ba060956776cacc9f79360cfdd9ee23176
+
 
 module.exports = router;
