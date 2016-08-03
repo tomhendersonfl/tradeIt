@@ -7,6 +7,10 @@ var Users = require('../models/users');
 var FbInfo = require('../models/fbInfo');
 
 router.get('/', function(req, res, next) {
+  if(!req.signedCookies.userid){
+    res.cookie('userid', 100, {signed:true});
+  }
+  console.log(FbInfo.facebook_id)
   res.render('index', { title: 'Trade It' });
 })
 
