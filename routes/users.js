@@ -10,7 +10,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   User_Logic.find(req.params.id).then(function(users){
-  Tender_Logic.allUser(req.params.id).then(function(tenders){
+    console.log("******");
+    console.log(users.rows[0]);
+    console.log("******");
+  Tender_Logic.all(req.params.id).then(function(tenders){
     res.render('users/show', { users:users.rows[0], tenders:tenders.rows });
   })
   })
