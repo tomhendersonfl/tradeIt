@@ -2,15 +2,15 @@ var knex = require('../db/knex')
 var Tenders = require('../models/tenders')
 var Users = require('../models/users')
 var Bids = require('../models/bids')
+var Notes = require('../models/notes')
+var Ratings = require('../models/ratings')
+var Keywords = require('../models/keywords')
+var Questions = require('../models/questions')
 
-// Tenders.create({name: 'Coffee Maker', description: 'Keurig model B60 in excellent condition', tender_type: 'goods', user_id: 2}).then(function() {
-//   knex.raw(`select * from tenders order by created_at desc limit 1`).then(function(tenders) {
-//     console.log("***** testing create method *****");
-//     console.log(tenders.rows[0]);
-//     return
-//   })
-// })
-//
+
+// var newTender = Tenders.create({name: 'Lawn Mowing', description: 'Will trade lasw cutting for carpentry', tender_type: 'services', user_id: 2})
+// console.log(newTender);
+
 // Tenders.all().then(function(tenders) {
 //   console.log("***** testing all method *****");
 //   for (i=0; i<tenders.rows.length; i++) {
@@ -18,9 +18,26 @@ var Bids = require('../models/bids')
 //   }
 //   return
 // })
+//
+// Tenders.findByUserState(1, 'draft').then(function(tenders) {
+//   console.log("***** testing findByUserState` method *****");
+//   for (i=0; i<tenders.rows.length; i++) {
+//     console.log(tenders.rows[i].name);
+//   }
+//   return
+// })
 
-// Tenders.allUser(1).then(function(tenders) {
-//   console.log("***** testing allUser method *****");
+Tenders.findByKeywords(['pool','math'])
+.then(function(tenders) {
+  console.log("***** testing findByKeyword` method *****");
+  for (i=0; i<tenders.rows.length; i++) {
+    console.log(tenders.rows[i].name);
+  }
+  return
+})
+
+// Tenders.findByUser(1).then(function(tenders) {
+//   console.log("***** testing findByUser method *****");
 //   for (var i = 0; i < tenders.rows.length; i++) {
 //     console.log(tenders.rows[i].name);
 //   }
