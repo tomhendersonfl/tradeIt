@@ -35,22 +35,23 @@ router.get('/dashboard', function(req, res, next){
     if(tenders.rows.length > 20){
       tenders.rows.splice(20)
     }
-    console.log(FbInfo.facebook_id);
-    // if(FbInfo.facebook_id){
-    //   Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
-    //     console.log(user);
-    //     res.render('dashboard', {tenders:tenders.rows});
-    //     Bids.all().then(function(bids){
-    //       var sentBids = findSentBids(bids.rows);
-    //       var recBids = findReceivedBids(bids.rows);
-    //       res.render('dashboard', {tenders:tenders.rows,
-    //         sentBids:sentBids,
-    //         recBids:recBids
-    //       });
-    //     })
-    //   })
-    // } else {
+    // console.log(FbInfo.facebook_id);
+    if(FbInfo.facebook_id){
+      Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
+        console.log(user);
+        res.render('dashboard', {tenders:tenders.rows});
+        Bids.all().then(function(bids){
+          var sentBids = findSentBids(bids.rows);
+          var recBids = findReceivedBids(bids.rows);
+          res.render('dashboard', {tenders:tenders.rows,
+            sentBids:sentBids,
+            recBids:recBids
+          });
+        })
+      })
+    } else {
       res.render('dashboard', {tenders:tenders.rows});
+    }
   })
 })
 
