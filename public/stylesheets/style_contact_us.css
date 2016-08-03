@@ -1,0 +1,11 @@
+.contact{
+  background-color: #FAE268;
+  opacity: .9;
+}
+.contact_us{
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  width: 65%;
+  margin-left: 15%;
+}
