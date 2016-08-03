@@ -1,0 +1,33 @@
+#tenders-dash{
+  background-color: #7FB0B7;
+  border: 2px solid black;
+  width:35%;
+  float: left;
+  margin: 50px;
+  margin-left: 100px;
+  padding: 20px;
+}
+#bids-received{
+  background-color: #7FB0B7;
+  border: 2px solid black;
+}
+#bids-sent{
+  background-color: #7FB0B7;
+  border: 2px solid black;
+  margin-bottom: 25px;
+}
+#bids{
+  margin: 50px;
+  margin-right: 100px;
+  position: relative;
+  float: right;
+  padding: 20px;
+  width: 40%;
+}
+.dash{
+  background-image: url("http://www.spyderonlines.com/images/wallpapers/wallpaper-yellow/wallpaper-yellow-18.jpg");
+}
+.dash-link{
+  color: black;
+  text-decoration: underline;
+}
