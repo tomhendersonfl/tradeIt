@@ -76,8 +76,9 @@ li{
 
 
 nav ul a:hover{
-  background-color: #ffd1dc;
+  background-color: #FAE268;
   height: 6.8vh;
+  color: black;
 }
 
 .dropdown-content li>a, .dropdown-content li>span{

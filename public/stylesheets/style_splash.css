@@ -42,3 +42,8 @@ form{
   padding: 0;
   opacity: .9;
 }
+
+.btn:hover{
+  background-color: #FAE268;
+  color: black;
+}
