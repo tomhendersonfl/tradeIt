@@ -2,7 +2,7 @@ exports.seed = function(knex, Promise) {
   return knex('users').del()
     .then(function () {
       return Promise.all([
-        knex('users').insert({id: 1, first_name: 'Tom', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', state: 'verified', facebook_username: 'tomhendersonfl', is_administrator: true}),
+        knex('users').insert({id: 1, first_name: 'Tom', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', state: 'verified', facebook_username: 'tomhendersonfl', is_administrator: true, created_at: CURRENT_TIMESTAMP, username: 'tomhendersonfl'}),
 
         knex('users').insert({id: 2, first_name: 'Kendra', last_name: 'Lyndon', email_address: 'kendralyndon@gmail.com', state: 'verified', facebook_username: 'kendralyndon', is_administrator: true}),
 
