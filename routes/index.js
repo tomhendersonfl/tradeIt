@@ -7,10 +7,9 @@ var Users = require('../models/users');
 var FbInfo = require('../models/fbInfo');
 
 router.get('/', function(req, res, next) {
-  if(!req.signedCookies.userid){
-    res.cookie('userid', 100, {signed:true});
-  }
-  console.log(FbInfo.facebook_id)
+  if(!req.cookies.userid){
+    res.cookie('userid', 100);
+  })
   res.render('index', { title: 'Trade It' });
 })
 
@@ -42,7 +41,6 @@ router.get('/dashboard', function(req, res, next){
     // console.log(FbInfo.facebook_id);
     if(FbInfo.facebook_id){
       Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
-        console.log(user);
         res.render('dashboard', {tenders:tenders.rows});
         Bids.all().then(function(bids){
           var sentBids = findSentBids(bids.rows);
