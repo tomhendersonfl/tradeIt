@@ -1,7 +1,7 @@
 var knex = require('../db/knex')
 module.exports = {
   create: function(bid) {
-    return knex.raw(`insert into bids values (DEFAULT, ${bid.tender_id}, ${bid.user_id}, 'draft', '${bid.description}', '${bid.response}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
+    knex.raw(`insert into bids values (DEFAULT, ${bid.tender_id}, ${bid.user_id}, 'draft', '${bid.description}', '${bid.response}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
     .then(function() {
       knex.raw(`select * from bids where user_id = ${bid.user_id} and tender_id = ${bid.tender_id} and state = 'draft' and description = '${bid.description}' order by created_at desc limit 1`)
       .then(function(bid) {
@@ -27,5 +27,10 @@ module.exports = {
   },
   destroy: function(id) {
     return knex.raw(`delete from bids where id = ${id}`)
+  },
+  validate: function(bid, bidEvent, callback) {
+    var errors = []
+
+
   }
 }
