@@ -60,11 +60,11 @@ module.exports = {
   destroy: function(id) {
     return knex.raw(`delete from tenders where id = ${id}`)
   },
-  validate: function(tender, tenderEvent, callback) {
+  validate: function(tender, tenderEvent, current_user, callback) {
     var errors = []
-    knex.raw(`select * from users where id = ${tender.user_id}`)
+    knex.raw(`select * from users where id = ${current_user}`)
     .then(function(user) {
-      if (tender.user_id !== user.rows[0].id && !user.is_administrator) {
+      if (tender.user_id !== current_user && !user.rows[0].is_administrator) {
         console.log("*** tender ***  " +  tender.user_id);
         console.log("*** user ***  " + user.rows[0].id);
         errors.push(`Only tender owner may ${tenderEvent} a tender`)
