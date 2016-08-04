@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
-var passport = require('passport')
-var userState = require('../models/userstate')
+var passport = require('passport');
+var userState = require('../models/userstate');
 var FbInfo = require('../models/fbInfo');
 var Users = require('../models/users');
-
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
 
