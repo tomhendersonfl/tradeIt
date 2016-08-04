@@ -4,3 +4,18 @@ block content
   main
     section#profile
       h3 Make your Profile
+      form(action='/users', method='post')
+        p Email Address:
+        input(type='email', name='email_address', maxlength="35", placeholder='JohnDoe@example.com')
+        p Create username:
+        input(type='textarea', name='username', maxlength="35", placeholder='Username', required)
+        p First Name:
+        input(type='textarea', name='first_name', maxlength="35", placeholder='First Name')
+        p Last Name:
+        input(type='textarea', name='last_name', maxlength="35", placeholder='Last Name')
+        p About me:
+        input(type='textarea', name='about_me', maxlength="500", placeholder='About me')
+        p Change profile picture:
+        input(type='file', name='profile_pic', accept='image/*')
+        input(type='number', name='facebook_id', value='#{facebook_id}', hidden)
+        input#submit_button(type='submit', name='', value='Submit Profile')
