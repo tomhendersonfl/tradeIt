@@ -6,6 +6,8 @@ var Bids = require('../models/bids');
 var Users = require('../models/users');
 var FbInfo = require('../models/fbInfo');
 
+
+
 router.get('/', function(req, res, next) {
   if(!req.cookies.userid){
     res.cookie('userid', 100);
@@ -20,13 +22,9 @@ router.get('/dashboard', function(req, res, next){
     }
     if(FbInfo.facebook_id){
       Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
-        res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
-        Bids.all().then(function(bids){
-          var sentBids = findSentBids(bids.rows);
-          var recBids = findReceivedBids(bids.rows);
+        Bids.all().then(function(bids_sent){
           res.render('dashboard', {tenders:tenders.rows,
-            sentBids:sentBids,
-            recBids:recBids,
+            bids_sent:bids_sent.rows,
             current_user_id:req.cookies.userid
           });
         })
@@ -49,10 +47,10 @@ router.get('/about_us', function(req, res, next) {
   res.render('about_us', { title: 'Trade It', current_user_id:req.cookies.userid });
 });
 
-function findSentBids(bids){
+function findSentBids(bids, id){
   var sentBids = [];
   bids.forEach(function(bid){
-    if(bid.user_id === req.cookies.userid){
+    if(bid.user_id === Number(id)){
       sentBids.push(bid);
     }
   })
