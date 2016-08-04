@@ -7,10 +7,13 @@ var Ratings = require('../models/ratings')
 var Keywords = require('../models/keywords')
 var Questions = require('../models/questions')
 
-
-// var newTender = Tenders.create({name: 'Lawn Mowing', description: 'Will trade lasw cutting for carpentry', tender_type: 'services', user_id: 2})
+// Tenders.create
+// var names = [{name: 'Old Smelly Sneakers', desc: 'These are some great old sneakers with a wonderful aroma'}, {name: '60 inch Samsung HDTV', desc: 'This old TV still works great'}, {name: 'Asian Prints', desc: '4 Japanese woodblock prints by Hiroshige'}, {name: 'Living Room Set', desc: '4 piece set of living room furniture by Broyhill'}]
+// var index = Math.floor(Math.random() * (names.length))
+// var newTender = Tenders.create({name: names[index].name, description: names[index].desc, tender_type: 'goods', user_id: 1})
 // console.log(newTender);
 
+// Tenders.all
 // Tenders.all().then(function(tenders) {
 //   console.log("***** testing all method *****");
 //   for (i=0; i<tenders.rows.length; i++) {
@@ -19,23 +22,58 @@ var Questions = require('../models/questions')
 //   return
 // })
 //
-// Tenders.findByUserState(1, 'draft').then(function(tenders) {
-//   console.log("***** testing findByUserState` method *****");
+// // Tenders.find
+// var tender_id = 3
+// Tenders.find(tender_id).then(function(tender) {
+//   console.log("***** testing find method *****");
+//   console.log(tender.rows[0]);
+//   return
+// })
+//
+// // Tenders.findByUser
+// var user_id = 1
+// Tenders.findByUser(user_id).then(function(tenders) {
+//   console.log("***** testing findByUser method *****");
+//   for (var i = 0; i < tenders.rows.length; i++) {
+//     console.log(tenders.rows[i].name);
+//   }
+//   return
+// })
+//
+// // Tenders.findByUserState
+// var user_id = 1
+// var state = 'draft'
+// Tenders.findByUserState(user_id, state).then(function(tenders) {
+//   console.log("***** testing findByUserState method *****");
 //   for (i=0; i<tenders.rows.length; i++) {
 //     console.log(tenders.rows[i].name);
 //   }
 //   return
 // })
-
-// Tenders.findByKeywords(['pool','math'])
+//
+// // Tenders.findByKeyword
+// var keyword = 'pool'
+// Tenders.findByKeyword(keyword)
 // .then(function(tenders) {
-//   console.log("***** testing findByKeyword` method *****");
+//   console.log("***** testing findByKeyword method *****");
 //   for (i=0; i<tenders.rows.length; i++) {
 //     console.log(tenders.rows[i].name);
 //   }
 //   return
 // })
-
+//
+// Tenders.findByKeywords
+// var keywords = ['pool','math']
+// Tenders.findByKeywords(keywords)
+// .then(function(tenders) {
+//   console.log("***** testing findByKeywords method *****");
+//   for (i=0; i<tenders.rows.length; i++) {
+//     console.log(tenders.rows[i].name);
+//   }
+//   return
+// })
+//
+// // Tenders.findByAny
 // var find_object = {name: 'Pool Table', state: 'published', user_id: 1}
 // Tenders.findByAny(find_object).then(function(tenders) {
 //   console.log("***** testing findByAny *****");
@@ -44,48 +82,40 @@ var Questions = require('../models/questions')
 //   }
 //   return
 // })
-
+//
 // display table schema
-knex('users').columnInfo().then(function(info) {
-  console.log(info);
-});
+// knex('users').columnInfo().then(function(info) {
+//   console.log(info);
+// });
 
-// Tenders.findByUser(1).then(function(tenders) {
-//   console.log("***** testing findByUser method *****");
-//   for (var i = 0; i < tenders.rows.length; i++) {
-//     console.log(tenders.rows[i].name);
-//   }
-//   return
+// Tenders.updateOne
+// var current_user = 100
+// var tender = {id: 2, name: 'Pool Table and Cues', description: 'Slate table includes cues and balls', state: 'published', tender_type: 'goods'}
+// Tenders.updateOne(tender, current_user, function(errors) {
+//   console.log("*** update ***");
+//   console.log(errors);
+//   return errors
 // })
 
-// Tenders.find(3).then(function(tender) {
-//   console.log("***** testing find method *****");
-//   console.log(tender.rows[0]);
-//   return
-// })
-
-// Tenders.updateOne({id: 2, name: 'Pool Table', description: 'Slate table includes cues and balls', tender_type: 'goods'}).then(function() {
-//   Tenders.find(2).then(function(tender) {
-//     console.log(tender.rows[0]);
-//     return
-//   })
-// })
-
+// Tenders.destroy
 // Tenders.destroy(5).then(function() {
 //   Tenders.find(5).then(function(tender) {
 //     console.log(tender.rows[0]);
 //     return
 //   })
 // })
-// var errors = []
 
-// Tenders.validate({id: 2, name: '', description: '', tender_type: 'goods', user_id: 1}, 'update', function (errors) {
+// Tenders.validate
+// var current_user = 2
+// Tenders.validate({id: 2, name: '', description: '', tender_type: 'goods', user_id: 1}, 'update', current_user, function (errors) {
 //   console.log("***** validate *****");
 //   console.log(errors);
 //   return(errors)
 // })
 
-// Tenders.publish({id: 3, name: 'tender 3', description: 'tender 3', state: "draft", tender_type: 'goods', user_id: 1}, function(errors) {
+// Tenders.publish
+// var current_user = 1
+// Tenders.publish({id: 2, name: 'tender 3', description: 'tender 3', state: "published", tender_type: 'goods', user_id: 1}, current_user, function(errors) {
 //   console.log("*** publish ***");
 //   console.log(errors);
 //   return errors
@@ -102,6 +132,12 @@ knex('users').columnInfo().then(function(info) {
 //   console.log(errors);
 //   return errors
 // })
+
+// Users.create
+var user = {first_name: 'Wilma', last_name: 'Flintstone', email_address: 'wilma@bedrock.gov', username: 'YabbaDabbaDo', about_me: 'I love beer', profile_pic: '', facebook_id: '123456789' }
+var newUser = Users.create(user)
+console.log(newUser);
+
 
 // Users.all().then(function(users) {
 //   console.log("***** testing all user method *****");
