@@ -19,8 +19,8 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  Logic.create(req.body).then(function(){
-    res.redirect('/tenders');
+  Logic.create(req.body, req.cookies.user_id, function(){
+      res.redirect('/tenders');
   })
 });
 
