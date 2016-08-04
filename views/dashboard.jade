@@ -4,9 +4,12 @@ block content
   script(src='https://code.jquery.com/jquery-2.1.1.min.js')
   script(src='http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js')
   script(src='javascripts/dashboard_carousel.js')
+  script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCok34iyxN15XU51R9pAvSOcdQVRb9m_0Y&callback=initMap"
+        type="text/javascript")
+  script(src='javascripts/map.js')
   body.dash
   main
-    .carousel.slider
+    section.carousel.slider
       a.carousel-item.boo(href='#one!')
         img(src='https://www.sethsbikehacks.com/wp-content/uploads/2016/06/mongoose-dolomite.jpg')
       a.carousel-item.boo(href='#two!')
@@ -21,6 +24,7 @@ block content
         img(src='http://assets.academy.com/mgen/34/10095934.jpg')
       a.carousel-item.boo(href='/tenders/2')
         img(src='http://s.hswstatic.com/gif/hammer-1.jpg')
+    section#map
     section#tenders-dash
       h3 Items for Trade
       for tender in tenders
@@ -33,8 +37,10 @@ block content
     section#bids
       section#bids-sent
         h3 My Bids Sent
-          //- for bid in bids-sent
+          //- for bid in sentBids
           //-   div.dashboard-bids-sent
+          //-     p=bid.tender_id
+          //-     p=bid.description
         a.dash-link(href='/bids-sent') View all Bids Sent
       section#bids-received
         h3 My Bids Received

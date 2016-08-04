@@ -1,0 +1,43 @@
+.tender_show{
+  border: 2px solid black;
+  width: 65%;
+  margin-left: 20%;
+  margin-bottom: 25px;
+  background-color: white;
+  padding: 2%;
+  text-align: center;
+}
+
+.show_tender{
+  background-color: #f6f6f6;
+}
+
+.make_offer{
+  color: black;
+  font-size: 30px;
+  border: 2px solid black;
+  width: 25%;
+  margin-top: 3%;
+  text-align: center;
+  padding: 1%;
+  border-radius: 5%;
+  background-color: #FAE268;
+  font-family: Quicksand;
+}
+
+.make_offer:hover{
+  color: white;
+  background-color: #7FB0B7;
+}
+
+.show_tender_heading{
+  font-family: Quicksand;
+}
+
+.bid_description{
+  height: 100px;
+  width: 300px;
+  margin-right: 10%;
+  margin-top: 2%;
+  text-align: center;
+}

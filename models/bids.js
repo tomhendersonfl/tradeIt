@@ -7,7 +7,6 @@ module.exports = {
       .then(function(bid) {
         knex.raw(`update tenders set state = 'active', updated_at = CURRENT_TIMESTAMP where id = ${bid.rows[0].tender_id}`)
         .then(function() {
-          console.log(bid.rows[0]);
           return callback(bid.rows[0])
         })
       })
