@@ -1,6 +1,6 @@
 var knex = require('../db/knex')
 module.exports = {
-  create: function(user) {
+  create: function(user, current_user, callback) {
     knex.raw(`select * from users order by id desc limit 1`)
     .then(function(maxUser) {
       var nextId = Number(maxUser.rows[0].id) + 1
@@ -8,7 +8,8 @@ module.exports = {
       .then(function() {
         knex.raw(`select * from users where email_address = '${user.email_address}' order by created_at desc limit 1`)
         .then(function(user) {
-          return user.rows[0]
+          console.log(user.rows[0]);
+          return callback(user.rows[0])
         })
       })
     })
