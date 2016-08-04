@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 var Tenders = require('../models/tenders');
+var Bids = require('../models/bids');
 
+//pending bids
 router.get('/sent', function(req, res, next) {
   Tenders.all().then(function(tenders){
     res.render('bids_sent/index', { tenders:tenders.rows,
@@ -12,9 +14,13 @@ router.get('/sent', function(req, res, next) {
   })
 });
 
-router.get('/sent/new', function(req, res, next) {
-  res.render('bids_sent/new',{current_user_id:req.cookies.userid});
-});
+router.post('/', function(req, res, next){
+  console.log('*******');
+  console.log(req.body);
+  Bids.create(req.body).then(function(){
+    res.redirect('/dashboard')
+  })
+})
 
 router.get('/sent/:id', function(req, res, next) {
   Tenders.find(req.params.id).then(function(tenders){
@@ -24,10 +30,6 @@ router.get('/sent/:id', function(req, res, next) {
     current_user_id:req.cookies.userid
     })
   })
-});
-
-router.get('/:id/new', function(req, res, next) {
-  res.render('bidder/new',{current_user_id:req.cookies.userid});
 });
 
 router.get('/:id/meetup', function(req, res, next) {

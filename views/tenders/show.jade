@@ -4,13 +4,15 @@ block content
   body.show_tender
   h1.show_tender_heading  Showing #{tenders.name}
   if tenders
+    form.tender_show(action='/bids', method='post')
+      input(type='hidden', name='user_id', value='#{user_id}')
+      input.show_tender_heading(type='textarea', name='name', value='#{tenders.name}', readonly) 
+      input(type='textarea', name='description', value='#{tenders.description}', readonly)
+      input(type='textarea', name='type', value='#{tenders.tender_type}', readonly)
+      input(type='textarea', name='tender_id', value='#{tenders.user_id}', readonly)
+      input.bid_description(type='textarea', name='bid_description', value='', placeholder='Enter your offer here')
+      input.make_offer(type='submit', name='', value='Make Offer')
     div.tender_show
-      h2.show_tender_heading Tender Name: #{tenders.name}
-      p Description: #{tenders.description}
-      p Type: #{tenders.tender_type}
-      p User id: #{tenders.user_id}
-    div.tender_show
-      h2.show_tender_heading User Name: #{tenders.first_name} #{tenders.last_name}
+      h2.show_tender_heading Owner Name: #{tenders.first_name} #{tenders.last_name}
       p Email Address: #{tenders.email_address}
     
-  a.make_offer(href='/tenders/#{tenders.id}/offer') Make an offer

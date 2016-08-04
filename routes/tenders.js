@@ -2,7 +2,8 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
-var Logic = require('../models/tenders')
+var Logic = require('../models/tenders');
+var Bids = require('../models/bids');
 
 function Tenders(){
   return knex('tenders');
@@ -26,8 +27,9 @@ router.post('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   Logic.find(req.params.id).then(function(tenders){
-    res.render('tenders/show', {tenders:tenders.rows[0], current_user_id:req.cookies.userid});
+    res.render('tenders/show', {tenders:tenders.rows[0], current_user_id:req.cookies.userid, user_id:req.cookies.userid});
   })
 });
+
 
 module.exports = router;
