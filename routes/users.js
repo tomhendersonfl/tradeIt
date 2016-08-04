@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next){
-  res.render('users/signup',{current_user_id:req.cookies.userid});
+  res.render('users/signup',{current_user_id:req.cookies.userid, facebook_id: FbInfo.facebook_id});
 });
 
 //need to get the :id from facebook cookie
@@ -40,8 +40,11 @@ router.post('/:id/edit', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  User_Logic.create(req.body).then(function(user){
-    res.render('users/edit', {user:user.rows[0]});
+  console.log("this is req.body");
+  console.log(req.body);
+  User_Logic.create(req.body, 100, function(user){
+    res.cookie('userid', user.id);
+    res.render('users/edit', {user:user});
   })
 });
 
