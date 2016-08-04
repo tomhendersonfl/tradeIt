@@ -1,11 +1,15 @@
 var knex = require('../db/knex')
 module.exports = {
   create: function(user) {
-    knex.raw(`insert into users values (DEFAULT, '${user.first_name}', '${user.last_name}', '${user.email_address}',  'verified', '${user.is_administrator}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '${user.username}', '${user.about_me}', '${user.profile_pic}', '${user.facebook_id}')`)
-    .then(function() {
-      knex.raw(`select * from users where email_address = '${user.email_address}' order by created_at desc limit 1`)
-      .then(function(user) {
-        return user.rows[0]
+    knex.raw(`select * from users order by id desc limit 1`)
+    .then(function(maxUser) {
+      var nextId = Number(maxUser.rows[0].id) + 1
+      knex.raw(`insert into users values (${nextId}, '${user.first_name}', '${user.last_name}', '${user.email_address}',  'verified', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '${user.username}', '${user.about_me}', '${user.profile_pic}', '${user.facebook_id}')`)
+      .then(function() {
+        knex.raw(`select * from users where email_address = '${user.email_address}' order by created_at desc limit 1`)
+        .then(function(user) {
+          return user.rows[0]
+        })
       })
     })
   },

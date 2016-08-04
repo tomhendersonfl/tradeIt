@@ -96,3 +96,8 @@ td, th {
 select{
   display:block;
 }
+
+input[type="email"], textarea {
+  width: 250px;
+  background-color : #fff;
+}

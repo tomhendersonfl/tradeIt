@@ -1,8 +1,26 @@
 extends layout
 
 block content
+  script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+  script(src='http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js')
+  script(src='js/dashboard_carousel.js')
   body.dash
   main
+    .carousel
+      a.carousel-item.boo(href='#one!')
+        img(src='https://www.sethsbikehacks.com/wp-content/uploads/2016/06/mongoose-dolomite.jpg')
+      a.carousel-item.boo(href='#two!')
+        img(src='http://kitchen-electronics.weebly.com/uploads/2/7/1/1/27118291/6608936_orig.jpg')
+      a.carousel-item.boo(href='#three!')
+        img(src='http://static1.squarespace.com/static/530c6596e4b05b2f941c3bec/535eac3fe4b0c25f42c06278/535ec5bfe4b0140e2646ba82/1435305153710/clx-gift-guide-gardening-de.jpg')
+      a.carousel-item.boo(href='#four!')
+        img(src='http://ecx.images-amazon.com/images/I/516GyHY9p6L.jpg')
+      a.carousel-item.boo(href='#five!')
+        img(src='http://cdn.images.dailystar.co.uk/dynamic/184/photos/106000/Xbox-360-Console-497106.jpg')
+      a.carousel-item.boo(href='#five!')
+        img(src='http://assets.academy.com/mgen/34/10095934.jpg')
+      a.carousel-item.boo(href='/tenders/2')
+        img(src='http://s.hswstatic.com/gif/hammer-1.jpg')
     section#tenders-dash
       h3 Items for Trade
       for tender in tenders
