@@ -25,9 +25,10 @@
   width: 40%;
 }
 .dash{
-  background-image: url("http://www.spyderonlines.com/images/wallpapers/wallpaper-yellow/wallpaper-yellow-18.jpg");
-  opacity: .8;
+  background-color: #FAE268;
+  opacity: .9;
   height: 100%;
+
 }
 .dash-link{
   color: black;
@@ -38,3 +39,13 @@
   padding: 10px;
   margin-bottom: 10px;
 }
+.carousel{
+  border: 2px solid black;
+  background: black; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, black, #7FB0B7); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, black, #7FB0B7); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, black, #7FB0B7); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, black, #7FB0B7); /* Standard syntax */
+}
+.boo{
+  box-shadow: 5px 5px 2px black;
