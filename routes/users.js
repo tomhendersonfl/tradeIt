@@ -42,7 +42,7 @@ router.post('/:id/edit', function(req, res, next) {
 router.post('/', function(req, res, next) {
   User_Logic.create(req.body, 100, function(user){
     res.cookie('userid', user.id);
-    res.render('users/edit', {user:user});    
+    res.render('users/edit', {user:user});
   })
 });
 
