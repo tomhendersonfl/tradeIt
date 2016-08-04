@@ -20,7 +20,7 @@ router.get('/new', function(req, res, next){
 //need to get the :id from facebook cookie
 router.get('/:id', function(req, res, next) {
   User_Logic.find(req.params.id).then(function(users){
-    Tender_Logic.all(req.params.id).then(function(tenders){
+    Tender_Logic.findByUser(req.params.id).then(function(tenders){
       res.render('users/show', { users:users.rows[0], tenders:tenders.rows, current_user_id:req.cookies.userid });
     })
   })
