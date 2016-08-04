@@ -13,7 +13,6 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', { failur
   res.redirect('/auth/login')
 });
 
-
 router.get('/auth/logout', function(req, res, next){
   res.cookie('userid',100);
   FbInfo.facebook_id = 'undefined';
