@@ -6,7 +6,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #E6E2DF;
+  background-color:#f6f6f6;
 }
 
 a {

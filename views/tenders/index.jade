@@ -4,24 +4,29 @@ block content
 
   body#tender_index
   
-    h1 Showing all tenders within a 50 mile radius:
-    div
-      a.btn-floating.btn-large.waves-effect.waves-light.grey(href='/tenders/new')
-        i.material-icons add
-        
+    div#all
+      div#add_tender_butt
+        a.waves-effect.waves-light.btn-large(href='/tenders/new') Tender
+          i.material-icons.left add
+          
       if tenders
-      
-      for tender in tenders
-        div.row
-          div.col.s12.m5
-            div.card-panel.yellow
-              span 
-                a(href='/tenders/'+tender.id)= tender.name
-              p.white-text= tender.description
-              p.white-text= tender.tender_type
-              p.tender.user_id
+        for tender in tenders
         
+          div.card.sticky-action
+            div.card-image.waves-effect.waves-block.waves-light
+              img.activator(src="http://whatsappdp.net/wp-content/uploads/2016/03/funny-profile-pictures.jpg")
+            div.card-content 
+              span.card-title.activator.grey-text.text-darken-4= tender.name  
+                i.material-icons.right more_vert  
+              p
+                a(href='/tenders/'+tender.id) This is a link
+            div.card-reveal
+              span.card-title.grey-text.text-darken-4= tender.name
+                i.material-icons.right close
+              p= tender.description
+              p= tender.tender_type
             
+                
 
 
                   
