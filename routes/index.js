@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   if(!req.cookies.userid){
     res.cookie('userid', 100);
   }
-  res.render('index', { title: 'Trade It' });
+  res.render('index', { title: 'Trade It', current_user_id:req.cookies.userid });
 })
 
 function findSentBids(bids){
@@ -41,32 +41,33 @@ router.get('/dashboard', function(req, res, next){
     // console.log(FbInfo.facebook_id);
     if(FbInfo.facebook_id){
       Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
-        res.render('dashboard', {tenders:tenders.rows});
+        res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
         Bids.all().then(function(bids){
           var sentBids = findSentBids(bids.rows);
           var recBids = findReceivedBids(bids.rows);
           res.render('dashboard', {tenders:tenders.rows,
             sentBids:sentBids,
-            recBids:recBids
+            recBids:recBids,
+            current_user_id:req.cookies.userid
           });
         })
       })
     } else {
-      res.render('dashboard', {tenders:tenders.rows});
+      res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
     }
   })
 })
 
 router.get('/FAQ', function(req, res, next) {
-  res.render('FAQ', { title: 'Trade It' });
+  res.render('FAQ', { title: 'Trade It', current_user_id:req.cookies.userid });
 })
 
 router.get('/contact', function(req, res, next){
-  res.render('contact');
+  res.render('contact', {current_user_id:req.cookies.userid});
 })
 
 router.get('/about_us', function(req, res, next) {
-  res.render('about_us', { title: 'Trade It' });
+  res.render('about_us', { title: 'Trade It', current_user_id:req.cookies.userid });
 });
 
 module.exports = router;

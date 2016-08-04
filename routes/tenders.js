@@ -10,12 +10,12 @@ function Tenders(){
 
 router.get('/', function(req, res, next) {
   Tenders().select().then(function(tenders){
-    res.render('tenders/index', {tenders:tenders});
+    res.render('tenders/index', {tenders:tenders, current_user_id:req.cookies.userid});
   })
 });
 
 router.get('/new', function(req, res, next) {
-  res.render('tenders/new');
+  res.render('tenders/new', {tenders:tenders, current_user_id:req.cookies.userid});
 });
 
 router.post('/', function(req, res, next) {
@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   Logic.find(req.params.id).then(function(tenders){
-    res.render('tenders/show', {tenders:tenders.rows[0]});
+    res.render('tenders/show', {tenders:tenders.rows[0], current_user_id:req.cookies.userid});
   })
 });
 
