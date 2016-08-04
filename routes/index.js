@@ -13,6 +13,42 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Trade It', current_user_id:req.cookies.userid });
 })
 
+router.get('/dashboard', function(req, res, next){
+  Tenders.all().then(function(tenders){
+    if(tenders.rows.length > 20){
+      tenders.rows.splice(20)
+    }
+    if(FbInfo.facebook_id){
+      Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
+        res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
+        Bids.all().then(function(bids){
+          var sentBids = findSentBids(bids.rows);
+          var recBids = findReceivedBids(bids.rows);
+          res.render('dashboard', {tenders:tenders.rows,
+            sentBids:sentBids,
+            recBids:recBids,
+            current_user_id:req.cookies.userid
+          });
+        })
+      })
+    } else {
+      res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
+    }
+  })
+});
+
+router.get('/FAQ', function(req, res, next) {
+  res.render('FAQ', { title: 'Trade It', current_user_id:req.cookies.userid });
+})
+
+router.get('/contact', function(req, res, next){
+  res.render('contact', {current_user_id:req.cookies.userid});
+})
+
+router.get('/about_us', function(req, res, next) {
+  res.render('about_us', { title: 'Trade It', current_user_id:req.cookies.userid });
+});
+
 function findSentBids(bids){
   var sentBids = [];
   bids.forEach(function(bid){
@@ -32,42 +68,5 @@ function findReceivedBids(bids){
   })
   return recBids;
 }
-
-router.get('/dashboard', function(req, res, next){
-  Tenders.all().then(function(tenders){
-    if(tenders.rows.length > 20){
-      tenders.rows.splice(20)
-    }
-    // console.log(FbInfo.facebook_id);
-    if(FbInfo.facebook_id){
-      Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
-        res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
-        Bids.all().then(function(bids){
-          var sentBids = findSentBids(bids.rows);
-          var recBids = findReceivedBids(bids.rows);
-          res.render('dashboard', {tenders:tenders.rows,
-            sentBids:sentBids,
-            recBids:recBids,
-            current_user_id:req.cookies.userid
-          });
-        })
-      })
-    } else {
-      res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
-    }
-  })
-})
-
-router.get('/FAQ', function(req, res, next) {
-  res.render('FAQ', { title: 'Trade It', current_user_id:req.cookies.userid });
-})
-
-router.get('/contact', function(req, res, next){
-  res.render('contact', {current_user_id:req.cookies.userid});
-})
-
-router.get('/about_us', function(req, res, next) {
-  res.render('about_us', { title: 'Trade It', current_user_id:req.cookies.userid });
-});
 
 module.exports = router;

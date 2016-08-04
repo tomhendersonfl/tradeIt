@@ -1,18 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
-var passport = require('passport')
-var userState = require('../models/userstate')
+var passport = require('passport');
+var userState = require('../models/userstate');
 var FbInfo = require('../models/fbInfo');
 var Users = require('../models/users');
-
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
 
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/' }),function(req, res, next){
   res.redirect('/auth/login')
 });
-
 
 router.get('/auth/logout', function(req, res, next){
   res.cookie('userid',100);

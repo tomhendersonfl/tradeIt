@@ -54,19 +54,43 @@ module.exports = {
     }
     return knex.raw(query)
   },
-  updateOne: function(tender) {
-    return knex.raw(`update tenders set name = '${tender.name}', description = '${tender.description}', tender_type = '${tender.tender_type}', state = 'draft', nbr_views = ${tender.nbr_views}, updated_at = CURRENT_TIMESTAMP where id = ${tender.id}`)
+  updateOne: function(tender, current_user, callback) {
+    var errors = []
+    this.validate(tender, 'update', current_user, function(errors) {
+      if (tender.state !== 'draft' && tender.state !== 'published') {
+        errors.push("Only tenders in draft or published state may be updated")
+      }
+      if (errors.length !== 0) {
+        return callback(errors)
+      } else {
+        knex.raw(`update tenders set name = '${tender.name}', description = '${tender.description}', tender_type = '${tender.tender_type}', state = 'draft', nbr_views = ${tender.nbr_views}, published_at = NULL, updated_at = CURRENT_TIMESTAMP where id = ${tender.id}`)
+        .then(function() {
+          return callback(errors)
+        })
+      }
+    })
   },
-  destroy: function(id) {
-    return knex.raw(`delete from tenders where id = ${id}`)
+  destroy: function(id, current_user, callback) {
+    var errors = []
+    this.validate(tender, 'delete', current_user, function(errors) {
+      if (tender.state !== 'draft' && tender.state !== 'published') {
+        errors.push("Only tenders in draft or published state may be updated")
+      }
+      if (errors.length !== 0) {
+        return callback(errors)
+      } else {
+        knex.raw(`delete from tenders where id = ${id}`)
+        .then(function() {
+          return callback(errors)
+        })
+      }
+    })
   },
   validate: function(tender, tenderEvent, current_user, callback) {
     var errors = []
     knex.raw(`select * from users where id = ${current_user}`)
     .then(function(user) {
       if (tender.user_id !== current_user && !user.rows[0].is_administrator) {
-        console.log("*** tender ***  " +  tender.user_id);
-        console.log("*** user ***  " + user.rows[0].id);
         errors.push(`Only tender owner may ${tenderEvent} a tender`)
       }
       if (user.rows[0].state === 'unverified') {
@@ -75,12 +99,15 @@ module.exports = {
       if (tender.description.trim().length === 0) {
         errors.push("Description cannot be blank")
       }
+      if (tender.name.trim().length === 0) {
+        errors.push("Name cannot be blank")
+      }
       return callback(errors)
     })
   },
-  publish: function(tender, callback) {
+  publish: function(tender, current_user, callback) {
     var errors = []
-    this.validate(tender, 'publish', function(errors) {
+    this.validate(tender, 'publish', current_user, function(errors) {
       if (tender.state !== 'draft') {
         errors.push("Only tenders in draft state may be published")
       }
@@ -94,7 +121,7 @@ module.exports = {
       }
     })
   },
-  bid: function(tender, bid, callback) {
+  bid: function(tender, bid, current_user, callback) {
     var errors = []
     this.validate(tender, 'bid', function(errors) {
       if (tender.state !== 'published') {
@@ -110,7 +137,7 @@ module.exports = {
       }
     })
   },
-  accept: function(tender, bid, callback) {
+  accept: function(tender, bid, current_user, callback) {
     var errors = []
     this.validate(tender, 'accept', function(errors) {
       if (tender.state !== 'active') {
@@ -126,7 +153,7 @@ module.exports = {
       }
     })
   },
-  reject: function(tender, bid, callback) {
+  reject: function(tender, bid, current_user, callback) {
     var errors = []
     this.validate(tender, 'reject', function(errors) {
       if (tender.state !== 'active') {

@@ -41,7 +41,7 @@ module.exports = {
           }
           break
         case "rebuttal":
-          if (rating.rated_user_id) !== current_user  && !user.rows[0].is_administrator) {
+          if (rating.rated_user_id !== current_user  && !user.rows[0].is_administrator) {
             errors.push("Only the rated user may enter rebuttal comments")
           }
           if (rating.rebuttal_comments.trim().length === 0) {

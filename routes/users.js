@@ -3,6 +3,7 @@ var router = express.Router();
 var knex = require('../db/knex');
 var User_Logic = require('../models/users')
 var Tender_Logic = require('../models/tenders')
+var FbInfo = require('../models/fbInfo')
 
 router.get('/', function(req, res, next) {
   if (userState.state!= "valid"){
@@ -35,6 +36,12 @@ router.get('/:id/edit', function(req, res, next) {
 router.post('/:id/edit', function(req, res, next) {
   User_Logic.updateOne(req.body).then(function(){
     res.redirect('/dashboard');
+  })
+});
+
+router.post('/', function(req, res, next) {
+  User_Logic.create(req.body).then(function(user){
+    res.render('users/edit', {user:user.rows[0]});
   })
 });
 
