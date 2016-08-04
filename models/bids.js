@@ -1,12 +1,15 @@
 var knex = require('../db/knex')
 module.exports = {
-  create: function(bid) {
-    knex.raw(`insert into bids values (DEFAULT, ${bid.tender_id}, ${bid.user_id}, 'draft', '${bid.description}', '${bid.response}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
+  create: function(bid, callback) {
+    knex.raw(`insert into bids values (DEFAULT, ${bid.tender_id}, ${bid.user_id}, 'active', '${bid.bid_description}', 'Pending ...', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
     .then(function() {
-      knex.raw(`select * from bids where user_id = ${bid.user_id} and tender_id = ${bid.tender_id} and state = 'draft' and description = '${bid.description}' order by created_at desc limit 1`)
+      knex.raw(`select * from bids where user_id = ${bid.user_id} and tender_id = ${bid.tender_id} and state = 'active' and description = '${bid.bid_description}' order by created_at desc limit 1`)
       .then(function(bid) {
-        console.log(bid.rows[0]);
-        return bid.rows[0]
+        knex.raw(`update tenders set state = 'active', updated_at = CURRENT_TIMESTAMP where id = ${bid.rows[0].tender_id}`)
+        .then(function() {
+          console.log(bid.rows[0]);
+          return callback(bid.rows[0])
+        })
       })
     })
   },

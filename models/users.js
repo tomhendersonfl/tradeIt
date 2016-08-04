@@ -26,14 +26,27 @@ module.exports = {
   findByFacebookId: function(facebook) {
     return knex.raw(`select * from users where facebook_id = '${facebook}'`)
   },
-  updateOne: function(user) {
-    return knex.raw(`update users set first_name = '${user.first_name}', last_name = '${user.last_name}' email_address = '${user.email_address}', updated_at = CURRENT_TIMESTAMP, username = '${user.username}', about_me = '${user.about_me}', profile_pic = '${user.profile_pic}', facebook_id = '${user.facebook_id}' where id = ${user.id}`)
+  updateOne: function(user, current_user, callback) {
+    var errors = []
+    this.validate(user, 'update', current_user, function(errors) {
+      if (errors.length !== 0) {
+        return callback(errors)
+      } else {
+        knex.raw(`update users set first_name = '${user.first_name}', last_name = '${user.last_name}' email_address = '${user.email_address}', updated_at = CURRENT_TIMESTAMP, username = '${user.username}', about_me = '${user.about_me}', profile_pic = '${user.profile_pic}', facebook_id = '${user.facebook_id}' where id = ${user.id}`)
+        .then(function() {
+          return callback(errors)
+        })
+      }
+    })
   },
   destroy: function(id) {
     return knex.raw(`delete from users where id = ${id}`)
   },
-  validate: function(user) {
+  validate: function(user, userEvent, current_user, callback) {
     var errors = []
+    if (user.id !== current_user && !user.is_administrator) {
+      errors.push(`Only ${user.first_name} ${user.last_name} or an administrator may update this record`)
+    }
     if (user.first_name.trim().length === 0) {
       errors.push("First Name cannot be blank")
     }

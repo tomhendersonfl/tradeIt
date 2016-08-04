@@ -10,7 +10,9 @@ var Questions = require('../models/questions')
 // Tenders.create
 // var names = [{name: 'Old Smelly Sneakers', desc: 'These are some great old sneakers with a wonderful aroma'}, {name: '60 inch Samsung HDTV', desc: 'This old TV still works great'}, {name: 'Asian Prints', desc: '4 Japanese woodblock prints by Hiroshige'}, {name: 'Living Room Set', desc: '4 piece set of living room furniture by Broyhill'}]
 // var index = Math.floor(Math.random() * (names.length))
-// var newTender = Tenders.create({name: names[index].name, description: names[index].desc, tender_type: 'goods', user_id: 1})
+// Tenders.create({name: names[index].name, description: names[index].desc, tender_type: 'goods', user_id: 1}, current_user, function(tender) {
+//   console.log("***** create tender *****");
+// })
 // console.log(newTender);
 
 // Tenders.all
@@ -74,7 +76,7 @@ var Questions = require('../models/questions')
 // })
 //
 // // Tenders.findByAny
-// var find_object = {name: 'Pool Table', state: 'published', user_id: 1}
+// var find_object = {state: 'published'}
 // Tenders.findByAny(find_object).then(function(tenders) {
 //   console.log("***** testing findByAny *****");
 //   for (var i = 0; i < tenders.rows.length; i++) {
@@ -140,12 +142,12 @@ var Questions = require('../models/questions')
 // })
 
 // Users.create
-var user = {first_name: 'Wilma', last_name: 'Flintstone', email_address: 'wilma@bedrock.gov', username: 'YabbaDabbaDo', about_me: 'I love beer', profile_pic: '', facebook_id: '123456789' }
-var current_user = 1
-Users.create(user, current_user, function(user) {
-    console.log("***** user added *****");
-    console.log(user);
-})
+// var user = {first_name: 'Wilma', last_name: 'Flintstone', email_address: 'wilma@bedrock.gov', username: 'YabbaDabbaDo', about_me: 'I love beer', profile_pic: '', facebook_id: '123456789' }
+// var current_user = 1
+// Users.create(user, current_user, function(user) {
+//     console.log("***** user added *****");
+//     console.log(user);
+// })
 
 // Users.all().then(function(users) {
 //   console.log("***** testing all user method *****");
@@ -166,6 +168,15 @@ Users.create(user, current_user, function(user) {
 //   console.log(users.rows[0]);
 // })
 
+// Users.updateOne
+// var current_user = 1
+// var user = {id: 1, first_name: 'Thomas', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', username: 'tomhendersonfl', about_me: 'hello'}
+// Users.updateOne(user, current_user, function(errors) {
+//   console.log("*** update user ***");
+//   console.log(errors);
+//   return errors
+// })
+
 // var errors = Users.validate({id: 1, first_name: '', last_name: '', email_address: 'me@you', facebook_username: ''})
 // console.log(errors);
 
@@ -175,4 +186,11 @@ Users.create(user, current_user, function(user) {
 //     console.log(bids.rows[i].description);
 //   }
 //   return
+// })
+
+// Bids.create
+// var bid = {tender_id: 4, user_id: 1, bid_description: 'description'}
+// Bids.create(bid, function(bid) {
+//   console.log("***** create bid *****");
+//   console.log(bid);
 // })
