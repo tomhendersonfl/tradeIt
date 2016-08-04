@@ -89,8 +89,8 @@ var Questions = require('../models/questions')
 // });
 
 // Tenders.updateOne
-// var current_user = 100
-// var tender = {id: 2, name: 'Pool Table and Cues', description: 'Slate table includes cues and balls', state: 'published', tender_type: 'goods'}
+// var current_user = 1
+// var tender = {id: 2, name: 'Pool Table and Cues', description: 'Slate table includes cues and balls', state: 'published', tender_type: 'goods', nbr_views: 26}
 // Tenders.updateOne(tender, current_user, function(errors) {
 //   console.log("*** update ***");
 //   console.log(errors);
@@ -98,11 +98,17 @@ var Questions = require('../models/questions')
 // })
 
 // Tenders.destroy
-// Tenders.destroy(5).then(function() {
-//   Tenders.find(5).then(function(tender) {
-//     console.log(tender.rows[0]);
-//     return
-//   })
+// var current_user = 1
+// Tenders.create({name: 'delete test', description: 'delete test', tender_type: 'goods', user_id: 1}, current_user, function(tender) {
+//   console.log("***** tender added *****");
+//   console.log(tender);
+// })
+// var tenderId = 12
+// var current_user = 1
+// Tenders.destroy(tenderId, current_user, function(errors) {
+//   console.log("***** delete *****");
+//   console.log(errors);
+//   return errors
 // })
 
 // Tenders.validate
@@ -135,9 +141,11 @@ var Questions = require('../models/questions')
 
 // Users.create
 var user = {first_name: 'Wilma', last_name: 'Flintstone', email_address: 'wilma@bedrock.gov', username: 'YabbaDabbaDo', about_me: 'I love beer', profile_pic: '', facebook_id: '123456789' }
-var newUser = Users.create(user)
-console.log(newUser);
-
+var current_user = 1
+Users.create(user, current_user, function(user) {
+    console.log("***** user added *****");
+    console.log(user);
+})
 
 // Users.all().then(function(users) {
 //   console.log("***** testing all user method *****");

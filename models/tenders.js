@@ -1,12 +1,11 @@
 var knex = require('../db/knex')
 module.exports = {
-  create: function(tender) {
+  create: function(tender, current_user, callback) {
     knex.raw(`insert into tenders values (DEFAULT, '${tender.name}', 'draft', '${tender.description}', '${tender.tender_type}', ${tender.user_id}, NULL, NULL, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
     .then(function() {
       knex.raw(`select * from tenders where user_id = ${tender.user_id} and name = '${tender.name}' order by created_at desc limit 1`)
       .then(function(tender) {
-        console.log(tender.rows[0]);
-        return tender.rows[0]
+        return callback(tender.rows[0])
       })
     })
   },
@@ -72,18 +71,45 @@ module.exports = {
   },
   destroy: function(id, current_user, callback) {
     var errors = []
-    this.validate(tender, 'delete', current_user, function(errors) {
-      if (tender.state !== 'draft' && tender.state !== 'published') {
-        errors.push("Only tenders in draft or published state may be updated")
-      }
-      if (errors.length !== 0) {
-        return callback(errors)
-      } else {
-        knex.raw(`delete from tenders where id = ${id}`)
-        .then(function() {
+    this.find(id)
+    .then(function(tender) {
+      console.log("***** tender row *****");
+      console.log(tender.rows[0]);
+      knex.raw(`select * from users where id = ${current_user}`)
+      .then(function(user) {
+        console.log("***** current user *****");
+        console.log(user.rows[0]);
+        if (tender.user_id !== current_user && !user.rows[0].is_administrator) {
+          errors.push(`Only tender owner may delete a tender`)
+        }
+        if (user.rows[0].state === 'unverified') {
+          errors.push(`Only a verified user may delete a tender`)
+        }
+        if (tender.rows[0].state !== 'draft' && tender.rows[0].state !== 'published') {
+          errors.push("Only tenders in draft or published state may be deleted")
+        }
+        if (errors.length !== 0) {
           return callback(errors)
-        })
-      }
+        } else {
+          knex.raw(`delete from tenders where id = ${id}`)
+          .then(function() {
+            return callback(errors)
+          })
+        }
+      })
+    //   this.validate(tender.rows[0], 'delete', current_user, function(errors) {
+    //     if (tender.rows[0].state !== 'draft' && tender.rows[0].state !== 'published') {
+    //       errors.push("Only tenders in draft or published state may be deleted")
+    //     }
+    //     if (errors.length !== 0) {
+    //       return callback(errors)
+    //     } else {
+    //       knex.raw(`delete from tenders where id = ${id}`)
+    //       .then(function() {
+    //         return callback(errors)
+    //       })
+    //     }
+    //   })
     })
   },
   validate: function(tender, tenderEvent, current_user, callback) {
