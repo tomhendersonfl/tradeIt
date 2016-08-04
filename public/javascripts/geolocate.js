@@ -1,6 +1,7 @@
 $(document).ready(function(){
+  var position;
   navigator.geolocation.getCurrentPosition(function(position) {
-    console.log(position.coords.latitude)
-    console.log(position.coords.longitude);
+    position = position.coords.latitude.toString()+','+position.coords.longitude.toString();
+    $.cookie('geolocation', position);
   });
 })

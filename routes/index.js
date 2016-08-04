@@ -5,7 +5,8 @@ var Tenders = require('../models/tenders');
 var Bids = require('../models/bids');
 var Users = require('../models/users');
 var FbInfo = require('../models/fbInfo');
-var Helpers = require('../models/helpers')
+var Helpers = require('../models/helpers');
+var Mapkey = require('../models/mapkey');
 
 router.get('/', function(req, res, next) {
 
@@ -16,27 +17,12 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/dashboard', function(req, res, next){
+  console.log(req.cookies.geolocation);
   Tenders.all().then(function(tenders){
     if(tenders.rows.length > 20){
       tenders.rows.splice(20)
     }
-    if(FbInfo.facebook_id){
-      Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
-        res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
-        Bids.all().then(function(bids){
-          var sentBids = Helpers.findSentBids(bids.rows);
-          console.log(sentBids);
-          var recBids = Helpers.findReceivedBids(bids.rows);
-          res.render('dashboard', {tenders:tenders.rows,
-            sentBids:sentBids,
-            recBids:Helpers.findReceivedBids(bids.rows),
-            current_user_id:req.cookies.userid
-          });
-        })
-      })
-    } else {
-      res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid});
-    }
+    res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid})
   })
 });
 
