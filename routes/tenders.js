@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next) {
-  res.render('tenders/new', {tenders:tenders, current_user_id:req.cookies.userid});
+  res.render('tenders/new', { current_user_id:req.cookies.userid});
 });
 
 router.post('/', function(req, res, next) {
