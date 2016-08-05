@@ -7,6 +7,11 @@ block content
   script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCok34iyxN15XU51R9pAvSOcdQVRb9m_0Y&callback=initMap"
         type="text/javascript")
   script(src='javascripts/map.js')
+  
+  script(type='text/javascript').
+    var coords = locations;
+    console.log(coords);
+  
   body.dash
   main
     section.carousel.slider
