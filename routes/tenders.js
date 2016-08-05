@@ -20,8 +20,19 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  Logic.create(req.body, req.cookies.user_id, function(){
-      res.redirect('/tenders');
+  Logic.create(req.body, req.cookies.userid, function(tender){
+      res.render('tenders/edit', {tender:tender, current_user_id:req.cookies.userid});
+  })
+});
+
+router.post('/:id', function(req, res, next) {
+  Logic.updateOne(req.body, req.cookies.userid, function(error){
+      res.redirect('/dashboard')
+  })
+});
+router.post('/:id/publish', function(req, res, next) {
+  Logic.publish(req.body, req.cookies.userid, function(){
+      res.redirect('/dashboard')
   })
 });
 
