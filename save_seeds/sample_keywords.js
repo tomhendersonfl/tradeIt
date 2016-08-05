@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
 
         knex('keywords').insert({id: 1016, tender_id: 1008, keyword: 'warmer', created_at: '2016-04-01', updated_at: '2016-04-02'}),
 
-        knex('keywords').insert({id: 1017, tender_id: 1009, keyword: 'warmer', created_at: '2016-04-01', updated_at: '2016-04-02'}),
+        knex('keywords').insert({id: 1017, tender_id: 1009, keyword: 'warmer', created_at: '2016-04-01', updated_at: '2016-04-02'})
 
       ]);
     });
