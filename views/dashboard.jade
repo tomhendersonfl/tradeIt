@@ -17,8 +17,8 @@ block content
             img.boo_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
           else
             img.boo_img(src='#{tender.picture}' alt='No Image Available')
-    section#tenders-dash
-      h3 Items for Trade
+    h3.items_for_trade Items for Trade
+    section#tenders-dash-left
       for tender in tenders
         div.dashboard-tender
           h4
@@ -32,8 +32,8 @@ block content
               else
                 img.dashy_img(src='#{tender.picture}' alt='No Image Available')
       a.dash-link(href='/tenders') View All Tenders
-    section#tenders-dash
-      h3 My tenders
+    h3.my_tenders My tenders
+    section#tenders-dash-right
       for tender in myTenders
         if (tender.state == 'draft')
           div.dashboard-tender.red
@@ -76,22 +76,23 @@ block content
             p.dashy closed
       a.dash-link(href='#') View All  My Tenders
     section#bids
+      h3.my_bids_sent My Bids Sent
       section#bids-sent
-        h3 My Bids Sent
         for bid in bids_sent
           div.dashboard-bids-sent
-            p Tender ID: #{bid.tender_id}
-            p Offer Description: #{bid.description}
-            p Response: #{bid.response}
+            p.bids_sent Tender ID: #{bid.tender_id}
+            p.bids_sent Offer Description: #{bid.description}
+            p.bids_sent Response: #{bid.response}
         a.dash-link(href='/bids-sent') View all Bids Sent
+    section.bids-received-div
+      h3.my_bids_received My Bids Received
       section#bids-received
-        h3 My Bids Received
           for bid in bids_received
             div.dashboard-bids-received
-              p Tender ID: #{bid.tender_id}
-              p Offer Description: #{bid.description}
-              p User Id: #{bid.user_id}
-              p Response: #{bid.response}
+              p.bids_sent Tender ID: #{bid.tender_id}
+              p.bids_sent Offer Description: #{bid.description}
+              p.bids_sent User Id: #{bid.user_id}
+              p.bids_sent Response: #{bid.response}
         a.dash-link(href='/bids-received') View all Bids Received
     section#map-container
       div#map

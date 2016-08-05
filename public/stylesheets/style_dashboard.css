@@ -5,13 +5,25 @@
   margin-right: auto;
   margin-top: 40px;
 }
-#tenders-dash{
+#tenders-dash-left{
   background-color: #7FB0B7;
   border: 2px solid black;
   width:35%;
   float: left;
-  margin: 50px;
-  margin-left: 100px;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  padding: 20px;
+  height:650px;
+  overflow: auto;
+}
+#tenders-dash-right{
+  background-color: #7FB0B7;
+  border: 2px solid black;
+  width:35%;
+  float: left;
+  margin-left: 10%;
+  margin-top: 10%;
   padding: 20px;
   height:650px;
   overflow: auto;
@@ -33,10 +45,16 @@
 #bids{
   margin: 50px;
   margin-right: 100px;
+  margin-left: 8%;
   position: relative;
-  float: right;
   padding: 20px;
   width: 40%;
+}
+.bids-received-div{
+  position: absolute;
+  margin-top: 785px;
+  margin-left: 55%;
+  width: 35%;
 }
 .dash{
   background-color: #f6f6f6;
@@ -87,4 +105,28 @@
 .boo_img{
   width: 100%;
   height: 100%;
+}
+.items_for_trade{
+  position: absolute;
+  margin-left: 18%;
+  margin-top: 3%;
+}
+.my_tenders{
+  position: absolute;
+  margin-left: 65%;
+  margin-top: 3%;
+}
+.my_bids_sent{
+  position: absolute;
+  margin-top: 785px;
+  margin-left: 25%;
+}
+.my_bids_received{
+  position: absolute;
+  margin-top: -70px;
+  margin-left: 15%;
+}
+.bids_sent{
+  font-size: 25px;
+  padding: 5px;
 }
