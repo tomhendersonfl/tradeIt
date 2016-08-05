@@ -37,5 +37,10 @@ div.col.s12.m7.allTenders{
   display: inline-block;
 }
 div.card-image{
-  background-size: cover
+  background-size: contain;
+  width: 300px;
+  height: 300px;
+}
+.tender_index{
+  font-size: 25px;
 }
