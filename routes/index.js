@@ -27,6 +27,9 @@ router.get('/dashboard', function(req, res, next) {
                 if (tenders.rows.length > 20) {
                     tenders.rows.splice(20)
                 }
+                if (myTenders.rows.length > 20) {
+                    myTenders.rows.splice(20)
+                }
                 var bids_sent = [];
                 var bids_received = [];
                 for (var i = 0; i < bids.rows.length; i++) {
