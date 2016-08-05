@@ -33,6 +33,10 @@ router.get('/dashboard', function(req, res, next){
         bids_received.push(bids.rows[i]);
       }
     }
+    console.log("bids sent");
+    console.log(bids_sent);
+    console.log("bids received");
+    console.log(bids_received);
     res.render('dashboard', {tenders:tenders.rows,
             bids_sent:bids_sent,
             bids_received:bids_received,
