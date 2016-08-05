@@ -24,7 +24,10 @@ block content
           p.dashy Description: #{tender.description}
           p.dashy Type: #{tender.tender_type}
             a(href='/tenders/'+tender.id)
-              img.dashy_img(src='#{tender.picture}' alt='No Image Available')
+              if (tender.picture === null)
+                img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+              else
+                img.dashy_img(src='#{tender.picture}' alt='No Image Available')
       a.dash-link(href='/tenders') View All Tenders
     section#tenders-dash
       h3 My tenders
