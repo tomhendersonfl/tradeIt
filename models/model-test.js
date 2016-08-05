@@ -180,17 +180,28 @@ var Questions = require('../models/questions')
 // var errors = Users.validate({id: 1, first_name: '', last_name: '', email_address: 'me@you', facebook_username: ''})
 // console.log(errors);
 
-// Bids.find(2).then(function(bids) {
-//   console.log("***** testing all bids method *****");
+// Bids.create
+// var bid = {tender_id: 7, user_id: 1, bid_description: 'description'}
+// Bids.create(bid, function(bid) {
+//   console.log("***** create bid *****");
+//   console.log(bid);
+// })
+
+// Bids.all
+// Bids.all().then(function(bids) {
+//   console.log("***** testing all bids *****");
 //   for (i=0; i<bids.rows.length; i++) {
 //     console.log(bids.rows[i].description);
 //   }
 //   return
 // })
 
-// Bids.create
-var bid = {tender_id: 7, user_id: 1, bid_description: 'description'}
-Bids.create(bid, function(bid) {
-  console.log("***** create bid *****");
-  console.log(bid);
+// Bids.find
+var id = 2
+Bids.find(id).then(function(bids) {
+  console.log("***** testing find bid *****");
+  for (i=0; i<bids.rows.length; i++) {
+    console.log(bids.rows[i].description);
+  }
+  return
 })
