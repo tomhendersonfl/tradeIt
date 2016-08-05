@@ -11,7 +11,6 @@ var Mapkey = require('../models/mapkey');
 
 
 router.get('/', function(req, res, next) {
-
   if(!req.cookies.userid){
     res.cookie('userid', 100);
   }
