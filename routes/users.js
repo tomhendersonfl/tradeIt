@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next){
-  res.render('users/signup',{current_user_id:req.cookies.userid, facebook_id:FbInfo.facebook_id, position:Position});
+  var position = req.cookies.geolocation;
+  res.render('users/signup',{current_user_id:req.cookies.userid, facebook_id:FbInfo.facebook_id, position:position});
 });
 
 //need to get the :id from facebook cookie
