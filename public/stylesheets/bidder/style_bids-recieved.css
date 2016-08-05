@@ -1,0 +1,13 @@
+#parent{
+  overflow: scroll;
+}
+
+div.col.s12.m6{
+  width: 800px;
+  height: 600px;
+}
+
+.bid-recieved-text {
+  font-size: 2rem;
+  font-family: open sans;
+}
