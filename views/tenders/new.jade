@@ -3,7 +3,7 @@ extends ../layout
 block content
 
   div#parent-tenders-style
-  
+
     h1#addTender Add Tender
     div.all_this
       div.row.tenders-form
@@ -12,23 +12,23 @@ block content
             div.input-field.col.s6
               input(id="input_text" type="text" name='name' length="15")
               label.tenders-new-text(for="input_text") Name
-          div.row.tenders-form  
+          div.row.tenders-form
             div.input-field.col.s12
               textarea(id="textarea1" name='description' class="materialize-textarea" length="120")
               label.tenders-new-text(for="textarea1") Item Description
           div.row.tenders-form
-            p
+            div.input-field.col.s12
               select(name='tender_type')
                 option(value='default', selected='', disabled='') Type
                 option(value='service' id="services") Service
                 option(value='goods' id="goods") Goods
           input(type='number', name='user_id', value='#{current_user_id}', placeholder='User Id' hidden)
           div.file-field.input-field.tenders-form
-            div.btn
+            div.btn#new-tender-file
               span File
               input(type="file" multiple)
             div.file-path-wrapper
               input.file-path.validate(type="text" placeholder="Upload one or more files")
-               
+
             button.btn.waves-effect.waves-light#submit(type="submit" name="") Submit
               i.material-icons.right send 
