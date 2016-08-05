@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         knex('users').insert({id: 1001, first_name: 'Tom', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', state: 'verified', is_administrator: true, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'tomhenderson', about_me: 'I reject your reality and substitute my own.'}),
 
-        knex('users').insert({id: 1002, first_name: 'Kendra', last_name: 'Lyndon', email_address: 'kendralyndon@gmail.com', state: 'verified', is_administrator: true, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'kendralyndon', about_me: "If you haven't got anything nice to say about anybody, come sit next to me."
+        knex('users').insert({id: 1002, first_name: 'Kendra', last_name: 'Lyndon', email_address: 'kendralyndon@gmail.com', state: 'verified', is_administrator: true, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'kendralyndon', about_me: "If you haven't got anything nice to say about anybody, come sit next to me."}),
 
         knex('users').insert({id: 1003, first_name: 'Jessica', last_name: 'Lee', email_address: 'jesslee1315@gmail.com', state: 'verified', is_administrator: true, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'jessicalee', about_me: "I don't like to commit myself about heaven and hell -- you see, I have friends in both places."}),
 
@@ -22,7 +22,7 @@ exports.seed = function(knex, Promise) {
 
         knex('users').insert({id: 1010, first_name: 'Betty', last_name: 'Rubble', email_address: 'bettyrubble@gmail.com', state: 'verified', is_administrator: false, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'betty_boop', about_me: "I wish my eyes could take photos."}),
 
-        knex('users').insert({id: 999, first_name: 'Guest', last_name: 'User', email_address: 'guest@tradeit.com', state: 'unverified', is_administrator: false, created_at: '2016-01-01'}, updated_at: '2016-01-01', username: 'guestuser', about_me:)
+        knex('users').insert({id: 999, first_name: 'Guest', last_name: 'User', email_address: 'guest@tradeit.com', state: 'unverified', is_administrator: false, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'guestuser', about_me: "Hello"})
 
       ]);
     });

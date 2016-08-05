@@ -15,7 +15,6 @@ exports.seed = function(knex, Promise) {
         knex('questions').insert({id: 1006, tender_id: 1001, question: 'How do you know what the Virgin Mary looked like?', created_at: '2016-04-01', updated_at: '2016-04-02'}),
 
         knex('questions').insert({id: 1007, tender_id: 1001, question: 'What kind of cheese is it?', created_at: '2016-04-01', updated_at: '2016-04-02'}),
-
       ]);
     });
 };
