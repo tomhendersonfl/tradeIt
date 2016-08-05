@@ -8,7 +8,9 @@ var FbInfo = require('../models/fbInfo');
 var Helpers = require('../models/helpers');
 var Mapkey = require('../models/mapkey');
 
-
+function UsersK(){
+  return knex('users')
+}
 
 router.get('/', function(req, res, next) {
     if (!req.cookies.userid) {
@@ -22,7 +24,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/dashboard', function(req, res, next) {
     Tenders.findByNotUserPublished(req.cookies.userid).then(function(tenders) {
-      console.log(tenders.rows);
         Bids.all().then(function(bids) {
             Tenders.findByUser(req.cookies.userid).then(function(myTenders) {
                 if (tenders.rows.length > 20) {
@@ -46,10 +47,9 @@ router.get('/dashboard', function(req, res, next) {
                     bids_sent: bids_sent,
                     bids_received: bids_received,
                     current_user_id: req.cookies.userid,
-                    myTenders: myTenders.rows
+                    myTenders: myTenders.rows,
                 })
             })
-
         })
     })
 });
@@ -59,13 +59,13 @@ router.get('/FAQ', function(req, res, next) {
         title: 'Trade It',
         current_user_id: req.cookies.userid
     });
-})
+});
 
 router.get('/contact', function(req, res, next) {
     res.render('contact', {
         current_user_id: req.cookies.userid
     });
-})
+});
 
 router.get('/about_us', function(req, res, next) {
     res.render('about_us', {
