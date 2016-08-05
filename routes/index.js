@@ -22,6 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/dashboard', function(req, res, next) {
     Tenders.findByNotUserPublished(req.cookies.userid).then(function(tenders) {
+      console.log(tenders.rows);
         Bids.all().then(function(bids) {
             Tenders.findByUser(req.cookies.userid).then(function(myTenders) {
                 if (tenders.rows.length > 20) {
