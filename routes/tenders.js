@@ -20,6 +20,12 @@ router.get('/new', function(req, res, next) {
   res.render('tenders/new', { current_user_id:req.cookies.userid});
 });
 
+router.get('/:id/delete', function(req, res, next) {
+  Tenders.destroy(req.params.id, req.cookies.userid, function(errors){
+      res.send(errors)
+  })
+});
+
 router.post('/', function(req, res, next) {
   Logic.create(req.body, req.cookies.userid, function(tender){
       res.render('tenders/edit', {tender:tender, current_user_id:req.cookies.userid});
@@ -39,8 +45,6 @@ router.post('/:id/publish', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   Logic.find(req.params.id).then(function(tenders){
-    console.log('from tender route');
-    console.log(tenders.rows);
     res.render('tenders/show', {tenders:tenders.rows[0], current_user_id:req.cookies.userid, user_id:req.cookies.userid});
   })
 });
