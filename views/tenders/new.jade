@@ -17,14 +17,14 @@ block content
               textarea(id="textarea1" name='description' class="materialize-textarea" length="120")
               label.tenders-new-text(for="textarea1") Item Description
           div.row.tenders-form
-            p
+            div.input-field.col.s12
               select(name='tender_type')
                 option(value='default', selected='', disabled='') Type
                 option(value='service' id="services") Service
                 option(value='goods' id="goods") Goods
           input(type='number', name='user_id', value='#{current_user_id}', placeholder='User Id' hidden)
           div.file-field.input-field.tenders-form
-            div.btn
+            div.btn#new-tender-file
               span File
               input(type="file" multiple)
             div.file-path-wrapper
