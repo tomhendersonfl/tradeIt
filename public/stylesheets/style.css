@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=La+Belle+Aurore');
-@import url('https://fonts.googleapis.com/css?family=Megrim');
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 body {
   display: flex;
@@ -40,16 +39,15 @@ nav ul a {
 
 }
 
-li{
-  font-family: Quicksand;
+li.navText{
+  font-family: Open Sans;
   color: #fafafa;
 }
 
 
 nav ul a:hover{
-  background-color: #FAE268;
+  background-color: transparent;
   color: black;
-  height: 50%;
 }
 .dropdown-content li>a, .dropdown-content li>span{
   color: #dbdbdb;
@@ -61,8 +59,8 @@ margin-right: 65px;
 font-size: 20px
 }
 
-h5 {
-  font-family: Quicksand;
+h5#footer-text{
+  font-family: Open Sans;
   margin-bottom: 0;
 }
 

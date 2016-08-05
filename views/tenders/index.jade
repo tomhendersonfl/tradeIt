@@ -2,24 +2,21 @@ extends ../layout
 
 block content
 
-  div#parent
     div#all
       div#add_tender_butt
-        a.waves-effect.waves-light.btn-large(href='/tenders/new') Add Tender            
-      if tenders
-      for tender in tenders      
-        div.col.s12.m7
-          h2.header= tender.name
-          div.card.horizontal
-            div.card-image
-              img(src="http://whatsappdp.net/wp-content/uploads/2016/03/funny-profile-pictures.jpg")
-            div.card-stacked
-              div.card-content
-                p= tender.description
-                p= tender.tender_type
-              div.card-action
-                a(href='/tenders/'+tender.id) Check it out
+        a.waves-effect.waves-light.btn-large(href='/tenders/new') Add Tender   
+      div#tendersAll           
+        if tenders
+        for tender in tenders      
+          div.col.s12.m7.allTenders
+            h3.header#tenders-index= tender.name
+            div.card.horizontal
+              div.card-image
+                img(src="http://whatsappdp.net/wp-content/uploads/2016/03/funny-profile-pictures.jpg")
+              div.card-stacked
+                div.card-content
+                  p= tender.description
+                  p= tender.tender_type
+                div.card-action
+                  a(href='/tenders/'+tender.id) Check it out
                       
-
-
-                  

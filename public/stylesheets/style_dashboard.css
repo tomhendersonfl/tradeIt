@@ -13,15 +13,22 @@
   margin: 50px;
   margin-left: 100px;
   padding: 20px;
+  height:650px;
+  overflow: auto;
 }
 #bids-received{
   background-color: #7FB0B7;
   border: 2px solid black;
+  height:650px;
+  overflow: auto;
 }
 #bids-sent{
   background-color: #7FB0B7;
   border: 2px solid black;
   margin-bottom: 25px;
+  height:650px;
+  overflow: auto;
+  float: left;
 }
 #bids{
   margin: 50px;
