@@ -12,11 +12,11 @@ block content
             h3.header#tenders-index= tender.name
             div.card.horizontal
               div.card-image
-                img(src="http://whatsappdp.net/wp-content/uploads/2016/03/funny-profile-pictures.jpg")
+                  img.boo_img(src='#{tender.picture}' alt='No Image Available')
               div.card-stacked
                 div.card-content
-                  p= tender.description
-                  p= tender.tender_type
+                  p.tender_index #{tender.description}
+                  p.tender_index #{tender.tender_type}
                 div.card-action
                   a(href='/tenders/'+tender.id) Check it out
                       
