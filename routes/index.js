@@ -17,13 +17,28 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/dashboard', function(req, res, next){
-  console.log(req.cookies.geolocation);
   Tenders.all().then(function(tenders){
+    Bids.all().then(function(bids){
     if(tenders.rows.length > 20){
       tenders.rows.splice(20)
     }
-    res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid})
-  })
+    var bids_sent = [];
+    var bids_received = [];
+    for (var i = 0; i < bids.rows.length; i++) {
+      if (bids.rows[i].user_id === Number(req.cookies.userid)){
+        bids_sent.push(bids.rows[i]);
+
+      } else {
+        bids_received.push(bids.rows[i]);
+      }
+    }
+    res.render('dashboard', {tenders:tenders.rows,
+            bids_sent:bids_sent,
+            bids_received:bids_received,
+            current_user_id:req.cookies.userid
+          })
+        })
+      })
 });
 
 router.get('/FAQ', function(req, res, next) {
