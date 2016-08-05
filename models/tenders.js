@@ -21,6 +21,9 @@ module.exports = {
   findByUserState: function(user,state) {
     return knex.raw(`select t.* from tenders t where t.user_id = ${user} and t.state = '${state}' order by t.created_at desc`)
   },
+  findByNotUserPublished: function(user) {
+    return knex.raw(`select t.* from tenders t where t.user_id != ${user} and t.state = 'published' order by t.created_at desc`)
+  },
   findByKeyword: function(keyword) {
     return knex.raw(`select k.keyword, t.* from keywords k inner join tenders t on k.tender_id = t.id where k.keyword = '${keyword}' and t.state = 'published' order by t.created_at desc`)
   },
