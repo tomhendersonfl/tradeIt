@@ -1,7 +1,7 @@
 var knex = require('../db/knex')
 module.exports = {
   create: function(tender, current_user, callback) {
-    knex.raw(`insert into tenders values (DEFAULT, '${tender.name}', 'draft', '${tender.description}', '${tender.tender_type}', ${tender.user_id}, NULL, NULL, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
+    knex.raw(`insert into tenders values (DEFAULT, '${tender.name}', 'draft', '${tender.description}', '${tender.tender_type}', ${tender.user_id}, NULL, NULL, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,' ', '${tender.picture}')`)
     .then(function() {
       knex.raw(`select * from tenders where user_id = ${tender.user_id} and name = '${tender.name}' order by created_at desc limit 1`)
       .then(function(tender) {
@@ -65,7 +65,7 @@ module.exports = {
       if (errors.length !== 0) {
         return callback(errors)
       } else {
-        knex.raw(`update tenders set name = '${tender.name}', description = '${tender.description}', tender_type = '${tender.tender_type}', state = 'draft', nbr_views = ${tender.nbr_views}, published_at = NULL, updated_at = CURRENT_TIMESTAMP where id = ${tender.id}`)
+        knex.raw(`update tenders set name = '${tender.name}', description = '${tender.description}', tender_type = '${tender.tender_type}', state = 'draft', nbr_views = ${tender.nbr_views}, published_at = NULL, updated_at = CURRENT_TIMESTAMP, picture = '${tender.picture}' where id = ${tender.id}`)
         .then(function() {
           return callback(errors)
         })
