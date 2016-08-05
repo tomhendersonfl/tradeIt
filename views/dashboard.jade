@@ -38,11 +38,30 @@ block content
     section#tenders-dash
       h3 My tenders
       for tender in myTenders
-        div.dashboard-tender
-          h4=tender.name
-          p=tender.description
-          p=tender.tender_type
-          p=tender.username
+        if (tender.state == 'draft')
+          div.dashboard-tender.red
+            h4=tender.name
+            p=tender.description
+            p=tender.tender_type
+            p=tender.username
+        else if (tender.state == 'published')
+          div.dashboard-tender.yellow
+            h4=tender.name
+            p=tender.description
+            p=tender.tender_type
+            p=tender.username
+        else if (tender.state == 'active')
+          div.dashboard-tender.green
+            h4=tender.name
+            p=tender.description
+            p=tender.tender_type
+            p=tender.username
+        else if (tender.state == 'closed')
+          div.dashboard-tender.grey
+            h4=tender.name
+            p=tender.description
+            p=tender.tender_type
+            p=tender.username
       a.dash-link(href='#') View All  My Tenders
     section#bids
       section#bids-sent
