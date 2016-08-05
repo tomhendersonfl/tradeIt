@@ -9,19 +9,19 @@ block content
         form.col.s12(action='/tenders', method='post')
           div.row
             div.input-field.col.s6
-              input(id="input_text" type="text" length="15")
+              input(id="input_text" type="text" name='name' length="15")
               label(for="input_text") Name
           div.row    
             div.input-field.col.s12
-              textarea(id="textarea1" class="materialize-textarea" length="120")
+              textarea(id="textarea1" name='description' class="materialize-textarea" length="120")
               label(for="textarea1") Item Description
           div.row
             p
-              input(type="checkbox" id="goods")
-              label(for="goods") Goods
-            p
-              input(type="checkbox" id="services")
-              label(for="services") Services
+              select(name='tender_type')
+                option(value='default', selected='', disabled='') Type
+                option(value='service' id="services") Service
+                option(value='goods' id="goods") Goods
+          input(type='number', name='user_id', value='#{current_user_id}', placeholder='User Id' hidden)
           div.file-field.input-field
             div.btn
               span File
@@ -29,5 +29,5 @@ block content
             div.file-path-wrapper
               input.file-path.validate(type="text" placeholder="Upload one or more files")
                
-            button.btn.waves-effect.waves-light#submit(type="submit" name="action") Submit
+            button.btn.waves-effect.waves-light#submit(type="submit" name="") Submit
               i.material-icons.right send 
