@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
 
         knex('notes').insert({id: 1016, tender_id: 1008, note_text: 'warmer', created_at: '2016-04-01', updated_at: '2016-04-02'}),
 
-        knex('notes').insert({id: 1017, tender_id: 1009, note_text: 'warmer', created_at: '2016-04-01', updated_at: '2016-04-02'}),
+        knex('notes').insert({id: 1017, tender_id: 1009, note_text: 'warmer', created_at: '2016-04-01', updated_at: '2016-04-02'})
 
       ]);
     });
