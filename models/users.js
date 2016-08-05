@@ -4,7 +4,7 @@ module.exports = {
     knex.raw(`select * from users order by id desc limit 1`)
     .then(function(maxUser) {
       var nextId = Number(maxUser.rows[0].id) + 1
-      knex.raw(`insert into users values (${nextId}, '${user.first_name}', '${user.last_name}', '${user.email_address}',  'verified', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '${user.username}', '${user.about_me}', '${user.profile_pic}', '${user.facebook_id}')`)
+      knex.raw(`insert into users values (${nextId}, '${user.first_name}', '${user.last_name}', '${user.email_address}',  'verified', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '${user.username}', '${user.about_me}', '${user.profile_pic}', '${user.facebook_id}', '${user.position}')`)
       .then(function() {
         knex.raw(`select * from users where email_address = '${user.email_address}' order by created_at desc limit 1`)
         .then(function(user) {
