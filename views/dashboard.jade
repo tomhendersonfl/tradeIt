@@ -9,8 +9,9 @@ block content
   script(src='javascripts/map.js')
   
   script(type='text/javascript').
-    var coords = locations;
-  
+    var locations = !{JSON.stringify(locations)};
+    console.log(locations);
+    
   body.dash
   main
     section#testing-geo

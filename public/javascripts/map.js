@@ -1,7 +1,7 @@
 var map;
 
-var coords = JSON.parse($("#myCoords").val());
-console.log(coords);
+// var coords = JSON.parse($("#myCoords").val());
+// console.log(coords);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
