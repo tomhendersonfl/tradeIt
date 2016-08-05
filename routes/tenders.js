@@ -37,10 +37,14 @@ router.post('/:id/publish', function(req, res, next) {
   })
 });
 
+router.get('/:id/delete', function(req, res, next) {
+  Tenders.destroy(req.params.id, req.cookies.userid, function(errors){
+      res.redirect('/dashboard')
+  })
+});
+
 router.get('/:id', function(req, res, next) {
   Logic.find(req.params.id).then(function(tenders){
-    console.log('from tender route');
-    console.log(tenders.rows);
     res.render('tenders/show', {tenders:tenders.rows[0], current_user_id:req.cookies.userid, user_id:req.cookies.userid});
   })
 });
