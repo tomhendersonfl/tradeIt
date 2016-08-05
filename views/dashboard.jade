@@ -13,7 +13,10 @@ block content
     section.carousel.slider
       for tender in tenders
         a.carousel-item.boo(href='/tenders/#{tender.id}')
-          img(src='#{tender.picture}' alt='No Image Available')
+          if (tender.picture === null)
+            img.boo_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+          else
+            img.boo_img(src='#{tender.picture}' alt='No Image Available')
     section#tenders-dash
       h3 Items for Trade
       for tender in tenders
@@ -37,7 +40,10 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
+            if (tender.picture === null)
+              img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+            else
+              img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             form(action='/tenders/'+tender.id+'/delete', method='get')
             input#submit_button(type='submit', name='', value='Delete')
         else if (tender.state == 'published')
@@ -45,19 +51,28 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
+            if (tender.picture === null)
+              img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+            else
+              img.dashy_img(src='#{tender.picture}' alt='No Image Available')
         else if (tender.state == 'active')
           div.dashboard-tender.green
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
+            if (tender.picture === null)
+              img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+            else
+              img.dashy_img(src='#{tender.picture}' alt='No Image Available')
         else if (tender.state == 'closed')
           div.dashboard-tender.grey
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
+            if (tender.picture === null)
+              img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+            else
+              img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             p.dashy closed
       a.dash-link(href='#') View All  My Tenders
     section#bids
