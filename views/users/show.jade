@@ -5,8 +5,10 @@ block content
   main
     section#profile
       h3.username #{users.username}'s Profile
+      h3
+        a(href='/users/#{users.id}/edit') Edit your profile
       div.profile
-        h4 Picture: 
+        h4 Picture:
         img.profile_picture(src='#{users.profile_pic}', alt='Profile Picture')
         h4 About Me: #{users.about_me}
     section#my_tenders
@@ -16,4 +18,3 @@ block content
           h4 Name: #{tender.name}
           h4 Description: #{tender.description}
           h4 Type: #{tender.tender_type}
-      a(href='/users/#{users.id}/edit') Edit your profile
