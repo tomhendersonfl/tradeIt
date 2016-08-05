@@ -10,9 +10,6 @@ block content
     
   body.dash
   main
-    section#testing-geo
-      for loc in locations
-        p=loc.position
     section.carousel.slider
       a.carousel-item.boo(href='#one!')
         img(src='https://www.sethsbikehacks.com/wp-content/uploads/2016/06/mongoose-dolomite.jpg')
@@ -28,7 +25,7 @@ block content
         img(src='http://assets.academy.com/mgen/34/10095934.jpg')
       a.carousel-item.boo(href='/tenders/2')
         img(src='http://s.hswstatic.com/gif/hammer-1.jpg')
-    section#map
+
     section#tenders-dash
       h3 Items for Trade
       for tender in tenders
@@ -88,3 +85,5 @@ block content
               p User Id: #{bid.user_id}
               p Response: #{bid.response}
         a.dash-link(href='/bids-received') View all Bids Received
+    section#map-container
+      div#map

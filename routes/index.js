@@ -48,7 +48,6 @@ router.get('/dashboard', function(req, res, next) {
                     bids_received: bids_received,
                     current_user_id: req.cookies.userid,
                     myTenders: myTenders.rows,
-                    locations:locations
                 })
             })
         })
