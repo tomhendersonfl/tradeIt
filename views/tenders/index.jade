@@ -1,25 +1,25 @@
 extends ../layout
 
 block content
-  h1 Showing all tenders within a 50 mile radius:
-    if tenders
-      table
-        thead
-          tr
-            th(data-field="name") Name
-            th(data-field="description") Description
-            th(data-field="type") Type
-            th(data-field="price") User
-        tbody
-          for tender in tenders
-            tr
-              td: a(href='/tenders/'+tender.id)= tender.name
-              td= tender.description
-              td= tender.tender_type
-              td= tender.user_id
-            
-        div
-          a.btn-floating.btn-large.waves-effect.waves-light.grey(href='/tenders/new')
-            i.material-icons add
+
+  div#parent
+    div#all
+      div#add_tender_butt
+        a.waves-effect.waves-light.btn-large(href='/tenders/new') Add Tender            
+      if tenders
+      for tender in tenders      
+        div.col.s12.m7
+          h2.header= tender.name
+          div.card.horizontal
+            div.card-image
+              img(src="http://whatsappdp.net/wp-content/uploads/2016/03/funny-profile-pictures.jpg")
+            div.card-stacked
+              div.card-content
+                p= tender.description
+                p= tender.tender_type
+              div.card-action
+                a(href='/tenders/'+tender.id) Check it out
+                      
+
 
                   
