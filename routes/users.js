@@ -4,7 +4,6 @@ var knex = require('../db/knex');
 var User_Logic = require('../models/users')
 var Tender_Logic = require('../models/tenders')
 var FbInfo = require('../models/fbInfo')
-var Position = require('../models/geolocation')
 
 router.get('/', function(req, res, next) {
   if (userState.state!= "valid"){
