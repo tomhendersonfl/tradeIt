@@ -15,6 +15,8 @@ router.get('/sent', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
+  console.log("bid body");
+  console.log(req.body);
   Bids.create(req.body, function(bid){
     res.redirect('/dashboard')
   })
