@@ -4,13 +4,9 @@ block content
   script(src='https://code.jquery.com/jquery-2.1.1.min.js')
   script(src='http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js')
   script(src='javascripts/dashboard_carousel.js')
-  script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCok34iyxN15XU51R9pAvSOcdQVRb9m_0Y&callback=initMap"
+  script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCok34iyxN15XU51R9pAvSOcdQVRb9m_0Y"
         type="text/javascript")
   script(src='javascripts/map.js')
-  
-  script(type='text/javascript').
-    var locations = !{JSON.stringify(locations)};
-    console.log(locations);
     
   body.dash
   main

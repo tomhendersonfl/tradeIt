@@ -24,8 +24,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/dashboard', function(req, res, next) {
     Tenders.findByNotUserPublished(req.cookies.userid).then(function(tenders) {
-      UsersK().select('position').then(function(locations){
-        // console.log(locations);
         Bids.all().then(function(bids) {
             Tenders.findByUser(req.cookies.userid).then(function(myTenders) {
                 if (tenders.rows.length > 20) {
@@ -54,7 +52,6 @@ router.get('/dashboard', function(req, res, next) {
                 })
             })
         })
-      })
     })
 });
 

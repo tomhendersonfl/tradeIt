@@ -15,6 +15,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var bids = require('./routes/bids');
 var tenders = require('./routes/tenders');
+var positions = require('./routes/positions')
 var Users = require('./models/users')
 var app = express();
 var FbInfo = require('./models/fbInfo')
@@ -88,6 +89,7 @@ app.use('/', authRoutes);
 app.use('/users', users);
 app.use('/tenders', tenders);
 app.use('/bids', bids);
+app.use('/positions', positions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
