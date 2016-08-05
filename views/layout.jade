@@ -8,21 +8,24 @@ html
     link(href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css", rel="stylesheet")
     link(type="text/css", rel="stylesheet", href="css/materialize.min.css", media="screen,projection")
     link(rel="stylesheet", href="/stylesheets/style.css")
-    link(href='/css/age-verification.css', rel='stylesheet')
+    link(href='/stylesheets/age-verification.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/bidder/style_index.css')
     link(rel='stylesheet', href='/stylesheets/bidder/style_show.css')
     link(rel='stylesheet', href='/stylesheets/tenders/style_index.css')
     link(rel='stylesheet', href='/stylesheets/tenders/style_new.css')
     link(rel='stylesheet', href='/stylesheets/style_splash.css')
-    link(rel='stylesheet', href='/stylesheets/style_profile.css')
+    link(rel='stylesheet', href='/stylesheets/users/style_profile.css')
+    link(rel='stylesheet', href='/stylesheets/tenders/style_show.css')
+    link(rel='stylesheet', href='/stylesheets/style_dashboard.css')
+    link(rel='stylesheet', href='/stylesheets/style_FAQ.css')
+    link(rel='stylesheet', href='/stylesheets/style_about_us.css')
+    link(rel='stylesheet', href='/stylesheets/style_contact_us.css')
     
   body
 
     ul#dropdown2.dropdown-content
       li 
-        a(href="/users/2") My Profile
-      li
-        a(href="#") My bids
+        a(href="/users/#{current_user_id}") My Profile
           li.divider
             li
               a(href="/auth/logout") Logout
@@ -66,5 +69,5 @@ html
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js")
-  script(type="text/javascript", src="/javascript/main.js")
+  script(type="text/javascript", src="/javascripts/main.js")
   script(src='http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js')

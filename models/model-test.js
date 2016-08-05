@@ -7,10 +7,15 @@ var Ratings = require('../models/ratings')
 var Keywords = require('../models/keywords')
 var Questions = require('../models/questions')
 
-
-// var newTender = Tenders.create({name: 'Lawn Mowing', description: 'Will trade lasw cutting for carpentry', tender_type: 'services', user_id: 2})
+// Tenders.create
+// var names = [{name: 'Old Smelly Sneakers', desc: 'These are some great old sneakers with a wonderful aroma'}, {name: '60 inch Samsung HDTV', desc: 'This old TV still works great'}, {name: 'Asian Prints', desc: '4 Japanese woodblock prints by Hiroshige'}, {name: 'Living Room Set', desc: '4 piece set of living room furniture by Broyhill'}]
+// var index = Math.floor(Math.random() * (names.length))
+// Tenders.create({name: names[index].name, description: names[index].desc, tender_type: 'goods', user_id: 1}, current_user, function(tender) {
+//   console.log("***** create tender *****");
+// })
 // console.log(newTender);
 
+// Tenders.all
 // Tenders.all().then(function(tenders) {
 //   console.log("***** testing all method *****");
 //   for (i=0; i<tenders.rows.length; i++) {
@@ -19,68 +24,106 @@ var Questions = require('../models/questions')
 //   return
 // })
 //
-// Tenders.findByUserState(1, 'draft').then(function(tenders) {
-//   console.log("***** testing findByUserState` method *****");
-//   for (i=0; i<tenders.rows.length; i++) {
-//     console.log(tenders.rows[i].name);
-//   }
+// // Tenders.find
+// var tender_id = 3
+// Tenders.find(tender_id).then(function(tender) {
+//   console.log("***** testing find method *****");
+//   console.log(tender.rows[0]);
 //   return
 // })
-
-// Tenders.findByKeywords(['pool','math'])
-// .then(function(tenders) {
-//   console.log("***** testing findByKeyword` method *****");
-//   for (i=0; i<tenders.rows.length; i++) {
-//     console.log(tenders.rows[i].name);
-//   }
-//   return
-// })
-
-var find_object = {name: 'Pool Table', state: 'published', user_id: 1}
-Tenders.findByAny(find_object).then(function(tenders) {
-  console.log("***** testing findByAny *****");
-  for (var i = 0; i < tenders.rows.length; i++) {
-    console.log(tenders.rows[i])
-  }
-  return
-})
-
-// Tenders.findByUser(1).then(function(tenders) {
+//
+// // Tenders.findByUser
+// var user_id = 1
+// Tenders.findByUser(user_id).then(function(tenders) {
 //   console.log("***** testing findByUser method *****");
 //   for (var i = 0; i < tenders.rows.length; i++) {
 //     console.log(tenders.rows[i].name);
 //   }
 //   return
 // })
-
-// Tenders.find(3).then(function(tender) {
-//   console.log("***** testing find method *****");
-//   console.log(tender.rows[0]);
+//
+// // Tenders.findByUserState
+// var user_id = 1
+// var state = 'draft'
+// Tenders.findByUserState(user_id, state).then(function(tenders) {
+//   console.log("***** testing findByUserState method *****");
+//   for (i=0; i<tenders.rows.length; i++) {
+//     console.log(tenders.rows[i].name);
+//   }
 //   return
 // })
+//
+// // Tenders.findByKeyword
+// var keyword = 'pool'
+// Tenders.findByKeyword(keyword)
+// .then(function(tenders) {
+//   console.log("***** testing findByKeyword method *****");
+//   for (i=0; i<tenders.rows.length; i++) {
+//     console.log(tenders.rows[i].name);
+//   }
+//   return
+// })
+//
+// Tenders.findByKeywords
+// var keywords = ['pool','math']
+// Tenders.findByKeywords(keywords)
+// .then(function(tenders) {
+//   console.log("***** testing findByKeywords method *****");
+//   for (i=0; i<tenders.rows.length; i++) {
+//     console.log(tenders.rows[i].name);
+//   }
+//   return
+// })
+//
+// // Tenders.findByAny
+// var find_object = {state: 'published'}
+// Tenders.findByAny(find_object).then(function(tenders) {
+//   console.log("***** testing findByAny *****");
+//   for (var i = 0; i < tenders.rows.length; i++) {
+//     console.log(tenders.rows[i])
+//   }
+//   return
+// })
+//
+// display table schema
+// knex('users').columnInfo().then(function(info) {
+//   console.log(info);
+// });
 
-// Tenders.updateOne({id: 2, name: 'Pool Table', description: 'Slate table includes cues and balls', tender_type: 'goods'}).then(function() {
-//   Tenders.find(2).then(function(tender) {
-//     console.log(tender.rows[0]);
-//     return
-//   })
+// Tenders.updateOne
+// var current_user = 1
+// var tender = {id: 2, name: 'Pool Table and Cues', description: 'Slate table includes cues and balls', state: 'published', tender_type: 'goods', nbr_views: 26}
+// Tenders.updateOne(tender, current_user, function(errors) {
+//   console.log("*** update ***");
+//   console.log(errors);
+//   return errors
 // })
 
-// Tenders.destroy(5).then(function() {
-//   Tenders.find(5).then(function(tender) {
-//     console.log(tender.rows[0]);
-//     return
-//   })
+// Tenders.destroy
+// var current_user = 1
+// Tenders.create({name: 'delete test', description: 'delete test', tender_type: 'goods', user_id: 1}, current_user, function(tender) {
+//   console.log("***** tender added *****");
+//   console.log(tender);
 // })
-// var errors = []
+// var tenderId = 12
+// var current_user = 1
+// Tenders.destroy(tenderId, current_user, function(errors) {
+//   console.log("***** delete *****");
+//   console.log(errors);
+//   return errors
+// })
 
-// Tenders.validate({id: 2, name: '', description: '', tender_type: 'goods', user_id: 1}, 'update', function (errors) {
+// Tenders.validate
+// var current_user = 2
+// Tenders.validate({id: 2, name: '', description: '', tender_type: 'goods', user_id: 1}, 'update', current_user, function (errors) {
 //   console.log("***** validate *****");
 //   console.log(errors);
 //   return(errors)
 // })
 
-// Tenders.publish({id: 3, name: 'tender 3', description: 'tender 3', state: "draft", tender_type: 'goods', user_id: 1}, function(errors) {
+// Tenders.publish
+// var current_user = 1
+// Tenders.publish({id: 2, name: 'tender 3', description: 'tender 3', state: "published", tender_type: 'goods', user_id: 1}, current_user, function(errors) {
 //   console.log("*** publish ***");
 //   console.log(errors);
 //   return errors
@@ -96,6 +139,14 @@ Tenders.findByAny(find_object).then(function(tenders) {
 //   console.log("*** accept bid ***");
 //   console.log(errors);
 //   return errors
+// })
+
+// Users.create
+// var user = {first_name: 'Wilma', last_name: 'Flintstone', email_address: 'wilma@bedrock.gov', username: 'YabbaDabbaDo', about_me: 'I love beer', profile_pic: '', facebook_id: '123456789' }
+// var current_user = 1
+// Users.create(user, current_user, function(user) {
+//     console.log("***** user added *****");
+//     console.log(user);
 // })
 
 // Users.all().then(function(users) {
@@ -117,6 +168,15 @@ Tenders.findByAny(find_object).then(function(tenders) {
 //   console.log(users.rows[0]);
 // })
 
+// Users.updateOne
+// var current_user = 1
+// var user = {id: 1, first_name: 'Thomas', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', username: 'tomhendersonfl', about_me: 'hello'}
+// Users.updateOne(user, current_user, function(errors) {
+//   console.log("*** update user ***");
+//   console.log(errors);
+//   return errors
+// })
+
 // var errors = Users.validate({id: 1, first_name: '', last_name: '', email_address: 'me@you', facebook_username: ''})
 // console.log(errors);
 
@@ -127,3 +187,10 @@ Tenders.findByAny(find_object).then(function(tenders) {
 //   }
 //   return
 // })
+
+// Bids.create
+var bid = {tender_id: 7, user_id: 1, bid_description: 'description'}
+Bids.create(bid, function(bid) {
+  console.log("***** create bid *****");
+  console.log(bid);
+})
