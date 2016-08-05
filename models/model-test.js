@@ -1,3 +1,6 @@
+// This file contains tests for all models
+//   To use it, uncomment the method you want to test
+//     and use node to execute this file
 var knex = require('../db/knex')
 var Tenders = require('../models/tenders')
 var Users = require('../models/users')
@@ -10,10 +13,11 @@ var Questions = require('../models/questions')
 // Tenders.create
 // var names = [{name: 'Old Smelly Sneakers', desc: 'These are some great old sneakers with a wonderful aroma'}, {name: '60 inch Samsung HDTV', desc: 'This old TV still works great'}, {name: 'Asian Prints', desc: '4 Japanese woodblock prints by Hiroshige'}, {name: 'Living Room Set', desc: '4 piece set of living room furniture by Broyhill'}]
 // var index = Math.floor(Math.random() * (names.length))
-// Tenders.create({name: names[index].name, description: names[index].desc, tender_type: 'goods', user_id: 1}, current_user, function(tender) {
+// var current_user = 1
+// Tenders.create({name: names[index].name, description: names[index].desc, tender_type: 'goods', user_id: 1, picture: '../images/mypic.png'}, current_user, function(tender) {
 //   console.log("***** create tender *****");
+//   console.log(tender);
 // })
-// console.log(newTender);
 
 // Tenders.all
 // Tenders.all().then(function(tenders) {
@@ -92,7 +96,7 @@ var Questions = require('../models/questions')
 
 // Tenders.updateOne
 // var current_user = 1
-// var tender = {id: 2, name: 'Pool Table and Cues', description: 'Slate table includes cues and balls', state: 'published', tender_type: 'goods', nbr_views: 26}
+// var tender = {id: 2, name: 'Pool Table and Cues', description: 'Slate table includes cues and balls', state: 'published', tender_type: 'goods', nbr_views: 26, picture: '../img/mypic.png'}
 // Tenders.updateOne(tender, current_user, function(errors) {
 //   console.log("*** update ***");
 //   console.log(errors);
@@ -181,11 +185,15 @@ var Questions = require('../models/questions')
 // console.log(errors);
 
 // Bids.create
-// var bid = {tender_id: 7, user_id: 1, bid_description: 'description'}
+// var bid = {tender_id: 8, user_id: 1, bid_description: 'description'}
 // Bids.create(bid, function(bid) {
 //   console.log("***** create bid *****");
 //   console.log(bid);
 // })
+
+// Bids.accept
+// var bid_id = 9
+
 
 // Bids.all
 // Bids.all().then(function(bids) {
@@ -197,11 +205,11 @@ var Questions = require('../models/questions')
 // })
 
 // Bids.find
-var id = 2
-Bids.find(id).then(function(bids) {
-  console.log("***** testing find bid *****");
-  for (i=0; i<bids.rows.length; i++) {
-    console.log(bids.rows[i].description);
-  }
-  return
-})
+// var id = 2
+// Bids.find(id).then(function(bids) {
+//   console.log("***** testing find bid *****");
+//   for (i=0; i<bids.rows.length; i++) {
+//     console.log(bids.rows[i].description);
+//   }
+//   return
+// })
