@@ -4,6 +4,7 @@ var knex = require('../db/knex');
 var User_Logic = require('../models/users')
 var Tender_Logic = require('../models/tenders')
 var FbInfo = require('../models/fbInfo')
+var Position = require('../models/geolocation')
 
 router.get('/', function(req, res, next) {
   if (userState.state!= "valid"){
@@ -14,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next){
-  res.render('users/signup',{current_user_id:req.cookies.userid, facebook_id:FbInfo.facebook_id});
+  res.render('users/signup',{current_user_id:req.cookies.userid, facebook_id:FbInfo.facebook_id, position:Position});
 });
 
 //need to get the :id from facebook cookie
