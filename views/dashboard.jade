@@ -29,11 +29,20 @@ block content
       h3 Items for Trade
       for tender in tenders
         div.dashboard-tender
-          h4=tender.name
+          h4
+            a(href='/tenders/'+tender.id)= tender.name
           p=tender.description
           p=tender.tender_type
           p=tender.username
       a.dash-link(href='/tenders') View All Tenders
+    section#tenders-dash
+      h3 My tenders
+      for tender in myTenders
+        div.dashboard-tender
+          h4=tender.name
+          p=tender.description
+          p=tender.tender_type
+          p=tender.username
     section#bids
       section#bids-sent
         h3 My Bids Sent
