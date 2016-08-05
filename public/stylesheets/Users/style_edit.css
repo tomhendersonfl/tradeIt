@@ -1,0 +1,38 @@
+#parent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#blue-border{
+  width: 70%;
+  border: solid #ADD8E6 4px;
+  margin: 3%;
+  padding: 2%;
+}
+
+#upload-file-butt{
+  height: 45px;
+  font-size: 2rem;
+  background-color: white;
+  color: black;
+  border: solid black 2px;
+}
+
+#user-update-butt{
+  height: 55px;
+  font-size: 2rem;
+  background-color: white;
+  color: black;
+  border: solid black 2px;
+
+}
+
+.btn:hover {
+  background-color: transparent;
+}
+
+.input-field label#aboutme-label{
+  left: 25.75rem;
+}

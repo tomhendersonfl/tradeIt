@@ -1,20 +1,35 @@
 extends ../layout
 
 block content
-  h1 Edit your user profile here:
-  form(action='/users/:id/edit', method='post', encType='multipart/form-data')
-    p Email Address:
-    input(type='email', name='email_address', value='#{user.email_address}', maxlength="35", placeholder='JohnDoe@example.com')
-    p Create username:
-    input(type='textarea', name='username', value='#{user.username}', maxlength="35", placeholder='Username', required)
-    p First Name:
-    input(type='textarea', name='first_name', value='#{user.first_name}', maxlength="35", placeholder='First Name')
-    p Last Name:
-    input(type='textarea', name='last_name', value='#{user.last_name}', maxlength="35", placeholder='Last Name')
-    p About me:
-    input(type='textarea', name='about_me', value='#{user.about_me}', maxlength="500", placeholder='About me')
-    p Change profile picture:
-    input(type='file', name='profile_pic', accept='image/*')
-    p User Id:
-    input(type='number', name='facebook_id', value='#{user.id}', disabled)
-    input#submit_button(type='submit', name='', value='Submit Profile')
+  div#parent
+    div#blue-border
+      h1 Edit:
+        div.row
+          form.cols12#edit-prof(action='/users/:id/edit', method='post')
+            div.row
+              div.input-field.col.s6
+                input(type='text', name='first_name', value='#{user.first_name}', maxlength="35", placeholder='First Name')
+              div.row
+                div.input-field.col.s6
+                  input(type='text', name='last_name', value='#{user.last_name}', maxlength="35", placeholder='Last Name') 
+              div.row
+                div.input-field.col.s6
+                  input(type='text', name='username', value='#{user.username}', maxlength="35", placeholder='Username', required) 
+          
+                div.input-field.col.s6
+                  input(type='email', name='email_address', value='#{user.email_address}', maxlength="35", placeholder='JohnDoe@example.com') 
+              div.row
+                div.input-field.col.s12
+                  textarea(id="aboutme", name='about_me', class="materialize-textarea", value='#{user.about_me}')
+                  label#aboutme-label(for="aboutme") About Me
+              div.file-field.input-field.tenders-form
+                div.btn#upload-file-butt
+                  span#file-text File
+                  input(type='file', name='profile_pic', accept='image/*')
+                div.file-path-wrapper
+                  input.file-path.validate(type="text" placeholder="Upload one or more files")
+              button.btn.waves-effect.waves-light#user-update-butt(type='submit', name='', value='Submit Profile') Update
+                i.material-icons.right send
+
+
+        
