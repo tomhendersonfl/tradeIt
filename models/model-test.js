@@ -189,8 +189,8 @@ var Questions = require('../models/questions')
 // })
 
 // Bids.create
-// var bid = {tender_id: 4, user_id: 1, bid_description: 'description'}
-// Bids.create(bid, function(bid) {
-//   console.log("***** create bid *****");
-//   console.log(bid);
-// })
+var bid = {tender_id: 7, user_id: 1, bid_description: 'description'}
+Bids.create(bid, function(bid) {
+  console.log("***** create bid *****");
+  console.log(bid);
+})
