@@ -24,10 +24,10 @@ html
   body
 
     ul#dropdown2.dropdown-content
-      li 
+      li.navText 
         a(href="/users/#{current_user_id}") My Profile
           li.divider
-            li
+            li.navText
               a(href="/auth/logout") Logout
     nav
       div.nav-wrapper
@@ -50,7 +50,7 @@ html
       div.container
         div.row
           div.col.l6.s12
-            h5.white-text Making the world a barter place.
+            h5#footer-text.white-text Making the world a barter place.
 
 
           div.col.l6.s12

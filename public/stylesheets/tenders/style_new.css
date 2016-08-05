@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-#parent{
+#parent-tenders-style{
   width: 100%;
-  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,13 +10,14 @@
 
 .all_this {
   border: solid #ADD8E6 4px;
-  width: 800px;
-  height: 700px;
-  padding: 5%;
+  width: 60%;
+  padding: 3%;
+  margin: 5%;
+  position: relative;
 }
 
-h1 {
-  font-family: Quicksand;
+#addTender {
+  font-family: Open Sans;
 }
 
 div.input-field label {

@@ -2,27 +2,28 @@ extends ../layout
 
 block content
 
-  div#parent
-    h1 Add Tender
+  div#parent-tenders-style
+  
+    h1#addTender Add Tender
     div.all_this
-      div.row
-        form.col.s12(action='/tenders', method='post')
-          div.row
+      div.row.tenders-form
+        form.col.s12#container-form(action='/tenders', method='post')
+          div.row.tenders-form
             div.input-field.col.s6
               input(id="input_text" type="text" length="15")
-              label(for="input_text") Name
-          div.row    
+              label.tenders-new-text(for="input_text") Name
+          div.row.tenders-form    
             div.input-field.col.s12
               textarea(id="textarea1" class="materialize-textarea" length="120")
-              label(for="textarea1") Item Description
-          div.row
+              label.tenders-new-text(for="textarea1") Item Description
+          div.row.tenders-form
             p
               input(type="checkbox" id="goods")
-              label(for="goods") Goods
+              label.tenders-new-text(for="goods") Goods
             p
               input(type="checkbox" id="services")
-              label(for="services") Services
-          div.file-field.input-field
+              label.tenders-new-text(for="services") Services
+          div.file-field.input-field.tenders-form
             div.btn
               span File
               input(type="file" multiple)
