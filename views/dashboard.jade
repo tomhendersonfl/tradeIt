@@ -34,21 +34,35 @@ block content
       h3 Items for Trade
       for tender in tenders
         div.dashboard-tender
-          h4=tender.name
+          h4
+            a(href='/tenders/'+tender.id)= tender.name
           p=tender.description
           p=tender.tender_type
           p=tender.username
       a.dash-link(href='/tenders') View All Tenders
+    section#tenders-dash
+      h3 My tenders
+      for tender in myTenders
+        div.dashboard-tender
+          h4=tender.name
+          p=tender.description
+          p=tender.tender_type
+          p=tender.username
     section#bids
       section#bids-sent
         h3 My Bids Sent
-          //- for bid in sentBids
-          //-   div.dashboard-bids-sent
-          //-     p=bid.tender_id
-          //-     p=bid.description
+        for bid in bids_sent
+          div.dashboard-bids-sent
+            p Tender ID: #{bid.tender_id}
+            p Offer Description: #{bid.description}
+            p Response: #{bid.response}
         a.dash-link(href='/bids-sent') View all Bids Sent
       section#bids-received
         h3 My Bids Received
-          //- for bid in bids-received
-          //-   div.dashboard-bids-received
+          for bid in bids_received
+            div.dashboard-bids-received
+              p Tender ID: #{bid.tender_id}
+              p Offer Description: #{bid.description}
+              p User Id: #{bid.user_id}
+              p Response: #{bid.response}
         a.dash-link(href='/bids-received') View all Bids Received

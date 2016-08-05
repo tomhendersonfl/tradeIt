@@ -53,3 +53,10 @@
 }
 .boo{
   box-shadow: 5px 5px 2px black;
+}
+.dashboard-bids-sent{
+  border: 2px solid black;
+}
+.dashboard-bids-received{
+  border: 2px solid black;
+}
