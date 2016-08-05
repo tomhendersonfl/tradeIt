@@ -4,14 +4,15 @@ var router = express.Router();
 var knex = require('../db/knex');
 var Logic = require('../models/tenders');
 var Bids = require('../models/bids');
+var Tenders = require('../models/tenders');
 
 function Tenders(){
   return knex('tenders');
 };
 
 router.get('/', function(req, res, next) {
-  Tenders().select().then(function(tenders){
-    res.render('tenders/index', {tenders:tenders, current_user_id:req.cookies.userid});
+  Tenders.findByNotUserPublished(req.cookies.userid).then(function(tenders){
+    res.render('tenders/index', {tenders:tenders.rows, current_user_id:req.cookies.userid});
   })
 });
 
