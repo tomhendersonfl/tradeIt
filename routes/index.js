@@ -5,12 +5,6 @@ var Tenders = require('../models/tenders');
 var Bids = require('../models/bids');
 var Users = require('../models/users');
 var FbInfo = require('../models/fbInfo');
-var Helpers = require('../models/helpers');
-var Mapkey = require('../models/mapkey');
-
-function UsersK(){
-  return knex('users')
-}
 
 router.get('/', function(req, res, next) {
     if (!req.cookies.userid) {
