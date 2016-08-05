@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
 
         knex('users').insert({id: 1008, first_name: 'Barney', last_name: 'Rubble', email_address: 'barneyrubble@gmail.com', state: 'verified', is_administrator: false, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'goofy_pants', about_me: "Everything I like is either illegal, immoral, fattening, addictive, expensive, or impossible."}),
 
-        knex('users').insert({id: 1009, first_name: 'Barney', last_name: 'Rubble', email_address: 'barneyrubble@gmail.com', state: 'verified', is_administrator: false, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'goofy_pants', about_me: "Everything I like is either illegal, immoral, fattening, addictive, expensive, or impossible."}),
+        knex('users').insert({id: 1009, first_name: 'Dino', last_name: 'Flintstone', email_address: 'dino@gmail.com', state: 'verified', is_administrator: false, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'sauropod', about_me: "Everything I like is either illegal, immoral, fattening, addictive, expensive, or impossible."}),
 
         knex('users').insert({id: 1010, first_name: 'Betty', last_name: 'Rubble', email_address: 'bettyrubble@gmail.com', state: 'verified', is_administrator: false, created_at: '2016-01-01', updated_at: '2016-01-01', username: 'betty_boop', about_me: "I wish my eyes could take photos."}),
 

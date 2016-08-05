@@ -173,13 +173,13 @@ var Questions = require('../models/questions')
 // })
 
 // Users.updateOne
-// var current_user = 1
-// var user = {id: 1, first_name: 'Thomas', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', username: 'tomhendersonfl', about_me: 'hello'}
-// Users.updateOne(user, current_user, function(errors) {
-//   console.log("*** update user ***");
-//   console.log(errors);
-//   return errors
-// })
+var current_user = 1
+var user = {id: 1, first_name: 'Thomas', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', username: 'tomhendersonfl', about_me: 'hello', profile_pic: ' '}
+Users.updateOne(user, current_user, function(errors) {
+  console.log("*** update user ***");
+  console.log(errors);
+  return errors
+})
 
 // var errors = Users.validate({id: 1, first_name: '', last_name: '', email_address: 'me@you', facebook_username: ''})
 // console.log(errors);
