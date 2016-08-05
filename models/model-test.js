@@ -194,7 +194,6 @@ Users.updateOne(user, current_user, function(errors) {
 // Bids.accept
 // var bid_id = 9
 
-
 // Bids.all
 // Bids.all().then(function(bids) {
 //   console.log("***** testing all bids *****");
