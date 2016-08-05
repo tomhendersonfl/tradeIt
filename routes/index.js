@@ -13,21 +13,6 @@ function UsersK(){
 }
 
 router.get('/', function(req, res, next) {
-
-
-router.get('/dashboard', function(req, res, next){
-  console.log(req.cookies.geolocation);
-  Tenders.all().then(function(tenders){
-    UsersK().select('position').then(function(locations){
-      console.log(locations);
-      if(tenders.rows.length > 20){
-        tenders.rows.splice(20)
-      }
-      res.render('dashboard', {tenders:tenders.rows, current_user_id:req.cookies.userid,locations:locations})
-    })
-  })
-
-router.get('/', function(req, res, next) {
     if (!req.cookies.userid) {
         res.cookie('userid', 100);
     }
@@ -39,6 +24,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/dashboard', function(req, res, next) {
     Tenders.findByNotUserPublished(req.cookies.userid).then(function(tenders) {
+      UsersK().select('position').then(function(locations){
+        // console.log(locations);
         Bids.all().then(function(bids) {
             Tenders.findByUser(req.cookies.userid).then(function(myTenders) {
                 if (tenders.rows.length > 20) {
@@ -62,10 +49,12 @@ router.get('/dashboard', function(req, res, next) {
                     bids_sent: bids_sent,
                     bids_received: bids_received,
                     current_user_id: req.cookies.userid,
-                    myTenders: myTenders.rows
+                    myTenders: myTenders.rows,
+                    locations:locations
                 })
             })
         })
+      })
     })
 });
 
