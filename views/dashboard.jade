@@ -12,19 +12,19 @@ block content
     section.carousel.slider
       for tender in tenders
         a.carousel-item.boo(href='/tenders/#{tender.id}')
-          img(src='#{tender.picture}')
+          img(src='#{tender.picture}' alt='No Image Available')
     section#map
     section#tenders-dash
       h3 Items for Trade
       for tender in tenders
         div.dashboard-tender
           h4
-            a(href='/tenders/'+tender.id) 
+            a.dashy_link(href='/tenders/'+tender.id) 
               p.dashy Tender Name: #{tender.name}
           p.dashy Description: #{tender.description}
           p.dashy Type: #{tender.tender_type}
             a(href='/tenders/'+tender.id)
-              img.dashy_img(src='#{tender.picture}')
+              img.dashy_img(src='#{tender.picture}' alt='No Image Available')
       a.dash-link(href='/tenders') View All Tenders
     section#tenders-dash
       h3 My tenders
@@ -34,7 +34,7 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}')
+            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             form(action='/tenders/'+tender.id+'/delete', method='get')
             input#submit_button(type='submit', name='', value='Delete')
         else if (tender.state == 'published')
@@ -42,19 +42,19 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}')
+            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
         else if (tender.state == 'active')
           div.dashboard-tender.green
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}')
+            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
         else if (tender.state == 'closed')
           div.dashboard-tender.grey
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            img.dashy_img(src='#{tender.picture}')
+            img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             p.dashy closed
       a.dash-link(href='#') View All  My Tenders
     section#bids
