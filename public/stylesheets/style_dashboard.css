@@ -67,3 +67,15 @@
 .dashboard-bids-received{
   border: 2px solid black;
 }
+.dashy{
+  font-size: 20px;
+}
+.dashy_img{
+  width: 80%;
+  height: 350px;
+  box-shadow: 5px 5px 2px black;
+  background-size: auto;
+  margin-left: 10%;
+  margin-top: 5%;
+  border-radius: 5px;
+}

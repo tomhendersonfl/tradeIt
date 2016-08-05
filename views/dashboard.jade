@@ -19,41 +19,43 @@ block content
       for tender in tenders
         div.dashboard-tender
           h4
-            a(href='/tenders/'+tender.id)= tender.name
-          p=tender.description
-          p=tender.tender_type
-          p=tender.username
+            a(href='/tenders/'+tender.id) 
+              p.dashy Tender Name: #{tender.name}
+          p.dashy Description: #{tender.description}
+          p.dashy Type: #{tender.tender_type}
+            a(href='/tenders/'+tender.id)
+              img.dashy_img(src='#{tender.picture}')
       a.dash-link(href='/tenders') View All Tenders
     section#tenders-dash
       h3 My tenders
       for tender in myTenders
         if (tender.state == 'draft')
           div.dashboard-tender.red
-            h4=tender.name
-            p=tender.description
-            p=tender.tender_type
-            p=tender.username
+            h4.dashy Tender Name: #{tender.name}
+            p.dashy Description: #{tender.description}
+            p.dashy Type: #{tender.tender_type}
+            img.dashy_img(src='#{tender.picture}')
+            form(action='/tenders/'+tender.id+'/delete', method='get')
+            input#submit_button(type='submit', name='', value='Delete')
         else if (tender.state == 'published')
           div.dashboard-tender.yellow
-            h4=tender.name
-            p=tender.description
-            p=tender.tender_type
-            p=tender.username
+            h4.dashy Tender Name: #{tender.name}
+            p.dashy Description: #{tender.description}
+            p.dashy Type: #{tender.tender_type}
+            img.dashy_img(src='#{tender.picture}')
         else if (tender.state == 'active')
           div.dashboard-tender.green
-            h4=tender.name
-            p=tender.description
-            p=tender.tender_type
-            p=tender.username
+            h4.dashy Tender Name: #{tender.name}
+            p.dashy Description: #{tender.description}
+            p.dashy Type: #{tender.tender_type}
+            img.dashy_img(src='#{tender.picture}')
         else if (tender.state == 'closed')
           div.dashboard-tender.grey
-            h4=tender.name
-            p=tender.description
-            p=tender.tender_type
-            p=tender.username
-            p closed
-            form(action='/tenders/'+tender.id+'/delete', method='get')
-              input#submit_button(type='submit', name='', value='Delete')
+            h4.dashy Tender Name: #{tender.name}
+            p.dashy Description: #{tender.description}
+            p.dashy Type: #{tender.tender_type}
+            img.dashy_img(src='#{tender.picture}')
+            p.dashy closed
       a.dash-link(href='#') View All  My Tenders
     section#bids
       section#bids-sent
