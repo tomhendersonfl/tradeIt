@@ -1,14 +1,34 @@
 extends ../layout
 
 block content
-  h1 Create a new Tender here:
-  form(action='/tenders', method='post')
-    input(type='textarea', name='name', value='', placeholder='Name')
-    input(type='textarea', name='description', value='', placeholder='Description')
-    select(name='tender_type')
-      option(value='default', selected='', disabled='') Type
-      option(value='service') Service
-      option(value='goods') Goods
-    input(type='number', name='user_id', value='2', placeholder='User Id')
-    //value for user_id will be taken from session variable
-    input#submit_button(type='submit', name='', value='Create New Tender')
+
+  div#parent
+    h1 Add Tender
+    div.all_this
+      div.row
+        form.col.s12(action='/tenders', method='post')
+          div.row
+            div.input-field.col.s6
+              input(id="input_text" type="text" length="15")
+              label(for="input_text") Name
+          div.row    
+            div.input-field.col.s12
+              textarea(id="textarea1" class="materialize-textarea" length="120")
+              label(for="textarea1") Item Description
+          div.row
+            p
+              input(type="checkbox" id="goods")
+              label(for="goods") Goods
+            p
+              input(type="checkbox" id="services")
+              label(for="services") Services
+          div.file-field.input-field
+            div.btn
+              span File
+              input(type="file" multiple)
+            div.file-path-wrapper
+              input.file-path.validate(type="text" placeholder="Upload one or more files")
+               
+            button.btn.waves-effect.waves-light#submit(type="submit" name="action") Submit
+              i.material-icons.right send 
+            
