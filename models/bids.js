@@ -1,4 +1,6 @@
 var knex = require('../db/knex')
+var nodemailer = require('nodemailer')
+
 module.exports = {
   create: function(bid, callback) {
     knex.raw(`insert into bids values (DEFAULT, ${bid.tender_id}, ${bid.user_id}, 'active', '${bid.bid_description}', 'Pending ...', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
@@ -20,6 +22,12 @@ module.exports = {
       .then(function(bid) {
         knex.raw(`update tenders set state = 'closed', accepted_at = CURRENT_TIMESTAMP where id = ${bid.rows[0].tender_id}`)
         .then(function() {
+          var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+          
+            }
+          })
           console.log(bid.rows[0]);
           return callback(bid.rows[0])
         })
@@ -40,16 +48,16 @@ module.exports = {
     })
   },
   all: function() {
-    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.picture, t.name as tender_name from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id`)
+    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name, t.picture from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id`)
   },
   find: function(id) {
-    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id where b.id = ${id}`)
+    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name, t.picture from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id where b.id = ${id}`)
   },
   findByTender: function(tender_id) {
-    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id where b.tender_id = ${tender_id}`)
+    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name, t.picture from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id where b.tender_id = ${tender_id}`)
   },
   findByUser: function(user_id) {
-    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id where b.user_id = ${user_id}`)
+    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name, t.picture from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id where b.user_id = ${user_id}`)
   },
   updateOne: function(bid) {
     return knex.raw(`update bids set description = '${bid.description}', updated_at = CURRENT_TIMESTAMP where id = ${bid.id}`)
