@@ -52,6 +52,7 @@ block content
               input(type='textarea', name='description', hidden, value='#{tender.description}')
               input(type='text', name='state', hidden, value='#{tender.state}')
               input(type='text', name='user_id', hidden, value='#{tender.user_id}')
+              input(type='file', name='picture', hidden, value='#{tender.picture}')
               input#submit_button(type='submit', name='', value='publish')
         else if (tender.state == 'published')
           div.dashboard-tender.yellow
@@ -62,6 +63,23 @@ block content
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
+            form(action='/tenders/#{id}', method='post')
+              input(type='textarea', name='name', value='#{tender.name}')
+              input(type='textarea', name='description', value='#{tender.description}')
+              input(type='text', name='nbr_views', hidden, value='#{tender.nbr_views}')
+              input(type='text', name='id', hidden, value='#{tender.id}')
+              input(type='text', name='user_id', hidden, value='#{tender.user_id}')
+              input(type='text', name='state', hidden, value='#{tender.state}')
+              input(type='text', name='picture', hidden, value='#{tender.picture}')
+              if (tender.tender_type == 'goods')
+                select(name='tender_type')
+                  option(value='goods' selected) Goods
+                  option(value='service') Service
+              else
+                select(name='tender_type')
+                  option(value='service' selected) Service
+                  option(value='goods') Goods
+              input#submit_button(type='submit', name='', value='update')
         else if (tender.state == 'active')
           div.dashboard-tender.green
             h4.dashy Tender Name: #{tender.name}
