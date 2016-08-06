@@ -3,6 +3,11 @@ extends ../layout
 block content
   body.show_tender
   h1.show_tender_heading  Showing #{tenders.name}
+  h2
+    if (tenders.picture === null || tenders.picture == 'undefined')
+      img.show_tender_image(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+    else
+      img.show_tender_image(src='#{tenders.picture}' alt='No Image Available')
   if tenders
     form.tender_show(action='/bids', method='post')
       input(type='hidden', name='user_id', value='#{user_id}')
