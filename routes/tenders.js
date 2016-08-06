@@ -41,7 +41,7 @@ router.post('/:id/publish', function(req, res, next) {
 router.get('/:id/delete', function(req, res, next) {
   Tenders.destroy(req.params.id, req.cookies.userid, function(errors){
       console.log("errors");
-      console.log(errors);
+      console.log(req.cookies.userid);
       res.redirect('/dashboard')
   })
 });
