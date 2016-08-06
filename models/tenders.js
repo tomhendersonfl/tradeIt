@@ -80,8 +80,12 @@ module.exports = {
       console.log(tender.rows[0]);
       knex.raw(`select * from users where id = ${current_user}`)
       .then(function(user) {
-        console.log("***** current user *****");
+        console.log("***** user lookup *****");
         console.log(user.rows[0]);
+        console.log(("***** tender user id *****"));
+        console.log(tender.user_id);
+        console.log("***** current user *****");
+        console.log(current_user);
         if (tender.user_id !== current_user && !user.rows[0].is_administrator) {
           errors.push(`Only tender owner may delete a tender`)
         }
