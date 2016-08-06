@@ -6,7 +6,8 @@ block content
     section#profile
       h3.username #{users.username}'s Profile
       h3
-        a(href='/users/#{users.id}/edit') Edit your profile
+        form(action='/users/#{users.id}/edit', method='get')
+          input.update_profile_button#submit_button(type='submit', name='', value='Update')
       div.profile
         h4 Picture:
         img.profile_picture(src='#{users.profile_pic}', alt='Profile Picture')
@@ -18,3 +19,7 @@ block content
           h4 Name: #{tender.name}
           h4 Description: #{tender.description}
           h4 Type: #{tender.tender_type}
+          if (tender.picture === null || tender.picture == 'undefined')
+            img.boo_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+          else
+            img.boo_img(src='#{tender.picture}' alt='No Image Available')
