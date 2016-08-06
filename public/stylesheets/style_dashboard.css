@@ -76,10 +76,10 @@
   background: -o-linear-gradient(bottom right, black, #7FB0B7); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(bottom right, black, #7FB0B7); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom right, black, #7FB0B7); /* Standard syntax */
-}
-.boo{
+  width: 55%;
+  margin-left: 25%;
+  margin-top: 5%;
   box-shadow: 5px 5px 2px black;
-  width: 150px;
 }
 .dashboard-bids-sent{
   border: 2px solid black;
@@ -106,6 +106,8 @@
 .boo_img{
   width: 100%;
   height: 100%;
+  box-shadow: 5px 5px 2px black;
+  border-radius: 5%;
 }
 .items_for_trade{
   position: absolute;
