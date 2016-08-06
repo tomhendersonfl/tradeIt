@@ -27,7 +27,7 @@ router.get('/auth/login', function(req, res, next){
     Users.findByFacebookId(FbInfo.facebook_id).then(function(user){
       res.cookie('userid',user.rows[0].id);
     }).then(function(){
-        res.redirect('/');
+        res.redirect('/dashboard');
     })
   }
 });
