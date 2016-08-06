@@ -104,9 +104,13 @@ block content
       section#bids-sent
         for bid in bids_sent
           div.dashboard-bids-sent
-            p.bids_sent Tender ID: #{bid.tender_id}
+            p.bids_sent Tender Name: #{bid.tender_name}
             p.bids_sent Offer Description: #{bid.description}
             p.bids_sent Response: #{bid.response}
+            if (bid.picture === null || bid.picture == 'undefined')
+              img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+            else
+              img.dashy_img(src='#{bid.picture}' alt='No Image Available')
         a.dash-link(href='/bids-sent') View all Bids Sent
     section.bids-received-div
       h3.my_bids_received My Bids Received
@@ -118,6 +122,10 @@ block content
                 p.bids_sent Offer Description: #{bid.description}
                 p.bids_sent User Name: #{bid.username}
                 p.bids_sent Response: #{bid.response}
+                if (bid.picture === null || bid.picture == 'undefined')
+                  img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+                else
+                  img.dashy_img(src='#{bid.picture}' alt='No Image Available')
                 form(action='/bids/#{bid.id}/accept', method='post')
                   input#submit_button(type='submit', name='', value='Accept Bid')
                 form(action='/bids/#{bid.id}/reject', method='post')

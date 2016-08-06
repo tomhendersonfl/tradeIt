@@ -41,6 +41,7 @@
   height:650px;
   overflow: auto;
   float: left;
+  width: 100%;
 }
 #bids{
   margin: 50px;
