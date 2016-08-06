@@ -40,6 +40,7 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
+            p.dashy This is a draft. Select publish to start getting offers!
             if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
@@ -59,6 +60,7 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
+            p.dashy Waiting for offers. Update for a better description.
             if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
@@ -85,20 +87,36 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
+            p.dashy you got an offer!
+              for bid in bids_received
+                if (bid.tender_id == tender.id)
+                  p.dashy offer: #{bid.description}
+                  p.dashy bidder: #{bid.username}
+                  if (bid.picture === null || bid.picture == 'undefined')
+                    img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+                  else
+                    img.dashy_img(src='#{bid.picture}' alt='No Image Available')
+            p.dashy for
             if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
+            for bid in bids_received
+              if (bid.tender_id == tender.id)
+                form(action='/bids/#{bid.id}/accept', method='post')
+                  input#submit_button(type='submit', name='', value='Accept Bid')
+                form(action='/bids/#{bid.id}/reject', method='post')
+                  input#submit_button(type='submit', name='', value='Reject Bid')
         else if (tender.state == 'closed')
           div.dashboard-tender.grey
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
+            p.dashy closed. you made a good trade.
             if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
-            p.dashy closed
     section#bids
       h3.my_bids_sent My Bids Sent
       section#bids-sent
@@ -120,7 +138,7 @@ block content
               div.dashboard-bids-received
                 p.bids_sent Tender Name: #{bid.tender_name}
                 p.bids_sent Offer Description: #{bid.description}
-                p.bids_sent User Name: #{bid.username}
+                p.bids_sent Bidder: #{bid.username}
                 p.bids_sent Response: #{bid.response}
                 if (bid.picture === null || bid.picture == 'undefined')
                   img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
