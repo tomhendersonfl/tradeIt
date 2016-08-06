@@ -185,11 +185,11 @@ var Questions = require('../models/questions')
 // console.log(errors);
 
 // Bids.create
-// var bid = {tender_id: 8, user_id: 1, bid_description: 'description'}
-// Bids.create(bid, function(bid) {
-//   console.log("***** create bid *****");
-//   console.log(bid);
-// })
+var bid = {tender_id: 1010, user_id: 1001, bid_description: 'I will give you a stuffed armadillo for the haunted doll'}
+Bids.create(bid, function(bid) {
+  console.log("***** create bid *****");
+  console.log(bid);
+})
 
 // Bids.accept
 // var bid_id = 11
