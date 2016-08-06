@@ -45,7 +45,14 @@ block content
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             form(action='/tenders/'+tender.id+'/delete', method='get')
-            input#submit_button(type='submit', name='', value='Delete')
+              input#submit_button(type='submit', name='', value='Delete')
+            form(action='/tenders/'+tender.id+'/publish', method='post')
+              input(type='text', name='id', hidden, value='#{tender.id}')
+              input(type='textarea', name='name', hidden, value='#{tender.name}')
+              input(type='textarea', name='description', hidden, value='#{tender.description}')
+              input(type='text', name='state', hidden, value='#{tender.state}')
+              input(type='text', name='user_id', hidden, value='#{tender.user_id}')
+              input#submit_button(type='submit', name='', value='publish')
         else if (tender.state == 'published')
           div.dashboard-tender.yellow
             h4.dashy Tender Name: #{tender.name}

@@ -30,7 +30,10 @@ router.post('/:id', function(req, res, next) {
       res.redirect('/dashboard')
   })
 });
+
 router.post('/:id/publish', function(req, res, next) {
+  console.log("req body");
+  console.log(req.body);
   Logic.publish(req.body, req.cookies.userid, function(){
       res.redirect('/dashboard')
   })
@@ -38,6 +41,8 @@ router.post('/:id/publish', function(req, res, next) {
 
 router.get('/:id/delete', function(req, res, next) {
   Tenders.destroy(req.params.id, req.cookies.userid, function(errors){
+      console.log("errors");
+      console.log(errors);
       res.redirect('/dashboard')
   })
 });
