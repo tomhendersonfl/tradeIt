@@ -99,7 +99,6 @@ block content
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             p.dashy closed
-      a.dash-link(href='#') View All  My Tenders
     section#bids
       h3.my_bids_sent My Bids Sent
       section#bids-sent
@@ -113,11 +112,15 @@ block content
       h3.my_bids_received My Bids Received
       section#bids-received
           for bid in bids_received
-            div.dashboard-bids-received
-              p.bids_sent Tender ID: #{bid.tender_id}
-              p.bids_sent Offer Description: #{bid.description}
-              p.bids_sent User Id: #{bid.user_id}
-              p.bids_sent Response: #{bid.response}
-        a.dash-link(href='/bids-received') View all Bids Received
+            if (bid.state === 'active')
+              div.dashboard-bids-received
+                p.bids_sent Tender Name: #{bid.tender_name}
+                p.bids_sent Offer Description: #{bid.description}
+                p.bids_sent User Name: #{bid.username}
+                p.bids_sent Response: #{bid.response}
+                form(action='/bids/#{bid.id}/accept', method='post')
+                  input#submit_button(type='submit', name='', value='Accept Bid')
+                form(action='/bids/#{bid.id}/reject', method='post')
+                  input#submit_button(type='submit', name='', value='Reject Bid')
     section#map-container
       div#map

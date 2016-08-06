@@ -19,6 +19,8 @@ router.get('/', function(req, res, next) {
 router.get('/dashboard', function(req, res, next) {
     Tenders.findByNotUserPublished(req.cookies.userid).then(function(tenders) {
         Bids.all().then(function(bids) {
+          console.log("this is bids");
+          console.log(bids);
             Tenders.findByUser(req.cookies.userid).then(function(myTenders) {
                 if (tenders.rows.length > 20) {
                     tenders.rows.splice(20)
