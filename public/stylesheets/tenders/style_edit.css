@@ -1,0 +1,21 @@
+.goods_services_dropdown{
+  width: 15%;
+  box-shadow: 5px 5px 2px black;
+  margin-left: 42%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.tender_edit{
+  text-align: center;
+}
+.tender_edit_input{
+  font-size: 35px;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+.tender_edit_submit{
+  font-size: 30px;
+  border-radius: 5%;
+  box-shadow: 5px 5px 2px black;
+  margin-bottom: 2%;
+}
