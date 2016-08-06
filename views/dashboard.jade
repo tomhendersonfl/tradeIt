@@ -7,13 +7,13 @@ block content
   script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCok34iyxN15XU51R9pAvSOcdQVRb9m_0Y"
         type="text/javascript")
   script(src='javascripts/map.js')
-    
+
   body.dash
   main
     section.carousel.slider
       for tender in tenders
         a.carousel-item.boo(href='/tenders/#{tender.id}')
-          if (tender.picture === null)
+          if (tender.picture === null || tender.picture == 'undefined')
             img.boo_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
           else
             img.boo_img(src='#{tender.picture}' alt='No Image Available')
@@ -22,7 +22,7 @@ block content
       for tender in tenders
         div.dashboard-tender
           h4
-            a.dashy_link(href='/tenders/'+tender.id) 
+            a.dashy_link(href='/tenders/'+tender.id)
               p.dashy Tender Name: #{tender.name}
           p.dashy Description: #{tender.description}
           p.dashy Type: #{tender.tender_type}
@@ -40,7 +40,7 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            if (tender.picture === null)
+            if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
@@ -51,7 +51,7 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            if (tender.picture === null)
+            if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
@@ -60,7 +60,7 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            if (tender.picture === null)
+            if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
@@ -69,7 +69,7 @@ block content
             h4.dashy Tender Name: #{tender.name}
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
-            if (tender.picture === null)
+            if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
