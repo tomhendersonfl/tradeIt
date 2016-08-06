@@ -40,7 +40,7 @@ module.exports = {
     })
   },
   all: function() {
-    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id`)
+    return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.picture, t.name as tender_name from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id`)
   },
   find: function(id) {
     return knex.raw(`select b.*, concat(u.first_name,' ',u.last_name) as username, t.name as tender_name from bids b inner join tenders t on t.id = b.tender_id inner join users u on u.id = t.user_id where b.id = ${id}`)
