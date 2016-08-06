@@ -104,16 +104,16 @@ var Questions = require('../models/questions')
 // })
 
 // Tenders.destroy
-// var current_user = 1
-// Tenders.create({name: 'delete test', description: 'delete test', tender_type: 'goods', user_id: 1}, current_user, function(tender) {
+// var current_user = 1001
+// Tenders.create({name: 'delete test', description: 'delete test', tender_type: 'goods', user_id: 1001}, current_user, function(tender) {
 //   console.log("***** tender added *****");
 //   console.log(tender);
 // })
-// var tenderId = 12
-// var current_user = 1
+// var tenderId = 21
+// var current_user = 1001
 // Tenders.destroy(tenderId, current_user, function(errors) {
-//   console.log("***** delete *****");
-//   console.log(errors);
+//   // console.log("***** delete *****");
+//   // console.log(errors);
 //   return errors
 // })
 
@@ -173,13 +173,13 @@ var Questions = require('../models/questions')
 // })
 
 // Users.updateOne
-var current_user = 1
-var user = {id: 1, first_name: 'Thomas', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', username: 'tomhendersonfl', about_me: 'hello', profile_pic: ' '}
-Users.updateOne(user, current_user, function(errors) {
-  console.log("*** update user ***");
-  console.log(errors);
-  return errors
-})
+// var current_user = 1
+// var user = {id: 1, first_name: 'Thomas', last_name: 'Henderson', email_address: 'tomhendersonfl@gmail.com', username: 'tomhendersonfl', about_me: 'hello', profile_pic: ' '}
+// Users.updateOne(user, current_user, function(errors) {
+//   console.log("*** update user ***");
+//   console.log(errors);
+//   return errors
+// })
 
 // var errors = Users.validate({id: 1, first_name: '', last_name: '', email_address: 'me@you', facebook_username: ''})
 // console.log(errors);
@@ -192,7 +192,11 @@ Users.updateOne(user, current_user, function(errors) {
 // })
 
 // Bids.accept
-// var bid_id = 9
+// var bid_id = 11
+// Bids.accept(bid_id, function(bid) {
+//   console.log("***** testing accept bid *****");
+//   console.log(bid);
+// })
 
 // Bids.all
 // Bids.all().then(function(bids) {
@@ -209,6 +213,25 @@ Users.updateOne(user, current_user, function(errors) {
 //   console.log("***** testing find bid *****");
 //   for (i=0; i<bids.rows.length; i++) {
 //     console.log(bids.rows[i].description);
+//   }
+//   return
+// })
+
+// Ratings.all
+// Ratings.all().then(function(ratings) {
+//   console.log("***** testing all ratings *****");
+//   for (i=0; i<ratings.rows.length; i++) {
+//     console.log(ratings.rows[i]);
+//   }
+//   return
+// })
+//
+// // Ratings.find
+// var id = 1002
+// Ratings.find(id).then(function(ratings) {
+//   console.log("***** testing find rating *****");
+//   for (i=0; i<ratings.rows.length; i++) {
+//     console.log(ratings.rows[i]);
 //   }
 //   return
 // })
