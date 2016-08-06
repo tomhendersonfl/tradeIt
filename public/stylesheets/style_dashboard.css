@@ -16,6 +16,8 @@
   padding: 20px;
   height:650px;
   overflow: auto;
+  box-shadow: 5px 5px 2px gray;
+  border-radius: 5px
 }
 #tenders-dash-right{
   background-color: #7FB0B7;
@@ -27,14 +29,18 @@
   padding: 20px;
   height:650px;
   overflow: auto;
+  box-shadow: 5px 5px 2px gray;
 }
 #bids-received{
   background-color: #7FB0B7;
   border: 2px solid black;
   height:650px;
   overflow: auto;
+  box-shadow: 5px 5px 2px gray;
+  margin-top: 5%;
 }
 #bids-sent{
+  margin-top: 5%;
   background-color: #7FB0B7;
   border: 2px solid black;
   margin-bottom: 25px;
@@ -42,6 +48,7 @@
   overflow: auto;
   float: left;
   width: 100%;
+  box-shadow: 5px 5px 2px gray;
 }
 #bids{
   margin: 50px;
@@ -113,23 +120,39 @@
   position: absolute;
   margin-left: 18%;
   margin-top: 3%;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px;
 }
 .my_tenders{
   position: absolute;
   margin-left: 65%;
   margin-top: 3%;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px;
 }
 .my_bids_sent{
   position: absolute;
   margin-top: 785px;
   margin-left: 25%;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px;
 }
 .my_bids_received{
   position: absolute;
   margin-top: -70px;
   margin-left: 15%;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px;
 }
 .bids_sent{
   font-size: 25px;
   padding: 5px;
+}
+.map_styling{
+  box-shadow: 5px 5px 2px black;
+  border: 2px solid gray;
 }
