@@ -23,7 +23,10 @@ module.exports = {
         knex.raw(`update tenders set state = 'closed', accepted_at = CURRENT_TIMESTAMP where id = ${bid.rows[0].tender_id}`)
         .then(function() {
           var transporter = nodemailer.createTransport({
-
+            service: 'Gmail',
+            auth: {
+          
+            }
           })
           console.log(bid.rows[0]);
           return callback(bid.rows[0])
