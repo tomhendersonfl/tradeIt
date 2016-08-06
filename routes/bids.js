@@ -22,6 +22,18 @@ router.post('/', function(req, res, next){
   })
 })
 
+router.post('/:id/accept', function(req, res, next){
+  Bids.accept(+req.params.id, function(bid){
+    res.redirect('/dashboard')
+  })
+})
+
+router.post('/:id/reject', function(req, res, next){
+  Bids.reject(req.params.id, function(bid){
+    res.redirect('/dashboard')
+  })
+})
+
 router.get('/sent/:id', function(req, res, next) {
   Tenders.find(req.params.id).then(function(tenders){
   res.render('bids_sent/show', {
