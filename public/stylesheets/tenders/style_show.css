@@ -1,7 +1,7 @@
 .tender_show{
   border: 2px solid black;
   width: 65%;
-  margin-left: 20%;
+  margin-left: 17%;
   margin-bottom: 25px;
   background-color: white;
   padding: 2%;
@@ -40,4 +40,11 @@
   margin-right: 10%;
   margin-top: 2%;
   text-align: center;
+}
+.show_tender_image{
+  width: 50%;
+  height: 50%;
+  margin-left: 25%;
+  box-shadow: 5px 5px 2px gray;
+  margin-bottom: 5%;
 }
