@@ -34,3 +34,6 @@ h3, h4, p{
 .foo{
   background-color: #f6f6f6;
 }
+.update_profile_button{
+  box-shadow: 5px 5px 2px black;
+}
