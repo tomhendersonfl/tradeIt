@@ -35,8 +35,8 @@ router.get('/:id/edit', function(req, res, next) {
 
 //need to get the :id from facebook cookie
 router.post('/:id/edit', function(req, res, next) {
-  User_Logic.updateOne(req.body).then(function(){
-    console.log(req.body);
+  User_Logic.updateOne(req.body, req.cookies.userid, function(errors){
+    console.log(errors);
     res.redirect('/dashboard');
   })
 });
