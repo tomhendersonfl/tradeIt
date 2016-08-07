@@ -112,8 +112,8 @@ var Questions = require('../models/questions')
 // var tenderId = 21
 // var current_user = 1001
 // Tenders.destroy(tenderId, current_user, function(errors) {
-//   // console.log("***** delete *****");
-//   // console.log(errors);
+//   console.log("***** delete *****");
+//   console.log(errors);
 //   return errors
 // })
 
@@ -185,14 +185,14 @@ var Questions = require('../models/questions')
 // console.log(errors);
 
 // Bids.create
-var bid = {tender_id: 1010, user_id: 1001, bid_description: 'I will give you a stuffed armadillo for the haunted doll'}
-Bids.create(bid, function(bid) {
-  console.log("***** create bid *****");
-  console.log(bid);
-})
+// var bid = {tender_id: 1003, bid_user_id: 1004, bid_description: 'I will give you a stuffed rhino for the unicorn meat'}
+// Bids.create(bid, function(bid) {
+//   console.log("***** create bid *****");
+//   console.log(bid);
+// })
 
 // Bids.accept
-// var bid_id = 11
+// var bid_id = 19
 // Bids.accept(bid_id, function(bid) {
 //   console.log("***** testing accept bid *****");
 //   console.log(bid);
