@@ -37,3 +37,9 @@ h3, h4, p{
 .update_profile_button{
   box-shadow: 5px 5px 2px black;
 }
+.profile_img{
+  width: 90%;
+  height: 90%;
+  margin-bottom: 5%;
+  box-shadow: 5px 5px 1px black;
+}

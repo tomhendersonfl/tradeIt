@@ -46,7 +46,7 @@ block content
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             form(action='/tenders/'+tender.id+'/delete', method='get')
-              input#submit_button(type='submit', name='', value='Delete')
+              input#submit_button.red_delete_button(type='submit', name='', value='Delete')
             form(action='/tenders/'+tender.id+'/publish', method='post')
               input(type='text', name='id', hidden, value='#{tender.id}')
               input(type='textarea', name='name', hidden, value='#{tender.name}')
@@ -54,7 +54,7 @@ block content
               input(type='text', name='state', hidden, value='#{tender.state}')
               input(type='text', name='user_id', hidden, value='#{tender.user_id}')
               input(type='file', name='picture', hidden, value='#{tender.picture}')
-              input#submit_button(type='submit', name='', value='publish')
+              input#submit_button.red_publish_button(type='submit', name='', value='Publish')
         else if (tender.state == 'published')
           div.dashboard-tender.yellow
             h4.dashy Tender Name: #{tender.name}
@@ -66,22 +66,22 @@ block content
             else
               img.dashy_img(src='#{tender.picture}' alt='No Image Available')
             form(action='/tenders/#{id}', method='post')
-              input(type='textarea', name='name', value='#{tender.name}')
-              input(type='textarea', name='description', value='#{tender.description}')
+              input.myTenders_tender_name(type='textarea', name='name', value='#{tender.name}')
+              input.myTenders_tender_description(type='textarea', name='description', value='#{tender.description}')
               input(type='text', name='nbr_views', hidden, value='#{tender.nbr_views}')
               input(type='text', name='id', hidden, value='#{tender.id}')
               input(type='text', name='user_id', hidden, value='#{tender.user_id}')
               input(type='text', name='state', hidden, value='#{tender.state}')
               input(type='text', name='picture', hidden, value='#{tender.picture}')
               if (tender.tender_type == 'goods')
-                select(name='tender_type')
+                select.myTenders_tender_type(name='tender_type')
                   option(value='goods' selected) Goods
                   option(value='service') Service
               else
-                select(name='tender_type')
+                select.myTenders_tender_type(name='tender_type')
                   option(value='service' selected) Service
                   option(value='goods') Goods
-              input#submit_button(type='submit', name='', value='update')
+              input#submit_button.myTenders_submit(type='submit', name='', value='update')
         else if (tender.state == 'active')
           div.dashboard-tender.green
             h4.dashy Tender Name: #{tender.name}
@@ -125,7 +125,6 @@ block content
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
             else
               img.dashy_img(src='#{bid.picture}' alt='No Image Available')
-        a.dash-link(href='/bids-sent') View all Bids Sent
     section.bids-received-div
       h3.my_bids_received My Bids Received
       section#bids-received

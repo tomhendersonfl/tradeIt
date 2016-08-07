@@ -90,6 +90,7 @@
 }
 .dashboard-bids-sent{
   border: 2px solid black;
+  padding: 10px;
 }
 .dashboard-bids-received{
   border: 2px solid black;
@@ -106,6 +107,7 @@
   margin-top: 5%;
   border-radius: 5px;
   color: black;
+  margin-bottom: 3%;
 }
 .dashy_link{
   color: black;
@@ -155,4 +157,32 @@
 .map_styling{
   box-shadow: 5px 5px 2px black;
   border: 2px solid gray;
+}
+.myTenders_tender_type{
+  width: 30%;
+  margin-left: 34.5%;
+  margin-top: 1%;
+}
+.myTenders_tender_name{
+  margin-left: 30%;
+}
+.myTenders_tender_description{
+  margin-left: 30%;
+  height: 100px;
+  text-align: center;
+  margin-top: 1%;
+}
+.myTenders_submit{
+  box-shadow: 3px 3px 1px black;
+  margin-left: 42%;
+  margin-top: 1%;
+}
+.red_delete_button{
+  box-shadow: 2px 2px 1.5px black;
+  margin-left: 45%;
+  margin-bottom: 1%;
+}
+.red_publish_button{
+  box-shadow: 2px 2px 1.5px black;
+  margin-left: 44.5%;
 }
