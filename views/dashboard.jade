@@ -90,12 +90,8 @@ block content
             p.dashy you got an offer!
               for bid in bids_received
                 if (bid.tender_id == tender.id)
-                  p.dashy offer: #{bid.description}
                   p.dashy bidder: #{bid.username}
-                  if (bid.picture === null || bid.picture == 'undefined')
-                    img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
-                  else
-                    img.dashy_img(src='#{bid.picture}' alt='No Image Available')
+                  p.dashy offer: #{bid.description}
             p.dashy for
             if (tender.picture === null || tender.picture == 'undefined')
               img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
