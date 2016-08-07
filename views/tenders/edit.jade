@@ -18,11 +18,11 @@ block content
         select(name='tender_type')
           option(value='service' selected) Service
           option(value='goods') Goods
-      input#submit_button.tender_edit_submit(type='submit', name='', value='Edit')
+      input#submit_button.tender_edit_submit(type='submit', name='', value='Edit and Submit')
     form(action='/tenders/#{id}/publish', method='post')
       input(type='text', name='id', hidden, value='#{tender.id}')
       input(type='textarea', name='name', hidden, value='#{tender.name}')
       input(type='textarea', name='description', hidden, value='#{tender.description}')
       input(type='text', name='state', hidden, value='#{tender.state}')
       input(type='text', name='user_id', hidden, value='#{tender.user_id}')
-      input#submit_button.tender_edit_submit(type='submit', name='', value='Put up for bids')
+      input#submit_button.tender_edit_submit(type='submit', name='', value='Submit up for bids')
