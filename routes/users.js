@@ -29,6 +29,8 @@ router.get('/:id', function(req, res, next) {
 //need to get the :id from facebook cookie
 router.get('/:id/edit', function(req, res, next) {
   User_Logic.find(req.params.id).then(function(user){
+    console.log("user");
+    console.log(user.rows[0]);
     res.render('users/edit', {user:user.rows[0], current_user_id:req.cookies.userid});
   })
 });
@@ -36,7 +38,8 @@ router.get('/:id/edit', function(req, res, next) {
 //need to get the :id from facebook cookie
 router.post('/:id/edit', function(req, res, next) {
   User_Logic.updateOne(req.body, req.cookies.userid, function(errors){
-    console.log(errors);
+    console.log("req.body");
+    console.log(req.body);
     res.redirect('/dashboard');
   })
 });

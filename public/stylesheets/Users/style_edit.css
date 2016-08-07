@@ -26,7 +26,7 @@
   background-color: white;
   color: black;
   border: solid black 2px;
-
+  margin-top: 13%;
 }
 
 .btn:hover {
@@ -35,4 +35,12 @@
 
 .input-field label#aboutme-label{
   left: 25.75rem;
+}
+.user_update_about_me{
+  font-size: 30px;
+  height: 150px;
+  padding: 2%;
+}
+.user_edit_file{
+  width: 30%;
 }

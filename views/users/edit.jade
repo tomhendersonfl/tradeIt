@@ -20,13 +20,11 @@ block content
                   input(type='email', name='email_address', value='#{user.email_address}', maxlength="35", placeholder='JohnDoe@example.com')
               div.row
                 div.input-field.col.s12
-                  textarea(id="aboutme", name='about_me', class="materialize-textarea", value='#{user.about_me}')
+                  input.user_update_about_me(type='textarea' name='about_me', value='#{user.about_me}')
                   label#aboutme-label(for="aboutme") About Me
               div.file-field.input-field.tenders-form
                 div.btn#upload-file-butt
-                  span#file-text File
-                  input(type='file', name='profile_pic', accept='image/*')
-                div.file-path-wrapper
-                  input.file-path.validate(type="text" placeholder="Upload one or more files")
+                  span#file-text Change profile pic
+                  input(type='text', name='profile_pic', value='#{user.profile_pic}')
               button.btn.waves-effect.waves-light#user-update-butt(type='submit', name='', value='Submit Profile') Update
                 i.material-icons.right send
