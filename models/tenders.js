@@ -83,10 +83,10 @@ module.exports = {
         console.log("***** user lookup *****");
         console.log(user.rows[0]);
         console.log(("***** tender user id *****"));
-        console.log(tender.user_id);
+        console.log(user.rows[0].id);
         console.log("***** current user *****");
         console.log(current_user);
-        if (tender.user_id !== current_user && !user.rows[0].is_administrator) {
+        if (user.rows[0].id != current_user && !user.rows[0].is_administrator) {
           errors.push(`Only tender owner may delete a tender`)
         }
         if (user.rows[0].state === 'unverified') {

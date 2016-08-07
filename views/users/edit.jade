@@ -11,13 +11,13 @@ block content
                 input(type='text', name='first_name', value='#{user.first_name}', maxlength="35", placeholder='First Name')
               div.row
                 div.input-field.col.s6
-                  input(type='text', name='last_name', value='#{user.last_name}', maxlength="35", placeholder='Last Name') 
+                  input(type='text', name='last_name', value='#{user.last_name}', maxlength="35", placeholder='Last Name')
               div.row
                 div.input-field.col.s6
-                  input(type='text', name='username', value='#{user.username}', maxlength="35", placeholder='Username', required) 
-          
+                  input(type='text', name='username', value='#{user.username}', maxlength="35", placeholder='Username', required)
+                  input(type='text', name='id', value='#{user.id}', hidden) 
                 div.input-field.col.s6
-                  input(type='email', name='email_address', value='#{user.email_address}', maxlength="35", placeholder='JohnDoe@example.com') 
+                  input(type='email', name='email_address', value='#{user.email_address}', maxlength="35", placeholder='JohnDoe@example.com')
               div.row
                 div.input-field.col.s12
                   textarea(id="aboutme", name='about_me', class="materialize-textarea", value='#{user.about_me}')
@@ -30,6 +30,3 @@ block content
                   input.file-path.validate(type="text" placeholder="Upload one or more files")
               button.btn.waves-effect.waves-light#user-update-butt(type='submit', name='', value='Submit Profile') Update
                 i.material-icons.right send
-
-
-        
