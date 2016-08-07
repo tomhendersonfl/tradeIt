@@ -20,6 +20,6 @@ block content
           h4 Description: #{tender.description}
           h4 Type: #{tender.tender_type}
           if (tender.picture === null || tender.picture == 'undefined')
-            img.boo_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
+            img.profile_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
           else
-            img.boo_img(src='#{tender.picture}' alt='No Image Available')
+            img.profile_img(src='#{tender.picture}' alt='No Image Available')
