@@ -36,13 +36,24 @@ router.get('/dashboard', function(req, res, next) {
                         bids_received.push(bids.rows[i]);
                     }
                 }
-                res.render('dashboard', {
-                    tenders: tenders.rows,
-                    bids_sent: bids_sent,
-                    bids_received: bids_received,
-                    current_user_id: req.cookies.userid,
-                    myTenders: myTenders.rows,
+                Users.all().then(function(user){
+                  var users = user.rows
+                  var bidders = {}
+                  bids_received.forEach(bidder=>{
+                    users.forEach(use=>{
+                      if (bidder.user_id == use.id) bidders[bidder.user_id]=use.username
+                    })
+                  })
+                  res.render('dashboard', {
+                      tenders: tenders.rows,
+                      bids_sent: bids_sent,
+                      bids_received: bids_received,
+                      current_user_id: req.cookies.userid,
+                      myTenders: myTenders.rows,
+                      bidders: bidders
+                  })
                 })
+
             })
         })
     })

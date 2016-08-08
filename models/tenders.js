@@ -13,6 +13,7 @@ module.exports = {
     return knex.raw(`select t.*, concat(u.first_name,' ',u.last_name) as userName from tenders t inner join users u on t.user_id = u.id order by t.created_at desc`)
   },
   find: function(id) {
+    console.log("id in function "+ id);
     return knex.raw(`select t.*, u.first_name, u.last_name, u.email_address, u.facebook_id, u.is_administrator from tenders t inner join users u on t.user_id = u.id where t.id = ${id}`)
   },
   findByUser: function(user) {

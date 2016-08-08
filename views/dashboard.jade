@@ -27,7 +27,7 @@ block content
           p.dashy Description: #{tender.description}
           p.dashy Type: #{tender.tender_type}
             a(href='/tenders/'+tender.id)
-              if (tender.picture === null)
+              if (tender.picture === null || tender.picture == 'undefined')
                 img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
               else
                 img.dashy_img(src='#{tender.picture}' alt='No Image Available')
@@ -88,9 +88,10 @@ block content
             p.dashy Description: #{tender.description}
             p.dashy Type: #{tender.tender_type}
             p.dashy you got an offer!
+
               for bid in bids_received
                 if (bid.tender_id == tender.id)
-                  p.dashy bidder: #{bid.username}
+                  p.dashy bidder: #{bidders[bid.user_id]}
                   p.dashy offer: #{bid.description}
             p.dashy for
             if (tender.picture === null || tender.picture == 'undefined')
@@ -133,7 +134,7 @@ block content
               div.dashboard-bids-received
                 p.bids_sent Tender Name: #{bid.tender_name}
                 p.bids_sent Offer Description: #{bid.description}
-                p.bids_sent Bidder: #{bid.username}
+                p.bids_sent Bidder: #{bidders[bid.user_id]}
                 p.bids_sent Response: #{bid.response}
                 if (bid.picture === null || bid.picture == 'undefined')
                   img.dashy_img(src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg' alt='No Image Available')
