@@ -9,12 +9,16 @@ block content
     else
       img.show_tender_image(src='#{tenders.picture}' alt='No Image Available')
   if tenders
+    div.show-tender
     form.tender_show(action='/bids', method='post')
+      p.dashy #{tenders.name}
+      p.dashy #{tenders.description}
+      p.dashy type: #{tenders.tender_type}
       input(type='hidden', name='user_id', value='#{user_id}')
-      input.show_tender_heading(type='textarea', name='name', value='#{tenders.name}', readonly)
-      input(type='textarea', name='description', value='#{tenders.description}', readonly)
-      input(type='textarea', name='type', value='#{tenders.tender_type}', readonly)
-      input(type='textarea', name='tender_id', value='#{tenders.id}', readonly)
+      input.show_tender_heading(type='textarea', name='name', value='#{tenders.name}', hidden)
+      input(type='textarea', name='description', value='#{tenders.description}', hidden)
+      input(type='textarea', name='type', value='#{tenders.tender_type}', hidden)
+      input(type='textarea', name='tender_id', value='#{tenders.id}', hidden)
       input.bid_description(type='textarea', name='bid_description', value='', placeholder='Enter your offer here')
       input.make_offer(type='submit', name='', value='Make Offer')
     div.tender_show
