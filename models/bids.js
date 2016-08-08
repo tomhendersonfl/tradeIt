@@ -1,7 +1,7 @@
 var knex = require('../db/knex')
 var nodemailer = require('nodemailer')
 var transporter = nodemailer.createTransport({service: 'Gmail', auth: {user: '1earldog@gmail.com', pass: 'Homeontherange1'} })
-
+var emailFrom = '"The tradeIt Team" <1earldog@gmail.com>'
 module.exports = {
   create: function(bid, callback) {
     knex.raw(`insert into bids values (DEFAULT, ${bid.tender_id}, ${bid.user_id}, 'active', '${bid.bid_description}', 'Pending ...', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
@@ -12,13 +12,13 @@ module.exports = {
         .then(function() {
           knex.raw(`select * from tenders where id = ${bid.rows[0].tender_id}`)
           .then(function(tender) {
-            knex.raw(`select u.id, u.first_name, u.email_address from users u where u.id = ${bid.rows[0].user_id} union select u2.id, u2.first_name, u2.email_address from users u2 where u2.id = ${tender.rows[0].user_id}`)
+            knex.raw(`select u.id, u.first_name, u.email_address from users u where u.id = ${tender.rows[0].user_id}`)
             .then(function(emails) {
               var mailOptions = {
-                from: `The tradeIt Team`,
-                to: emails.rows[1].email_address,
+                from: emailFrom,
+                to: emails.rows[0].email_address,
                 subject: 'You have received a tradeIt bid',
-                text: `Hi ${emails.rows[1].first_name}.  We are writing to inform you that user ${emails.rows[0].first_name} has place a bid on your ${tender.rows[0].name}.`
+                text: `Hi ${emails.rows[0].first_name}.  We are writing to inform you that a bid has been placed on your ${tender.rows[0].name}.`
               }
               transporter.sendMail(mailOptions, function(error, info) {
                 if (error) {
@@ -45,13 +45,13 @@ module.exports = {
         .then(function() {
           knex.raw(`select * from tenders where id = ${bid.rows[0].tender_id}`)
           .then(function(tender) {
-            knex.raw(`select u.id, u.first_name, u.email_address from users u where u.id = ${bid.rows[0].user_id} union select u2.id, u2.first_name, u2.email_address from users u2 where u2.id = ${tender.rows[0].user_id}`)
+            knex.raw(`select u.id, u.first_name, u.email_address from users u where u.id = ${bid.rows[0].user_id}`)
             .then(function(emails) {
               var mailOptions = {
-                from: `The tradeIt Team`,
-                to: emails.rows[1].email_address,
+                from: emailFrom,
+                to: emails.rows[0].email_address,
                 subject: 'Your bid has been accepted',
-                text: `Hi ${emails.rows[1].first_name}.  We are writing to inform you that your bid for ${tender.rows[0].name} has been accepted by ${emails.rows[0].first_name}.`
+                text: `Hi ${emails.rows[0].first_name}.  We are writing to inform you that your bid for ${tender.rows[0].name} has been accepted.`
               }
               transporter.sendMail(mailOptions, function(error, info) {
                 if (error) {
